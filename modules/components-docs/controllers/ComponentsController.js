@@ -24,6 +24,16 @@ class ComponentsController {
           label: 'Alert',
           anchor: 'alert',
           template: this.$sce.trustAsHtml('<alert-template></alert-template>')
+        },
+        {
+          label: 'Counter',
+          anchor: 'counter',
+          template: this.$sce.trustAsHtml('<counter-template></counter-template>')
+        },
+        {
+          label: 'Confirm',
+          anchor: 'confirm',
+          template: this.$sce.trustAsHtml('<confirm-template></confirm-template>')
         }
       ]
 

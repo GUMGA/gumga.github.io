@@ -13,6 +13,7 @@ require('script-loader!./bower_components/angular-bootstrap/ui-bootstrap-tpls.mi
 require('script-loader!./bower_components/jquery/dist/jquery.min.js')
 require('script-loader!./bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js')
 require('script-loader!./bower_components/gumga-components/dist/gumga.min.js')
+require('script-loader!./assets/libs/run_prettify.min.js')
 
 // Modules imports
 import Directives from './modules/directives/directives'

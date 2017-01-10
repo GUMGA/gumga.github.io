@@ -1,13 +1,27 @@
-import { HeaderController } from './controller'
-
 const Header = () => {
     return {
         restrict: 'E',
         templateUrl: './modules/directives/header/header.html',
         scope: {
         },
-        controllerAs: '$ctrl',
-        controller: HeaderController
+        link: ($scope) =>{
+
+          $scope.navCollapse = function() {
+             document.querySelector('.gumga-layout nav.gl-nav')
+               .classList.toggle('collapsed')
+           }
+
+           $scope.asideCollapse = function() {
+             document.querySelector('.gumga-layout aside.gl-aside')
+               .classList.toggle('collapsed')
+           }
+
+           $scope.toggleSearch = function() {
+             document.querySelector('header > .searchbar')
+               .classList.toggle('searchShow')
+           }
+
+        }
     }
 }
 

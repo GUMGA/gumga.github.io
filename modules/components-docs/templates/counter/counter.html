@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaCounter</h3>
+      <p>
+        O componente gumgaCounter permite escolher um tamanho máximo permitido no campo e também cria um contador de que indica se o número de caracteres do que está no input. Caso seja passado um valor para a directive ou ela seja utilizada em conjunto com a directive gumgaMaxLength, o contador indicará o máximo de caracteres possíveis também.
+        <br/><br/>
+      </p>
+  </div>
+</div>
+
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demostração</h4>
+    <hr>
+
+    <form name="SampleForm">
+      <input type="text" gumga-counter="10" ng-model="entity.name"/>
+      <p>
+        Valor: {{entity.name}}
+      </p>
+    </form>
+
+  </div>
+
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre><code class="prettyprint">&lt;form name="SampleForm"&gt;
+    &lt;input type="text" gumga-counter="10" ng-model="entity.name"/&gt;
+    &lt;p>
+      Valor: &#123;entity.name&#125;
+    &lt;/p>
+&lt;/form&gt;
+  </code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint">angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope){
+    $scope.entity = {name:'example'};
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+
+</div>
