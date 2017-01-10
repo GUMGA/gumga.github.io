@@ -1,0 +1,21 @@
+<gumga-header></gumga-header>
+
+<main>
+    <div class="container-fluid content">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 components-container" ng-repeat="menu in $ctrl.menu" id="{{menu.anchor}}">
+            <div bind-html-compile="menu.template"></div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+</main>
+
+<nav class="gl-nav collapsed gumga-docs-nav">
+  <ul>
+    <li ng-repeat="menu in $ctrl.menu">
+      <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
+    </li>
+  </ul>
+</nav>
