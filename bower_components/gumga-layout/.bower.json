@@ -1,0 +1,39 @@
+{
+  "name": "gumga-layout",
+  "version": "1.2.2",
+  "homepage": "https://github.com/GUMGA/layout",
+  "authors": [
+    "Gui Seek <guiseek@gmail.com>"
+  ],
+  "description": "Gumga Layout",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "gumga",
+    "layout"
+  ],
+  "license": "GPL-3.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.8",
+    "bootstrap": "~3.3.7",
+    "material-design-icons": "~3.0.1"
+  },
+  "_release": "1.2.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.2.2",
+    "commit": "0b02126e17fbf7f2e45511f4a6ba03b97b09bfc0"
+  },
+  "_source": "https://github.com/GUMGA/layout.git",
+  "_target": "^1.2.2",
+  "_originalSource": "gumga-layout",
+  "_direct": true
+}
