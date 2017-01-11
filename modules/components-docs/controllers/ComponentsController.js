@@ -90,9 +90,9 @@ class ComponentsController {
       const toReturn = {};
       if(window.currentHash == menu.anchor){
           toReturn['background'] = 'rgba(76, 175, 80, 0.05)';
-          toReturn['border-left'] = '1px solid #009688';
+          toReturn['border-left'] = '3px solid #009688';
       }else{
-        toReturn['border-left'] = '1px solid transparent';
+        toReturn['border-left'] = '3px solid transparent';
       }
       toReturn['padding-left'] = '10px';
       toReturn['padding-top'] = '3px';
