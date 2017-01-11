@@ -1,11 +1,18 @@
 const Counter = () => {
     return {
         restrict: 'E',
-        templateUrl: './modules/components-docs/templates/counter/counter.html',
+        template: '<div ng-include="getContent()"></div>',
         scope: {
+          versionDocs: '=?'
         },
         link: ($scope) => {
-            $scope.entity = {name:'example'};
+
+          $scope.getContent = function() {
+              return './modules/components-docs/templates/counter/'+$scope.versionDocs+'/counter.html';
+          }
+
+          $scope.entity = {name:'example'};
+
         }
     }
 }

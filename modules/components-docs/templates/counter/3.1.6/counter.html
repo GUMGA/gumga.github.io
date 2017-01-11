@@ -15,7 +15,7 @@
     <hr>
 
     <form name="SampleForm">
-      <input type="text" gumga-counter="10" ng-model="entity.name"/>
+      <input type="text" gumga-counter="10" ng-model="entity.name" class="form-control"/>
       <p>
         Valor: {{entity.name}}
       </p>
@@ -29,10 +29,7 @@
     <uib-tabset active="activePill">
       <uib-tab index="0" heading="HTML">
         <pre><code class="prettyprint">&lt;form name="SampleForm"&gt;
-    &lt;input type="text" gumga-counter="10" ng-model="entity.name"/&gt;
-    &lt;p>
-      Valor: &#123;entity.name&#125;
-    &lt;/p>
+    &lt;input type="text" gumga-counter="10" ng-model="name"/&gt;
 &lt;/form&gt;
   </code></pre>
       </uib-tab>

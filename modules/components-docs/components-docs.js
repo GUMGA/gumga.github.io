@@ -6,7 +6,7 @@ const Routers = $stateProvider => {
 
       $stateProvider
         .state('app.components', {
-            url: '/components',
+            url: '/components/:version',
             controller: 'ComponentsController',
             controllerAs: '$ctrl',
             templateUrl: './modules/components-docs/views/components.html'

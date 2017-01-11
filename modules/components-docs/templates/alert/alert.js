@@ -1,10 +1,16 @@
 const Alert = (GumgaAlert) => {
     return {
         restrict: 'E',
-        templateUrl: './modules/components-docs/templates/alert/alert.html',
+        template: '<div ng-include="getContent()"></div>',
         scope: {
+          versionDocs: '=?'
         },
         link: ($scope) => {
+
+          $scope.getContent = function() {
+              return './modules/components-docs/templates/alert/'+$scope.versionDocs+'/alert.html';
+          }
+
           var config = {
             offset: 50, //Tamanho da distância entre o alerta e tela.
             timer: 100, //Tempo que irá demorar para a mensagem aparecer após
@@ -30,6 +36,7 @@ const Alert = (GumgaAlert) => {
                 break;
             }
           }
+
         }
     }
 }

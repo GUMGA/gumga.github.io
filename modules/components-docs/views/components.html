@@ -3,8 +3,8 @@
 <main>
     <div class="container-fluid content">
         <div class="row">
-          <div class="col-md-8 col-md-offset-2 components-container" ng-repeat="menu in $ctrl.menu" id="{{menu.anchor}}">
-            <div bind-html-compile="menu.template"></div>
+          <div class="col-sm-8 col-sm-offset-3 components-container hash" ng-repeat="menu in $ctrl.menu" id="{{menu.anchor}}">
+            <div ng-if="$ctrl.thereIsThisVersion(menu.versions)" bind-html-compile="menu.template"></div>
             <hr>
           </div>
         </div>
@@ -13,9 +13,18 @@
 </main>
 
 <nav class="gl-nav collapsed gumga-docs-nav">
-  <ul>
-    <li ng-repeat="menu in $ctrl.menu">
-      <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
+  <ul class="gumga-docs-nav-ul">
+    <li>
+        <label class="text-muted">Versão</label>
+        <select class="form-control gmd"
+                data-ng-options="item as item for item in $ctrl.versions"
+                data-ng-change="$ctrl.setVersion($ctrl.versionCurrent)"
+                data-ng-model="$ctrl.versionCurrent">
+        </select>
+    </li>
+    <br/>
+    <li ng-repeat="menu in $ctrl.menu" ng-style="$ctrl.getMenuStyle(menu)">
+      <a ng-if="$ctrl.thereIsThisVersion(menu.versions)" data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
     </li>
   </ul>
 </nav>
