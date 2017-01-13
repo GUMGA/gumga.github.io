@@ -23,8 +23,17 @@
         </select>
     </li>
     <br/>
-    <li ng-repeat="menu in $ctrl.menu" ng-style="$ctrl.getMenuStyle(menu)">
-      <a ng-if="$ctrl.thereIsThisVersion(menu.versions)" data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
+    <li>
+        <br/>
+        <gmd-input>
+            <input type="text" class="form-control gmd" ng-model="$ctrl.search" id="text">
+            <span class="bar"></span>
+            <label for="text" class="control-label">Pesquisar documentação</label>
+        </gmd-input>
+    </li>
+    <br/>
+    <li ng-repeat="menu in $ctrl.menu | filter:{label: $ctrl.search, versions: $ctrl.versionCurrent}" ng-style="$ctrl.getMenuStyle(menu)">
+      <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
     </li>
   </ul>
 </nav>
