@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaFormButtons</h3>
+      <p>
+        O componente GumgaFormButtons é utilizado para que o desenvolvedor não precise implementar os botões de controle de formulário.
+      </p>
+      <br/><br/>
+    </p>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demostração</h4>
+    <hr>
+    <form name="Example" gumga-form>
+        <gumga-form-buttons
+          inline
+          valid="Example.$valid"
+          back="app.components"
+          submit="foo()"
+          continue="{{!$stateParams.id}}"
+          confirm-dirty="{{true}}">
+        </gumga-form-buttons>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 10px;"><code class="prettyprint">&lt;gumga-form-buttons
+  inline
+  valid="Example.$valid"
+  back="app.components"
+  submit="foo()"
+  continue="{{!$stateParams.id}}"
+  confirm-dirty="{{true}}"&gt;
+&lt;/gumga-form-buttons&gt;</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint">angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope){
+
+    $scope.foo = function(){
+      alert('Clicou em salvar!')
+    }
+
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>valid</td>
+              <td>Boolean</td>
+              <td>Atributo que será passado para o componente para que o botão de salvar seja liberado ou não.</td>
+          </tr>
+          <tr>
+              <td>back</td>
+              <td>String</td>
+              <td>Atributo que será utilizado para definir o estado para qual será retornado quando o usuário clicar em Retornar ou Salvar. Valor default: NOMEDOSTATE.list</td>
+          </tr>
+          <tr>
+              <td>submit</td>
+              <td>Function</td>
+              <td>Atributo que irá conter uma função que será chamada quando o usuário clicar em salvar.</td>
+          </tr>
+          <tr>
+              <td>position</td>
+              <td>string</td>
+              <td>Atributo para alinhar os botões para esquerda left ou direita right da tela.</td>
+          </tr>
+          <tr>
+              <td>continue</td>
+              <td>Boolean</td>
+              <td>Atributo que irá ser utilizado para determinar se irá aparecer a opção de continuar inserindo.</td>
+          </tr>
+          <tr>
+              <td>confirm-dirty</td>
+              <td>Boolean</td>
+              <td>Atributo usado para determinar se, quando o usuário clicar no botão de retornar e já tiver digitado algo, aparecerá um modal de confirmação de saída da tela.</td>
+          </tr>
+          <tr>
+              <td>model</td>
+              <td>Object</td>
+              <td>Atributo que receberá o model usado no form para validar se houve edição nos dados, usado caso confirm-dirty seja true.</td>
+          </tr>
+          <tr>
+              <td>keep-inserting-text</td>
+              <td>String</td>
+              <td>Atributo que será utilizado para trocar o texto que aparece do lado do checkbox.</td>
+          </tr>
+          <tr>
+              <td>returnText</td>
+              <td>String</td>
+              <td>Atributo que será utilizado para trocar o texto que aparece no botão de retorno.</td>
+          </tr>
+          <tr>
+              <td>saveText</td>
+              <td>String</td>
+              <td>Atributo que será utilizado para trocar o texto que aparece no botão de salvar.</td>
+          </tr>
+          <tr>
+              <td>reverse-order</td>
+              <td>Boolean</td>
+              <td>Atributo que será utilizado para alterar a orderm dos botões que aparecem na tela.</td>
+          </tr>
+          <tr>
+              <td>inline</td>
+              <td>''</td>
+              <td>Atributo sem valor, remove o elemento pai com a classe .row.col-md-12, podendo encaixar o componente onde achar melhor. Caso o atributo não for colocado ocupada 1 linha com 12 colunas (.row.col-md-12).</td>
+          </tr>
+      </table>
+  </div>
+</div>

@@ -14,6 +14,7 @@ import patternTemplate from './pattern/pattern'
 import rangeTemplate from './range/range'
 import requiredTemplate from './required/required'
 import validatetypeTemplate from './validatetype/validatetype'
+import formbuttonsTemplate from './formbuttons/formbuttons'
 
 const module = angular.module('components-templates', [])
                 .directive('instalationTemplate', instalationTemplate)
@@ -32,5 +33,6 @@ const module = angular.module('components-templates', [])
                 .directive('rangeTemplate', rangeTemplate)
                 .directive('requiredTemplate', requiredTemplate)
                 .directive('validatetypeTemplate', validatetypeTemplate)
+                .directive('formbuttonsTemplate', formbuttonsTemplate)
 
 export default module.name;
