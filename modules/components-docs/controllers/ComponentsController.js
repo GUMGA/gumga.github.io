@@ -94,6 +94,42 @@ class ComponentsController {
           anchor: 'errors',
           versions: ["3.1.6"],
           template: this.$sce.trustAsHtml('<errors-template version-docs="$ctrl.versionCurrent"></errors-template>')
+        },
+        {
+          label: 'Max',
+          anchor: 'max',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<max-template version-docs="$ctrl.versionCurrent"></max-template>')
+        },
+        {
+          label: 'Min',
+          anchor: 'min',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<min-template version-docs="$ctrl.versionCurrent"></min-template>')
+        },
+        {
+          label: 'Pattern',
+          anchor: 'pattern',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<pattern-template version-docs="$ctrl.versionCurrent"></pattern-template>')
+        },
+        {
+          label: 'Range',
+          anchor: 'range',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<range-template version-docs="$ctrl.versionCurrent"></range-template>')
+        },
+        {
+          label: 'Required',
+          anchor: 'required',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<required-template version-docs="$ctrl.versionCurrent"></required-template>')
+        },
+        {
+          label: 'ValidateType',
+          anchor: 'validatetype',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<validatetype-template version-docs="$ctrl.versionCurrent"></validatetype-template>')
         }
       ]
 

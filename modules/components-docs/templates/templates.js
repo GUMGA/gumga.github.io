@@ -8,6 +8,12 @@ import filterTemplate from './filter/filter'
 import formTemplate from './form/form'
 import errorTemplate from './error/error'
 import errorsTemplate from './errors/errors'
+import maxTemplate from './max/max'
+import minTemplate from './min/min'
+import patternTemplate from './pattern/pattern'
+import rangeTemplate from './range/range'
+import requiredTemplate from './required/required'
+import validatetypeTemplate from './validatetype/validatetype'
 
 const module = angular.module('components-templates', [])
                 .directive('instalationTemplate', instalationTemplate)
@@ -20,5 +26,11 @@ const module = angular.module('components-templates', [])
                 .directive('formTemplate', formTemplate)
                 .directive('errorTemplate', errorTemplate)
                 .directive('errorsTemplate', errorsTemplate)
+                .directive('maxTemplate', maxTemplate)
+                .directive('minTemplate', minTemplate)
+                .directive('patternTemplate', patternTemplate)
+                .directive('rangeTemplate', rangeTemplate)
+                .directive('requiredTemplate', requiredTemplate)
+                .directive('validatetypeTemplate', validatetypeTemplate)
 
 export default module.name;

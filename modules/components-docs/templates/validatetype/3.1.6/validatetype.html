@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaValidateType</h3>
+      <p>
+        O componente GumgaValidateType serve para validar determinados tipos de campos, como date, datetime-local, time, week, month, number, url e email.
+      </p>
+      <br/><br/>
+    </p>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demostração</h4>
+    <hr>
+    <form name="validatetype" gumga-form>
+      <label>Email</label>
+      <input type="email" name="email" ng-model="email" class="form-control" gumga-validate-type gumga-error>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 10px;"><code class="prettyprint">&lt;form name="validatetype" gumga-form&gt;
+  &lt;label&gt;Email&lt;/label&gt;
+  &lt;input type="email" class="form-control" name="email" ng-model="email" gumga-validate-type gumga-error&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>

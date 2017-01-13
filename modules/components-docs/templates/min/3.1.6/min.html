@@ -1,0 +1,116 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaMin [Date|Length|Number]</h3>
+      <p>
+        Obs: Todas as diretivas gumgaMin listadas abaixo, possuem o atributo "label" que é opcional, esse atributo é inserido na input,
+        ele é usado na integração com gumgaErrors para indicar em qual campo se encontra o erro. Se o atributo for omitido, a diretiva usará o atributo name do input.
+
+      </p>
+      <br/><br/>
+      <p>
+        <h4>gumgaMinDate</h4>
+        O componente GumgaMinDate serve para validar datas mínimas em entradas de formulários.<br/>
+        <b>Esta diretiva suporta apenas inputs do tipo date. O valor do atributo/diretiva é obrigatório e deve ser uma data.</b>
+      </p>
+    </p>
+  </div>
+</div>
+
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demostração MinDate</h4>
+    <hr>
+    <form name="myForm" gumga-form>
+      <label>Data:</label>
+      <input type="date" name="minDate" ng-model="maxDate" class="form-control" gumga-error  gumga-min-date="2020-07-20">
+    </form>
+  </div>
+
+
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 10px;"><code class="prettyprint">&lt;form name="myForm" gumga-form&gt;
+  &lt;label&gt;Data:&lt;/label&gt;
+  &lt;input type="date" name="minDate" ng-model="maxDate" class="form-control" gumga-error gumga-min-date="2020-07-20"&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <p>
+        <h4>gumgaMinLength</h4>
+        O componente GumgaMinLength serve para validar quantidades mínimas de caracteres em entradas de formulários.<br/>
+      </p>
+    </p>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demostração MinLength</h4>
+    <hr>
+    <form name="myForm" gumga-form>
+      <label>Nome</label>
+      <input type="text" name="minLength" ng-model="form.minLength" gumga-error gumga-min-length="10" class="form-control" id="minlength">
+    </form>
+  </div>
+
+
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 10px;"><code class="prettyprint">&lt;form name="myForm" gumga-form&gt;
+  &lt;label&gt;Nome&lt;/label&gt;
+  &lt;input type="text" name="minLength" class="form-control" ng-model="minLength" gumga-error gumga-min-length="20" id="minLength"&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <p>
+        <h4>gumgaMinNumber</h4>
+        O componente GumgaMinNumber serve para validar números mínimas em entradas de formulários.<br/>
+        <b>Esta diretiva suporta apenas inputs do tipo number. O valor do atributo/diretiva é obrigatório e deve ser um número.</b>
+      </p>
+    </p>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demostração MinNumber</h4>
+    <hr>
+    <form name="myForm" gumga-form>
+      <label>Valor</label>
+      <input type="number" name="minNumber" class="form-control" ng-model="minNumber" gumga-error gumga-min-number="20">
+   </form>
+  </div>
+
+
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 10px;"><code class="prettyprint">&lt;form name="myForm"&gt;
+   &lt;input type="number" name="minNumber" ng-model="minNumber" gumga-error gumga-min-number="20"&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+
+</div>
