@@ -1,0 +1,213 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaFilter</h3>
+      <p>
+        O componente gumgaFilter é utilizado para realizar buscar avançadas, de forma desacoplada, numa tela onde estarão somente filtros avançados disponíveis, mas também pode ser usado em conjunto com o componente gumgaQuery, adicionando o atributo advanced-search="foo(param)" As tags advanced-search-field são usadas para definir os atributos que serão usados para formação dos filtros.
+      </p>
+
+      <br/><br/>
+
+    </p>
+  </div>
+</div>
+
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demostração</h4>
+    <hr>
+
+    <gumga-filter search="searchFilter(param)">
+      <advanced-search-field type="string"  label="Nome"    field="nome"></advanced-search-field>
+      <advanced-search-field type="number"  label="Idade"   field="idade"></advanced-search-field>
+      <advanced-search-field type="float"   label="Peso"    field="peso"></advanced-search-field>
+      <advanced-search-field type="money"   label="Preço"   field="preco"></advanced-search-field>
+      <advanced-search-field type="cpf"     label="CPF"     field="cpf"></advanced-search-field>
+      <advanced-search-field type="cnpj"    label="CNPJ"    field="cnpj"></advanced-search-field>
+      <advanced-search-field type="boolean" label="Ativo"   field="ativo" true-label="True" false-label="False"></advanced-search-field>
+      <advanced-search-field type="select"  label="Estados" field="id" data="selects"></advanced-search-field>
+      <advanced-search-field type="enum"    label="Roles"   field="states" data="selects"></advanced-search-field>
+    </gumga-filter>
+
+    <div ng-show="result">
+       Será enviado para o back-end um objeto com os atributos <b>hql</b> e <b>source</b>. <br/><br/>
+       <b>hql</b> será enviado para o back-end para a filtragem.<br/>
+       <b>source</b> será enviado para o back-end para salvar sua pesquisa.<br/><br/>
+
+       Exemplo do JSON: <br/>
+
+       <pre>{{result | json}}</pre>
+
+    </div>
+
+  </div>
+
+
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 10px;"><code class="prettyprint">&lt;gumga-filter search="searchFilter(param)"&gt;
+  &lt;advanced-search-field type="string" label="Nome" field="nome">&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="number" label="Idade" field="idade">&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="float" label="Peso" field="peso"&gt;&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="money" label="Preço" field="preco"&gt;&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="cpf" label="CPF" field="cpf"&gt;&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="cnpj"  label="CNPJ" field="cnpj"&gt;&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="boolean" label="Ativo" field="ativo" true-label="True" false-label="False"&gt;&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="select" label="Estados" field="id" data="selects"&gt;&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="enum" label="Roles" field="states" data="selects"&gt;&lt;/advanced-search-field&gt;
+&lt;/gumga-filter&gt;</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint">angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope, GumgaAlert){
+
+    $scope.searchFilter = function(value){
+      $scope.result = value;
+    }
+
+    $scope.selects = [
+      {
+        "field": "selectField1",
+        "label": "selectLabel 1"
+      },
+      {
+        "field": "selectField2",
+        "label": "selectLabel 2"
+      },
+      {
+        "field": "selectField3",
+        "label": "selectLabel 3"
+      }
+    ];
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Parâmetros</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>search</td>
+              <td>function</td>
+              <td>Parâmetro que irá conter uma função que será utilizada para executar a busca. O parâmetro param é obrigatórios e irá retornar os dados necessários para montar a query no backend.</td>
+          </tr>
+      </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Parâmetros da tag advanced-search-field</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>type</td>
+              <td>String</td>
+              <td>Irá conter o tipo que dado que será entrado, possibilitanto a validação ou máscara no campo para o valor.</td>
+          </tr>
+          <tr>
+              <td>field</td>
+              <td>String</td>
+              <td>Irá conter uma string que será utilizada na hora de fazer a busca.</td>
+          </tr>
+          <tr>
+              <td>label</td>
+              <td>String</td>
+              <td>Irá conter uma string que será utilizada para mostrar no componente.</td>
+          </tr>
+          <tr>
+              <td>true-value / false-value</td>
+              <td>String</td>
+              <td>No caso de um atributo do tipo boolean, será o valor mostrado no componente ao lado do radio button, simbolizando true ou false.</td>
+          </tr>
+          <tr>
+              <td>data</td>
+              <td>Array</td>
+              <td>No caso dos atributos dos tipos select ou enum é necessária passar ao atributo data um array de objetos com os atributos field e label para sua representação num select ou checkbox.</td>
+          </tr>
+      </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Tipos permitidos da tag advanced-search-field</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Tipo</th>
+              <th>Condições</th>
+          </tr>
+          <tr>
+              <td>string</td>
+              <td>'eq', 'ne', 'ge', 'le', 'contains', 'not_contains', 'starts_with', 'ends_with'</td>
+          </tr>
+          <tr>
+              <td>number</td>
+              <td>'eq', 'ne', 'gt', 'ge', 'lt', 'le'</td>
+          </tr>
+          <tr>
+              <td>float</td>
+              <td>'eq', 'ne', 'gt', 'ge', 'lt', 'le'</td>
+          </tr>
+          <tr>
+              <td>money</td>
+              <td>'eq', 'ne', 'gt', 'ge', 'lt', 'le'</td>
+          </tr>
+          <tr>
+              <td>cpf</td>
+              <td>'eq'</td>
+          </tr>
+          <tr>
+              <td>cnpj</td>
+              <td>'eq'</td>
+          </tr>
+          <tr>
+              <td>boolean</td>
+              <td>'eq'</td>
+          </tr>
+          <tr>
+              <td>date</td>
+              <td>'eq', 'ne', 'gt', 'ge', 'lt', 'le'</td>
+          </tr>
+          <tr>
+              <td>select</td>
+              <td>'eq', 'ne'</td>
+          </tr>
+          <tr>
+              <td>enum</td>
+              <td>'eq'</td>
+          </tr>
+          <tr>
+              <td>email</td>
+              <td>'eq', 'ne', 'contains', 'not_contains', 'starts_with', 'ends_with'</td>
+          </tr>
+          <tr>
+              <td>url</td>
+              <td>'eq', 'ne', 'contains', 'not_contains', 'starts_with', 'ends_with'</td>
+          </tr>
+          <tr>
+              <td>ip</td>
+              <td>'eq', 'ne', 'contains', 'not_contains', 'starts_with', 'ends_with'</td>
+          </tr>
+      </table>
+  </div>
+</div>

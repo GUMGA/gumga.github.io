@@ -70,6 +70,30 @@ class ComponentsController {
           anchor: 'confirm',
           versions: ["3.1.6"],
           template: this.$sce.trustAsHtml('<confirm-template version-docs="$ctrl.versionCurrent"></confirm-template>')
+        },
+        {
+          label: 'Filter',
+          anchor: 'filter',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<filter-template version-docs="$ctrl.versionCurrent"></filter-template>')
+        },
+        {
+          label: 'Form',
+          anchor: 'form',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<form-template version-docs="$ctrl.versionCurrent"></form-template>')
+        },
+        {
+          label: 'Error',
+          anchor: 'error',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<error-template version-docs="$ctrl.versionCurrent"></error-template>')
+        },
+        {
+          label: 'Errors',
+          anchor: 'errors',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<errors-template version-docs="$ctrl.versionCurrent"></errors-template>')
         }
       ]
 
