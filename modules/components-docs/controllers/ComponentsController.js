@@ -11,14 +11,7 @@ class ComponentsController {
     }
 
     $onInit() {
-      this.versions = ["3.1.6"];
       window.currentHash = 'instalation';
-
-      if(!this.$stateParams.version){
-         this.setVersion(this.versions[0])
-      }
-
-      this.versionCurrent = this.$stateParams.version;
 
       function isScrolledIntoView(elem) {
         var docViewTop = $(window).scrollTop();
@@ -138,6 +131,22 @@ class ComponentsController {
           template: this.$sce.trustAsHtml('<formbuttons-template version-docs="$ctrl.versionCurrent"></formbuttons-template>')
         }
       ]
+
+      this.versions = [];
+
+      this.menu.forEach((menu)=>{
+          menu.versions.forEach((version)=>{
+             if(this.versions.indexOf(version) == -1){
+               this.versions.push(version);
+             }
+          })
+      });
+
+      if(!this.$stateParams.version && this.versions.length > 0){
+         this.setVersion(this.versions[0])
+      }
+
+      this.versionCurrent = this.$stateParams.version;
 
     }
 

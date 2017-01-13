@@ -17,7 +17,7 @@
     <li>
         <label class="text-muted">Versão</label>
         <select class="form-control gmd"
-                data-ng-options="item as item for item in $ctrl.versions"
+                data-ng-options="item as item for item in $ctrl.versions | orderBy:'-toString()'"
                 data-ng-change="$ctrl.setVersion($ctrl.versionCurrent)"
                 data-ng-model="$ctrl.versionCurrent">
         </select>
