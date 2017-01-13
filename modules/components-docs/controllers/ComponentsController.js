@@ -130,6 +130,12 @@ class ComponentsController {
           anchor: 'validatetype',
           versions: ["3.1.6"],
           template: this.$sce.trustAsHtml('<validatetype-template version-docs="$ctrl.versionCurrent"></validatetype-template>')
+        },
+        {
+          label: 'FormButtons',
+          anchor: 'formbuttons',
+          versions: ["3.1.6"],
+          template: this.$sce.trustAsHtml('<formbuttons-template version-docs="$ctrl.versionCurrent"></formbuttons-template>')
         }
       ]
 
