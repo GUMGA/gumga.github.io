@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaQuery</h3>
+      <p>
+        GumgaQuery
+      </p>
+      <br/><br/>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6" >
+    <h4>Demostração</h4>
+    <hr>
+    <form name="Example">
+      <gumga-query search="simple(field, param)" advanced-search="advanced(param)" search-text="Pesquisar">
+        <search-field field="name" label="Nome" select="true" ></search-field>
+        <search-field field="age"  label="Idade"></search-field>
+        <advanced-search-field type="string"  label="Nome"    field="nome"></advanced-search-field>
+        <advanced-search-field type="number"  label="Idade"   field="idade"></advanced-search-field>
+        <advanced-search-field type="float"   label="Peso"    field="peso"></advanced-search-field>
+        <advanced-search-field type="money"   label="Preço"   field="preco"></advanced-search-field>
+      </gumga-query>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre><code class="prettyprint">&lt;form name="Example"&gt;
+  &lt;gumga-query search="simple(field, param)" advanced-search="advanced(param)" search-text="Pesquisar"&gt;
+    &lt;search-field field="name" label="Nome" select="true" &gt;&lt;/search-field&gt;
+    &lt;search-field field="age"  label="Idade"&gt;&lt;/search-field&gt;
+    &lt;advanced-search-field type="string"  label="Nome"    field="nome"&gt;&lt;/advanced-search-field&gt;
+    &lt;advanced-search-field type="number"  label="Idade"   field="idade"&gt;&lt;/advanced-search-field&gt;
+    &lt;advanced-search-field type="float"   label="Peso"    field="peso"&gt;&lt;/advanced-search-field&gt;
+    &lt;advanced-search-field type="money"   label="Preço"   field="preco"&gt;&lt;/advanced-search-field&gt;
+  &lt;/gumga-query&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint">angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope){
+    $scope.simple = function(field, param){
+      console.info('GumgaQuery', 'Field: '+field+', Valor:' +param)
+    }
+
+    $scope.advanced = function(value){
+      console.info('GumgaQuery', 'Value: '+value)
+    }
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>search</td>
+              <td>Parâmetro que irá conter uma função que será utilizada para executar a busca simples.Os parâmetros field e param são obrigatórios.</td>
+          </tr>
+          <tr>
+              <td>advancedSearch</td>
+              <td>Parâmetro que irá conter uma função que será utilizada para executar a busca avançada. O parâmetro param é obrigatório.</td>
+          </tr>
+          <tr>
+              <td>searchText</td>
+              <td>Parâmetro que irá conter uma string que será utilizada como label para o botão de pesquisa.</td>
+          </tr>
+      </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos da tag search-field</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>field</td>
+              <td>O parâmetro field irá conter uma string que será utilizada na hora de fazer a busca.</td>
+          </tr>
+          <tr>
+              <td>label</td>
+              <td>O parâmetro label irá conter uma string que será utilizada para mostrar no componente.</td>
+          </tr>
+          <tr>
+              <td>select</td>
+              <td>O parâmetro select irá conter um valor booleano que será utilizado para que o campo seja selecionado por padrão. Caso nenhum campo contenha o parâmetro select, o primeiro será selecionado por padrão.</td>
+          </tr>
+      </table>
+  </div>
+</div>

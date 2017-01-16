@@ -22,6 +22,8 @@ import menuTemplate from './menu/menu'
 import navTemplate from './nav/nav'
 import onetomanyTemplate from './onetomany/onetomany'
 import modalcontroller from './onetomany/modalcontroller'
+import queryTemplate from './query/query'
+import tableTemplate from './table/table'
 
 const module = angular.module('components-templates', [])
                 .directive('instalationTemplate', instalationTemplate)
@@ -48,5 +50,7 @@ const module = angular.module('components-templates', [])
                 .directive('navTemplate', navTemplate)
                 .directive('onetomanyTemplate', onetomanyTemplate)
                 .controller('ModalClienteController', modalcontroller)
+                .directive('queryTemplate', queryTemplate)
+                .directive('tableTemplate', tableTemplate)
 
 export default module.name;

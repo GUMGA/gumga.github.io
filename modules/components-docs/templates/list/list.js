@@ -12,7 +12,6 @@ const List = () => {
           }
 
           $scope.gotoAnchor = function(anchor){
-            console.log(anchor)
             if(window.PR){
                 PR.prettyPrint();
             }
@@ -24,7 +23,7 @@ const List = () => {
           //A ordenação abaixo é um exemplo de ordenação no front
           //Se você usa o framework gumga é recomendado fazer a ordenação no backend
           $scope.ordenar = function(field, dir){
-              console.log("Field:" + field, "Dir: " + dir);
+              console.info("GumgaList", "Field:" + field, "Dir: " + dir);
               $scope.dados = $scope.dados.sort(function(a, b){
                   a = parseInt(a[field]);
                   b = parseInt(b[field]);

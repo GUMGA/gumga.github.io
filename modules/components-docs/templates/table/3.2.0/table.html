@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaTable</h3>
+      <p>
+        O componente GumgaTable serve para expor dados em forma de tabela. O componente expõe no $scope.selectedEntities um array contendo os objetos das linhas selecionadas para que o desenvolvedor possa usa-los em ações.
+      </p>
+      <br/><br/>
+    </p>
+  </div>
+</div>
+<br/>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demostração</h4>
+    <hr>
+    <gumga-table values="list" columns="nome,idade" on-select="select(selected)"></gumga-table>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 13px;"><code class="prettyprint">&lt;gumga-table
+  values="list"
+  on-select="select(selected)"
+  columns="nome,idade"&gt;
+&lt;/gumga-table&gt;</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint" ng-non-bindable>angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope){
+
+    $scope.select = function(selected){
+      console.info('GumgaTable', ' Selecionado: ', selected)
+    }
+
+    $scope.list = [
+      {
+        nome: 'Mateus Miranda',
+        idade: 20
+      },
+      {
+        nome: 'Felipe Sabadini',
+        idade: 23
+      }
+    ];
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>values</td>
+              <td>Array</td>
+              <td>Atributo obrigatório. Deve ser o nome do array exposto no $scope para popular a tabela.</td>
+          </tr>
+          <tr>
+              <td>columns</td>
+              <td>String</td>
+              <td>Atributo obrigatório. As propriedades do objeto que serão apresentados como colunas na tabela.</td>
+          </tr>
+          <tr>
+              <td>size</td>
+              <td>String</td>
+              <td>Possuem 3 opções de tamanhos, large, medium e small, que respectivamente ocupam, todo o espaço da row, dois terços e um terço. O valor padrão é large.</td>
+          </tr>
+          <tr>
+              <td>translate-entity</td>
+              <td>String</td>
+              <td>Nome da entidade.</td>
+          </tr>
+          <tr>
+              <td>pages</td>
+              <td>Array</td>
+              <td>Deve conter os valores para apresentar opções de registros por página.</td>
+          </tr>
+          <tr>
+              <td>table-class</td>
+              <td>String</td>
+              <td>Possuem 3 opções, bordered, striped e condensed, que respectivamente, adiciona bordas a tabela, alterna cores das linhas e diminui o espaçamento interno das linhas e colunas. O valor padrão é bordered. O componente seguirá a ordem de colunas adicionada ao atributo.</td>
+          </tr>
+          <tr>
+              <td>multi-selection</td>
+              <td>Boolean</td>
+              <td>É true por padrão, determina a possibilidade da seleção de várias entidades ou apenas uma por vez.</td>
+          </tr>
+          <tr>
+              <td>sort-function</td>
+              <td>Function</td>
+              <td>Nome da função atribuida ao $scope para manipular a ordenação, a função recebe dois parâmetros, field e way que serão, a coluna e a direção da ordenação respectivamente, existem duas direções, asc ou desc.</td>
+          </tr>
+          <tr>
+              <td>sort-default</td>
+              <td>String</td>
+              <td>Deve conter a coluna e a direção separados por virgula, será a ordenação padrão na primeira exibição da tabela.</td>
+          </tr>
+          <tr>
+              <td>row-class</td>
+              <td>Expression</td>
+              <td>Deve conter uma expressão condicional para marcar determinadas linhas correspondentes como verdadeiras perante a expressão.</td>
+          </tr>
+          <tr>
+              <td>on-select</td>
+              <td>Function</td>
+              <td>Nome da função que será executada ao evento click.</td>
+          </tr>
+          <tr>
+              <td>on-sort</td>
+              <td>Function</td>
+              <td>Nome da função que será executada ao evento de sort.</td>
+          </tr>
+      </table>
+  </div>
+</div>

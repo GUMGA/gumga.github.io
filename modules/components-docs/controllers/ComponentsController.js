@@ -175,6 +175,18 @@ class ComponentsController {
           anchor: 'onetomany',
           versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<onetomany-template version-docs="$ctrl.versionCurrent"></onetomany-template>')
+        },
+        {
+          label: 'Query',
+          anchor: 'query',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<query-template version-docs="$ctrl.versionCurrent"></query-template>')
+        },
+        {
+          label: 'Table',
+          anchor: 'table',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<table-template version-docs="$ctrl.versionCurrent"></table-template>')
         }
       ]
 

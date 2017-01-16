@@ -12,7 +12,7 @@ const ManyToMany = () => {
           }
 
           $scope.searchLeft = function(param){
-              console.info('Filtro:', param);
+              console.info('GumgaManyToMany','Filtro:', param);
           }
 
           $scope.selecionados = [
