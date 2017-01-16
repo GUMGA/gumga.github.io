@@ -185,6 +185,7 @@ class ComponentsController {
     }
 
     appendCSS(version){
+      if(!version) return;
       const head = document.getElementsByTagName('head')[0];
       const style = document.createElement('link');
       style.rel = 'stylesheet';
