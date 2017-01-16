@@ -1,9 +1,13 @@
-<gumga-header></gumga-header>
+<gumga-header show-icon-menu="true"></gumga-header>
 
 <main>
     <div class="container-fluid content">
         <div class="row">
-          <div class="col-sm-8 col-sm-offset-3 components-container hash" ng-repeat="menu in $ctrl.menu" id="{{menu.anchor}}">
+          <div class="col-sm-8 col-sm-offset-3 components-container hash" ng-repeat="menu in $ctrl.menus" id="{{menu.anchor}}">
+            <div ng-if="$ctrl.thereIsThisVersion(menu.versions)" bind-html-compile="menu.template"></div>
+            <hr>
+          </div>
+          <div class="col-sm-8 col-sm-offset-3 components-container hash" ng-repeat="menu in $ctrl.components | orderBy : 'label'" id="{{menu.anchor}}">
             <div ng-if="$ctrl.thereIsThisVersion(menu.versions)" bind-html-compile="menu.template"></div>
             <hr>
           </div>
@@ -32,7 +36,10 @@
         </gmd-input>
     </li>
     <br/>
-    <li ng-repeat="menu in $ctrl.menu | filter:{label: $ctrl.search, versions: $ctrl.versionCurrent}" ng-style="$ctrl.getMenuStyle(menu)">
+    <li ng-repeat="menu in $ctrl.menus" ng-style="$ctrl.getMenuStyle(menu)">
+      <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
+    </li>
+    <li ng-repeat="menu in $ctrl.components | filter:{label: $ctrl.search, versions: $ctrl.versionCurrent} | orderBy : 'label'" ng-style="$ctrl.getMenuStyle(menu)">
       <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
     </li>
   </ul>

@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaMenu</h3>
+      <p>
+        O componente gumgaMenu é uma directive que cria um menu na lateral esquerda da tela para facilitar a navegação do usuário no sistema. Seus itens são carregados de forma dinâmica através de um arquivo json que é carregado através de uma requisição HTTP. Além disso, ele faz um filtro de acordo com as keys passadas para ele também através de um arquivo json.
+      </p>
+      <br/><br/>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="1" heading="HTML">
+        <pre><code class="prettyprint" ng-non-bindable>&lt;gumga-menu
+  menu-url="menu.json"
+  keys-url="keys.json"
+  image="menu.svg"&gt;
+&lt;/gumga-menu&gt;</code></pre>
+      </uib-tab>
+      <uib-tab index="2" heading="menu.json">
+        <pre><code class="prettyprint" ng-non-bindable>[
+  {
+    "label": "Home",
+    "URL": "welcome",
+    "key": "CRUD-BASE",
+    "icon": "glyphicon glyphicon-home",
+    "icon_color": "",
+    "imageUrl": "",
+    "imageWidth": "",
+    "imageHeight": "",
+    "filhos": []
+  }
+]
+</code></pre>
+      </uib-tab>
+      <uib-tab index="3" heading="keys.json">
+        <pre><code class="prettyprint" ng-non-bindable>[
+  "CRUD-BASE",
+  "CRUD-User"
+]
+</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>image</td>
+              <td>Parâmetro obrigatório que irá conter uma variável com o endereço da imagem que ficará no menu.</td>
+          </tr>
+          <tr>
+              <td>keys-url</td>
+              <td>Parâmetro obrigatório que irá conter uma variável com o endereço do arquivo json para que seja carregada as chaves que farão o filtro do menu.</td>
+          </tr>
+          <tr>
+              <td>menu-url</td>
+              <td>Parâmetro obrigatório que irá conter uma variável com o endereço do arquivo json para que seja carregada as entradas do menu.</td>
+          </tr>
+      </table>
+  </div>
+</div>

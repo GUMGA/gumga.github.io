@@ -3,12 +3,13 @@ const Header = () => {
         restrict: 'E',
         templateUrl: './modules/directives/header/header.html',
         scope: {
+          showIconMenu: '='
         },
         link: ($scope) =>{
 
           $scope.navCollapse = function() {
-             document.querySelector('.gumga-layout nav.gl-nav')
-               .classList.toggle('collapsed')
+             var el = document.querySelector('.gumga-layout nav.gl-nav')
+             el ? el.classList.toggle('collapsed') : angular.noop;
            }
 
            $scope.asideCollapse = function() {

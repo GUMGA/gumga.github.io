@@ -1,17 +1,20 @@
 class ComponentsController {
 
-    constructor(ComponentsService, $anchorScroll, $location, $sce, $stateParams, $state, $timeout) {
+    constructor(ComponentsService, $anchorScroll, $location, $sce, $stateParams, $state, $timeout, $injector) {
         'ngInject';
         this.$location = $location;
         this.$anchorScroll = $anchorScroll;
         this.$sce = $sce;
         this.$stateParams = $stateParams;
         this.$state = $state;
-        window.$timeout = $timeout;
+        this.$timeout = $timeout;
+        this.$injector = $injector;
+
     }
 
     $onInit() {
-      window.currentHash = 'instalation';
+      const ctrl = this;
+      ctrl.currentHash = 'instalation';
 
       function isScrolledIntoView(elem) {
         var docViewTop = $(window).scrollTop();
@@ -24,117 +27,148 @@ class ComponentsController {
         var anchors = $('.hash');
         for (var i = 0; i < anchors.length; ++i) {
           if (isScrolledIntoView(anchors[i])){
-            $timeout(()=>{
+            ctrl.$timeout(()=>{
                 var id = $(anchors[i]).attr('id');
-                window.currentHash = id;
+                ctrl.currentHash = id;
             })
             break;
           }
         }
       }
 
-      this.menu = [
-        {
-          label: 'Instalação',
-          anchor: 'instalation',
-          versions: ["3.1.6"],
-          template: this.$sce.trustAsHtml('<instalation-template version-docs="$ctrl.versionCurrent"></instalation-template>')
-        },
+      this.menus = [{
+        label: 'Instalação',
+        anchor: 'instalation',
+        versions: ["3.2.0"],
+        template: this.$sce.trustAsHtml('<instalation-template version-docs="$ctrl.versionCurrent"></instalation-template>')
+      }];
+
+      this.components = [
         {
           label: 'Address',
           anchor: 'address',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<address-template version-docs="$ctrl.versionCurrent"></address-template>')
         },
         {
           label: 'Alert',
           anchor: 'alert',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<alert-template version-docs="$ctrl.versionCurrent" controllername="AlertController316"></alert-template>')
         },
         {
           label: 'Counter',
           anchor: 'counter',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<counter-template version-docs="$ctrl.versionCurrent"></counter-template>')
         },
         {
           label: 'Confirm',
           anchor: 'confirm',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<confirm-template version-docs="$ctrl.versionCurrent"></confirm-template>')
         },
         {
           label: 'Filter',
           anchor: 'filter',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<filter-template version-docs="$ctrl.versionCurrent"></filter-template>')
         },
         {
           label: 'Form',
           anchor: 'form',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<form-template version-docs="$ctrl.versionCurrent"></form-template>')
         },
         {
           label: 'Error',
           anchor: 'error',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<error-template version-docs="$ctrl.versionCurrent"></error-template>')
         },
         {
           label: 'Errors',
           anchor: 'errors',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<errors-template version-docs="$ctrl.versionCurrent"></errors-template>')
         },
         {
           label: 'Max',
           anchor: 'max',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<max-template version-docs="$ctrl.versionCurrent"></max-template>')
         },
         {
           label: 'Min',
           anchor: 'min',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<min-template version-docs="$ctrl.versionCurrent"></min-template>')
         },
         {
           label: 'Pattern',
           anchor: 'pattern',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<pattern-template version-docs="$ctrl.versionCurrent"></pattern-template>')
         },
         {
           label: 'Range',
           anchor: 'range',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<range-template version-docs="$ctrl.versionCurrent"></range-template>')
         },
         {
           label: 'Required',
           anchor: 'required',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<required-template version-docs="$ctrl.versionCurrent"></required-template>')
         },
         {
           label: 'ValidateType',
           anchor: 'validatetype',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<validatetype-template version-docs="$ctrl.versionCurrent"></validatetype-template>')
         },
         {
           label: 'FormButtons',
           anchor: 'formbuttons',
-          versions: ["3.1.6"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<formbuttons-template version-docs="$ctrl.versionCurrent"></formbuttons-template>')
+        },
+        {
+          label: 'List',
+          anchor: 'list',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<list-template version-docs="$ctrl.versionCurrent"></list-template>')
+        },
+        {
+          label: 'ManyToMany',
+          anchor: 'manytomany',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<manytomany-template version-docs="$ctrl.versionCurrent"></manytomany-template>')
+        },
+        {
+          label: 'ManyToOne',
+          anchor: 'manytoone',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<manytoone-template version-docs="$ctrl.versionCurrent"></manytoone-template>')
+        },
+        {
+          label: 'Mask',
+          anchor: 'mask',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<mask-template version-docs="$ctrl.versionCurrent"></mask-template>')
+        },
+        {
+          label: 'Menu',
+          anchor: 'gumgamenu',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<menu-template version-docs="$ctrl.versionCurrent"></menu-template>')
         }
       ]
 
       this.versions = [];
 
-      this.menu.forEach((menu)=>{
+      this.menus.concat(this.components).forEach((menu)=>{
           menu.versions.forEach((version)=>{
              if(this.versions.indexOf(version) == -1){
                this.versions.push(version);
@@ -147,7 +181,15 @@ class ComponentsController {
       }
 
       this.versionCurrent = this.$stateParams.version;
+      this.appendCSS(this.versionCurrent);
+    }
 
+    appendCSS(version){
+      const head = document.getElementsByTagName('head')[0];
+      const style = document.createElement('link');
+      style.rel = 'stylesheet';
+      style.href = 'gumga-js/components/'+version+'/gumga.min.css';
+      head.appendChild(style);
     }
 
     thereIsThisVersion(versions){
@@ -163,7 +205,8 @@ class ComponentsController {
 
     getMenuStyle(menu){
       const toReturn = {};
-      if(window.currentHash == menu.anchor){
+      const ctrl = this;
+      if(ctrl.currentHash == menu.anchor){
           toReturn['background'] = 'rgba(76, 175, 80, 0.05)';
           toReturn['border-left'] = '3px solid #009688';
       }else{
@@ -186,6 +229,6 @@ class ComponentsController {
 
 }
 
-ComponentsController.$inject = ['ComponentsService', '$anchorScroll', '$location', '$sce', '$stateParams', '$state', '$timeout'];
+ComponentsController.$inject = ['ComponentsService', '$anchorScroll', '$location', '$sce', '$stateParams', '$state', '$timeout', '$injector'];
 
 export { ComponentsController }

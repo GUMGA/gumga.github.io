@@ -8,6 +8,22 @@ pre{
   background: white;
 }
 
+a[href]{
+  color: rgba(9, 9, 245, 0.77);
+}
+
+.nav-tabs>li>a:hover{
+  color: #fff;
+}
+
+span[tabindex] > span > div{
+  color: #000;
+}
+
+span[tabindex]:hover > span > div{
+  color: #fff;
+}
+
 .gumga-docs-nav{
   z-index: 999 !important;
   padding-top: 74px !important;

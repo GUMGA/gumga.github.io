@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaMask</h3>
+      <p>
+        O componente GumgaMask serve para adicionar máscaras aos elementos inputs que se fazem necessário, como CPF, CNPJ, telefone e etc.
+        <br/>
+        Para modificar o código do exemplo abaixo <a href="http://embed.plnkr.co/gWupU9i3MYeRwsBbNBio" target="_blank">clique aqui.</a>
+      </p>
+      <br/><br/>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6" >
+    <h4>Demostração</h4>
+    <hr>
+    <form name="Example">
+      <label>CPF</label>
+      <input
+        type="text"
+        class="form-control"
+        ng-model="cpf"
+        gumga-mask-options="maskOptions"
+        gumga-mask="999.999.999-99"/>
+    </form>
+    <br/>
+    <label>ng-model</label>
+    <pre>{{cpf}}</pre>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre><code class="prettyprint" ng-non-bindable>&lt;form name="Example"&gt;
+  &lt;label&gt;CPF&lt;/label&gt;
+  &lt;input
+    type="text"
+    class="form-control"
+    ng-model="cpf"
+    gumga-mask-options="maskOptions"
+    gumga-mask="999.999.999-99"/&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint" ng-non-bindable>angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope, GumgaAlert){
+    $scope.maskOptions = {
+      maskDefinitions: {
+        'seuRegex': /[regex]/ // <= aqui vai sua regex
+      },
+      clearOnBlur: false,
+      eventsToHandle: ['input', 'keyup', 'click', 'focus']
+    };
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>gumga-mask</td>
+              <td>Por padrão o componente tem 3 tipos de regex aceitas, que são 9 (numéricos), A (alfa) e * (alfanuméricos).</td>
+          </tr>
+          <tr>
+              <td>gumga-mask-options</td>
+              <td>Objeto em $scope com regex extras ou sobreescrever configurações default.</td>
+          </tr>
+          <tr>
+              <td>gumga-mask-placeholder</td>
+              <td>Trabalha em conjunto com o placeholder nativo, contudo, o gumga-mask-placeholder deve seguir o mesmo padrão de caracteres do informado no gumga-mask. Enquanto o nativo fica ativo sem atividade no input, ao disparar o evento focus, o gumga-mask-placeholder ficará ativo.</td>
+          </tr>
+      </table>
+  </div>
+</div>

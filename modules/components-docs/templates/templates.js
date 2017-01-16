@@ -3,7 +3,6 @@ import addressTemplate from './address/address'
 import alertTemplate from './alert/alert'
 import counterTemplate from './counter/counter'
 import confirmTemplate from './confirm/confirm'
-import customFieldsTemplate from './customFields/customFields'
 import filterTemplate from './filter/filter'
 import formTemplate from './form/form'
 import errorTemplate from './error/error'
@@ -15,6 +14,11 @@ import rangeTemplate from './range/range'
 import requiredTemplate from './required/required'
 import validatetypeTemplate from './validatetype/validatetype'
 import formbuttonsTemplate from './formbuttons/formbuttons'
+import listTemplate from './list/list'
+import manytomanyTemplate from './manytomany/manytomany'
+import manytooneTemplate from './manytoone/manytoone'
+import maskTemplate from './mask/mask'
+import menuTemplate from './menu/menu'
 
 const module = angular.module('components-templates', [])
                 .directive('instalationTemplate', instalationTemplate)
@@ -22,7 +26,6 @@ const module = angular.module('components-templates', [])
                 .directive('alertTemplate', alertTemplate)
                 .directive('counterTemplate', counterTemplate)
                 .directive('confirmTemplate', confirmTemplate)
-                .directive('customFieldsTemplate', customFieldsTemplate)
                 .directive('filterTemplate', filterTemplate)
                 .directive('formTemplate', formTemplate)
                 .directive('errorTemplate', errorTemplate)
@@ -34,5 +37,10 @@ const module = angular.module('components-templates', [])
                 .directive('requiredTemplate', requiredTemplate)
                 .directive('validatetypeTemplate', validatetypeTemplate)
                 .directive('formbuttonsTemplate', formbuttonsTemplate)
+                .directive('listTemplate', listTemplate)
+                .directive('manytomanyTemplate', manytomanyTemplate)
+                .directive('manytooneTemplate', manytooneTemplate)
+                .directive('maskTemplate', maskTemplate)
+                .directive('menuTemplate', menuTemplate)
 
 export default module.name;

@@ -1,0 +1,158 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaManyToOne</h3>
+      <p>
+        A directive gumgaManyToOne pode ser utilizada para filtrar uma lista de registros dinâmicamente. Ela também permite adicionar um registro caso a busca retorne uma lista vazia e permite também visualizar os atributos do registro selecionado.
+      </p>
+      <br/><br/>
+  </div>
+</div>
+
+<br/>
+<div class="row">
+  <div class="col-sm-6" >
+    <h4>Demostração</h4>
+    <hr>
+    <form name="Example">
+      <gumga-many-to-one
+        value="produto"
+        list="produtos"
+        search-method="getSearch(param)"
+        field="nome"
+        authorize-add="false"
+        async="false"
+        display-info="false">
+        <match>
+          <div>{{match.model.nome}}</div>
+        </match>
+      </gumga-many-to-one>
+    </form>
+    <br/><br/>
+    <label>Selecionado</label>
+    <pre>{{produto | json}}</pre>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre><code class="prettyprint" ng-non-bindable>&lt;form name="Example"&gt;
+  &lt;gumga-many-to-one
+    value="produto"
+    list="produtos"
+    search-method="getSearch(param)"
+    field="nome"
+    authorize-add="false"
+    async="false"
+    display-info="false"&gt;
+    &lt;match&gt;
+      &lt;div&gt;{{match.model.nome}}&lt;/div&gt;
+    &lt;/match&gt;
+  &lt;/gumga-many-to-one&gt;
+&lt;/form&gt;
+&lt;label&gt;Selecionado&lt;/label&gt;
+&lt;pre&gt;{{produto | json}}&lt;/pre&gt;
+</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint" ng-non-bindable>angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope, GumgaAlert){
+    $scope.produto = {
+      nome: 'Motorola Moto X (2a Geração) 32GB',
+      id: 2
+    };
+
+    //ESSA FUNÇÃO É NECESSÁRIA SER ASSÍNCRONA,
+    //PARA O EXEMPLO CRIAMOS UMA PROMISSE.
+    $scope.getSearch = function(param){
+        return $q(function(resolve){
+            var arr = $scope.produtos.filter(function(produto){
+              return produto.nome.indexOf(param) != -1;
+            })
+            resolve(arr);
+        })
+    }
+
+    $scope.produtos = [
+      {
+        nome: 'Notebook Acer Aspire',
+        id: 1
+      },
+      {
+        nome: 'Motorola Moto X (2a Geração) 32GB',
+        id: 2
+      },
+      {
+        nome: 'Smart TV LED 43" Samsung',
+        id: 3
+      },
+      {
+        nome: 'Ar Condicionado Split 7000 BTU/s',
+        id: 4
+      }
+    ]
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>value</td>
+              <td>Atributo obrigatório que irá conter um objeto em que o bind será feito com o registro selecionado na lista.</td>
+          </tr>
+          <tr>
+              <td>list</td>
+              <td>Atributo obrigatório que irá conter um array que irá conter os registros buscados.</td>
+          </tr>
+          <tr>
+              <td>search-method</td>
+              <td>Atributo obrigatório que irá conter uma função que fará a busca na lista assíncronamente. search-method="getSearch(param)".</td>
+          </tr>
+          <tr>
+              <td>post-method</td>
+              <td>Irá conter uma função que dependendo do parâmetro async, chamará a função async com o parâmetro post-method="post(value)" e caso o parâmetro async não esteja presente ou seja falso, fará um push na lista.</td>
+          </tr>
+          <tr>
+              <td>field</td>
+              <td>Atributo obrigatório que irá conter o atributo do registro que está sendo procurado e o que estará na lista.</td>
+          </tr>
+          <tr>
+              <td>description</td>
+              <td>Atributo não obrigatório que irá conter o atributo de uma possível descrição.</td>
+          </tr>
+          <tr>
+              <td>authorize-add</td>
+              <td>Atributo opcional que irá conter um booleano que irá fazer o controle para mostrar o botão de adicionar um registro caso a busca não tenha retornado nenhum registro.</td>
+          </tr>
+          <tr>
+              <td>tab-seq</td>
+              <td>Atributo equivalente ao tabindex, foi usado tabseq para que o elemento many-to-one, não fique na lista de tabindex.</td>
+          </tr>
+          <tr>
+              <td>disabled</td>
+              <td>Atributo opcional que irá conter um boolean para habilitar ou desabilitar o componente.</td>
+          </tr>
+          <tr>
+              <td>async</td>
+              <td>Atributo opcional que irá dizer caso componente fará um post chamando a função passada ou um push na lista. Por default, o valor é true.</td>
+          </tr>
+          <tr>
+              <td>display-info</td>
+              <td>Atributo opcional que irá conter um boolean informando se irá aparecer o botão agrupado ao input e ícones na lista de resultados, que mostra os dados do resultado.</td>
+          </tr>
+          <tr>
+              <td>on-select</td>
+              <td>Atributo opcional que irá conter uma função que irá ser executada quando o usuário selecionar um resultado, o parâmetro value é obrigatório.</td>
+          </tr>
+      </table>
+  </div>
+</div>
