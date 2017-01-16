@@ -19,15 +19,6 @@
 <nav class="gl-nav collapsed gumga-docs-nav">
   <ul class="gumga-docs-nav-ul">
     <li>
-        <label class="text-muted">Versão</label>
-        <select class="form-control gmd"
-                data-ng-options="item as item for item in $ctrl.versions | orderBy:'-toString()'"
-                data-ng-change="$ctrl.setVersion($ctrl.versionCurrent)"
-                data-ng-model="$ctrl.versionCurrent">
-        </select>
-    </li>
-    <br/>
-    <li>
         <br/>
         <gmd-input>
             <input type="text" class="form-control gmd" ng-model="$ctrl.search" id="text">
@@ -35,9 +26,23 @@
             <label for="text" class="control-label">Pesquisar documentação</label>
         </gmd-input>
     </li>
+    <li>
+      <label class="menu-separator">Versão</label>
+        <select class="form-control gmd"
+                data-ng-options="item as item for item in $ctrl.versions | orderBy:'-toString()'"
+                data-ng-change="$ctrl.setVersion($ctrl.versionCurrent)"
+                data-ng-model="$ctrl.versionCurrent">
+        </select>
+    </li>
     <br/>
+    <li >
+      <label class="menu-separator">Getting Started</label>
+    </li>
     <li ng-repeat="menu in $ctrl.menus" ng-style="$ctrl.getMenuStyle(menu)">
       <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
+    </li>
+    <li >
+      <label class="menu-separator">Componentes</label>
     </li>
     <li ng-repeat="menu in $ctrl.components | filter:{label: $ctrl.search, versions: $ctrl.versionCurrent} | orderBy : 'label'" ng-style="$ctrl.getMenuStyle(menu)">
       <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>

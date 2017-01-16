@@ -163,6 +163,18 @@ class ComponentsController {
           anchor: 'gumgamenu',
           versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<menu-template version-docs="$ctrl.versionCurrent"></menu-template>')
+        },
+        {
+          label: 'Nav',
+          anchor: 'nav',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<nav-template version-docs="$ctrl.versionCurrent"></nav-template>')
+        },
+        {
+          label: 'OneToMany',
+          anchor: 'onetomany',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<onetomany-template version-docs="$ctrl.versionCurrent"></onetomany-template>')
         }
       ]
 

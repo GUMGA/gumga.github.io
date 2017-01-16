@@ -19,6 +19,9 @@ import manytomanyTemplate from './manytomany/manytomany'
 import manytooneTemplate from './manytoone/manytoone'
 import maskTemplate from './mask/mask'
 import menuTemplate from './menu/menu'
+import navTemplate from './nav/nav'
+import onetomanyTemplate from './onetomany/onetomany'
+import modalcontroller from './onetomany/modalcontroller'
 
 const module = angular.module('components-templates', [])
                 .directive('instalationTemplate', instalationTemplate)
@@ -42,5 +45,8 @@ const module = angular.module('components-templates', [])
                 .directive('manytooneTemplate', manytooneTemplate)
                 .directive('maskTemplate', maskTemplate)
                 .directive('menuTemplate', menuTemplate)
+                .directive('navTemplate', navTemplate)
+                .directive('onetomanyTemplate', onetomanyTemplate)
+                .controller('ModalClienteController', modalcontroller)
 
 export default module.name;

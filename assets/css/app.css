@@ -24,6 +24,13 @@ span[tabindex]:hover > span > div{
   color: #fff;
 }
 
+.menu-separator{
+  font-size: 12px;
+  color: #8c7d7d;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
 .gumga-docs-nav{
   z-index: 999 !important;
   padding-top: 74px !important;

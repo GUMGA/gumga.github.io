@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaNav</h3>
+      <p>
+        O componente gumgaNav é uma directive que cria uma barra de navegação superior, para ajudar o usuário. Dentro da barra de navegação, possuímos uma busca que, quando o botão ENTER é pressionado, ele redireciona para a página de Busca Multi-entidades. Possui também informações sobre o usuário que está logado, uma opção para fazer o logout e outra para alterar a senha.
+        <br/>
+        Para modificar o código do exemplo abaixo <a href="http://embed.plnkr.co/PeJHAS6viutuekw614ZL/preview" target="_blank">clique aqui.</a>
+      </p>
+      <br/><br/>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="1" heading="HTML">
+        <pre><code class="prettyprint" ng-non-bindable>&lt;gumga-nav
+  title="Título"
+  multi-entity="true'"
+  put-url="http://url/logout"
+  state="{String}"&gt;
+&lt;/gumga-nav&gt;</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>title</td>
+              <td>String</td>
+              <td>Parâmetro não obrigatório que contém uma String que será o título que aparecerá na barra de navegação.</td>
+          </tr>
+          <tr>
+              <td>multi-entity</td>
+              <td>Boolean</td>
+              <td>Parâmetro nao obrigatório que contém um valor booleano para compilar ou não a busca multientidade. Por padrão, o valor é true.</td>
+          </tr>
+          <tr>
+              <td>put-url</td>
+              <td>String</td>
+              <td>Parâmetro não obrigatório que contém uma String ou uma variável que estará no $scope da directive para atribuir uma url para fazer o put do alterar a senha.</td>
+          </tr>
+          <tr>
+              <td>state</td>
+              <td>String</td>
+              <td>Parâmetro obrigatório que contém uma String com o $state para qual será redirecionado quando o usuário clicar em Logout.</td>
+          </tr>
+      </table>
+  </div>
+</div>
