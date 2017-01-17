@@ -21,14 +21,17 @@ var version = sessionStorage.getItem('currrentVersion') || LAST_VERSION;
 function httpGet(url)
 {
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open('GET', url, false);
+    xmlHttp.open('GET', url, true);
     xmlHttp.send( null );
     return xmlHttp.status;
 }
 
 if(httpGet('gumga-js/components/'+version+'/gumga.min.js') != 200){
     sessionStorage.setItem('currrentVersion', LAST_VERSION);
-    location.reload();
+    if(version != LAST_VERSION){
+      location.href = location.href.replace(version, LAST_VERSION);
+      location.reload();
+    }
 }
 
 require('script-loader!./gumga-js/components/'+version+'/gumga.min.js');
