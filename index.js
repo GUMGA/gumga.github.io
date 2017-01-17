@@ -14,6 +14,20 @@ require('script-loader!./bower_components/jquery/dist/jquery.min.js')
 require('script-loader!./bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js')
 require('script-loader!./assets/libs/run_prettify.min.js')
 var version = sessionStorage.getItem('currrentVersion') || '3.2.0';
+
+function httpGet(url)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open('GET', url, false);
+    xmlHttp.send( null );
+    return xmlHttp.status;
+}
+
+if(httpGet('gumga-js/components/'+version+'/gumga.min.js') != 200){
+    sessionStorage.clear();
+    location.reload();
+}
+
 require('script-loader!./gumga-js/components/'+version+'/gumga.min.js');
 
 // Modules imports
