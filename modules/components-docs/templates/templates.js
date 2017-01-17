@@ -31,6 +31,7 @@ import webstorageTemplate from './webstorage/webstorage'
 import imageuploadTemplate from './imageupload/imageupload'
 import baseTemplate from './base/base'
 import restTemplate from './rest/rest'
+import populateTemplate from './populate/populate'
 
 const module = angular.module('components-templates', [])
                 .directive('instalationTemplate', instalationTemplate)
@@ -66,5 +67,7 @@ const module = angular.module('components-templates', [])
                 .directive('imageuploadTemplate', imageuploadTemplate)
                 .directive('baseTemplate', baseTemplate)
                 .directive('restTemplate', restTemplate)
+                .directive('populateTemplate', populateTemplate)
 
+                
 export default module.name;
