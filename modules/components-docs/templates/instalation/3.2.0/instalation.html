@@ -36,6 +36,16 @@
 &lt;script src="bower_components/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;<br/>
 &lt;script src="bower_components/gumga-components/dist/gumga.min.js"&gt;&lt;/script&gt;<br/>
       </code>
+      Exemplo usando require js:<br/>
+      <uib-tabset active="activePill">
+        <uib-tab index="0" heading="app.js"><pre><code>require('angular');
+require('angular-ui-router');
+require('ngImgCrop');
+require('gumga-components');
+angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])</code></pre></uib-tab>
+        <!-- <uib-tab index="1" heading="config.js"></uib-tab> -->
+      </uib-tabset>
+
       <br/><br/>
       Também é necessário adicionar o css em seu HTML:
       <br/><br/>
