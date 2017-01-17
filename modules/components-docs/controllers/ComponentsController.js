@@ -232,6 +232,12 @@ class ComponentsController {
           anchor: 'rest',
           versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<rest-template version-docs="$ctrl.versionCurrent"></rest-template>')
+        },
+        {
+          label: 'Populate',
+          anchor: 'populate',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<populate-template version-docs="$ctrl.versionCurrent"></populate-template>')
         }
       ];
 
