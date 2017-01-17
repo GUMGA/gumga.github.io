@@ -32,6 +32,7 @@ import imageuploadTemplate from './imageupload/imageupload'
 import baseTemplate from './base/base'
 import restTemplate from './rest/rest'
 import populateTemplate from './populate/populate'
+import gumgacontrollerTemplate from './gumgacontroller/gumgacontroller'
 
 const module = angular.module('components-templates', [])
                 .directive('instalationTemplate', instalationTemplate)
@@ -68,6 +69,7 @@ const module = angular.module('components-templates', [])
                 .directive('baseTemplate', baseTemplate)
                 .directive('restTemplate', restTemplate)
                 .directive('populateTemplate', populateTemplate)
+                .directive('gumgacontrollerTemplate', gumgacontrollerTemplate)
 
                 
 export default module.name;

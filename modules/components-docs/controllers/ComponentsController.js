@@ -238,7 +238,13 @@ class ComponentsController {
           anchor: 'populate',
           versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<populate-template version-docs="$ctrl.versionCurrent"></populate-template>')
-        }
+        },
+        {
+          label: 'GumgaController',
+          anchor: 'gumgacontroller',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<gumgacontroller-template version-docs="$ctrl.versionCurrent"></gumgacontroller-template>')
+        } 
       ];
 
       this.versions = [];
