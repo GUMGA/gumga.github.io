@@ -12,8 +12,11 @@ require('script-loader!./bower_components/ng-img-crop/compile/minified/ng-img-cr
 require('script-loader!./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
 require('script-loader!./bower_components/jquery/dist/jquery.min.js')
 require('script-loader!./bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js')
-require('script-loader!./assets/libs/run_prettify.min.js')
-var version = sessionStorage.getItem('currrentVersion') || '3.2.0';
+require('script-loader!./assets/libs/run_prettify.min.js');
+
+var LAST_VERSION = '3.2.0';
+
+var version = sessionStorage.getItem('currrentVersion') || LAST_VERSION;
 
 function httpGet(url)
 {
@@ -24,7 +27,7 @@ function httpGet(url)
 }
 
 if(httpGet('gumga-js/components/'+version+'/gumga.min.js') != 200){
-    sessionStorage.clear();
+    sessionStorage.setItem('currrentVersion', LAST_VERSION);
     location.reload();
 }
 
