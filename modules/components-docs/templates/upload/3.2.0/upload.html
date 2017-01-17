@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaUpload (Depreciado)</h3>
+      <p>
+        O componente gumgaUpload pode ser utilizado para fazer upload de imagens. O framework GUMGA usa um método de upload de imagens que faz o upload do arquivo para uma pasta temporária e retorna um token. Quando o registro é salvo, o framework gumga faz o bind da string que está no atributo com o arquivo temporário.
+      </p>
+      <br/><br/>
+    </p>
+  </div>
+</div>
+<br/>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demonstração</h4>
+    <hr>
+    <form name="Example">
+      <gumga-upload
+        attribute="entity.image"
+        upload-method="upload(image)"
+        delete-method="delete()"
+        tooltip-text="Image Example">
+      </gumga-upload>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 13px;"><code class="prettyprint">&lt;form name="Example"&gt;
+  &lt;gumga-upload
+    attribute="entity.image"
+    upload-method="upload(image)"
+    delete-method="delete()"
+    tooltip-text="Image Example"&gt;
+  &lt;/gumga-upload&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint" ng-non-bindable>angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope, $q){
+
+    $scope.entity = {};
+
+    $scope.upload  = function(image){
+      return $q(function(resolve){
+        //EXEMPLO DA RESPOSTA DO BACKEND
+        resolve('uploadData1484652958670090')
+      })
+    }
+
+    $scope.delete = function(){
+      $scope.entity.image = {};
+    }
+
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>attribute</td>
+              <td>Object</td>
+              <td>Objeto que irá conter as informações da imagem.</td>
+          </tr>
+          <tr>
+              <td>upload-method</td>
+              <td>Function</td>
+              <td>Função que será executada para fazer o upload da imagem para o arquivo temporário, ela recebe um atributo image, exemplo upload(image).</td>
+          </tr>
+          <tr>
+              <td>delete-method</td>
+              <td>Function</td>
+              <td>Função que será executada para deletar a imagem do espaço temporário.</td>
+          </tr>
+          <tr>
+              <td>tooltip-text</td>
+              <td>String</td>
+              <td>Mensagem que irá aparecer no tooltip da imagem.</td>
+          </tr>
+      </table>
+  </div>
+</div>

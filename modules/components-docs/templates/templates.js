@@ -24,6 +24,11 @@ import onetomanyTemplate from './onetomany/onetomany'
 import modalcontroller from './onetomany/modalcontroller'
 import queryTemplate from './query/query'
 import tableTemplate from './table/table'
+import uploadTemplate from './upload/upload'
+import fileuploadTemplate from './fileupload/fileupload'
+import numberTemplate from './number/number'
+import webstorageTemplate from './webstorage/webstorage'
+import imageuploadTemplate from './imageupload/imageupload'
 
 const module = angular.module('components-templates', [])
                 .directive('instalationTemplate', instalationTemplate)
@@ -52,5 +57,10 @@ const module = angular.module('components-templates', [])
                 .controller('ModalClienteController', modalcontroller)
                 .directive('queryTemplate', queryTemplate)
                 .directive('tableTemplate', tableTemplate)
+                .directive('uploadTemplate', uploadTemplate)
+                .directive('fileuploadTemplate', fileuploadTemplate)
+                .directive('numberTemplate', numberTemplate)
+                .directive('webstorageTemplate', webstorageTemplate)
+                .directive('imageuploadTemplate', imageuploadTemplate)
 
 export default module.name;

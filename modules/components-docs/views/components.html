@@ -11,6 +11,10 @@
             <div ng-if="$ctrl.thereIsThisVersion(menu.versions)" bind-html-compile="menu.template"></div>
             <hr>
           </div>
+          <div class="col-sm-8 col-sm-offset-3 components-container hash" ng-repeat="menu in $ctrl.services | orderBy : 'label'" id="{{menu.anchor}}">
+            <div ng-if="$ctrl.thereIsThisVersion(menu.versions)" bind-html-compile="menu.template"></div>
+            <hr>
+          </div>
         </div>
       </div>
     </div>
@@ -45,6 +49,12 @@
       <label class="menu-separator">Componentes</label>
     </li>
     <li ng-repeat="menu in $ctrl.components | filter:{label: $ctrl.search, versions: $ctrl.versionCurrent} | orderBy : 'label'" ng-style="$ctrl.getMenuStyle(menu)">
+      <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
+    </li>
+    <li >
+      <label class="menu-separator">Services</label>
+    </li>
+    <li ng-repeat="menu in $ctrl.services | filter:{label: $ctrl.search, versions: $ctrl.versionCurrent} | orderBy : 'label'" ng-style="$ctrl.getMenuStyle(menu)">
       <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
     </li>
   </ul>

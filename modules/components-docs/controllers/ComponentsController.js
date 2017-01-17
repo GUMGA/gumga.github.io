@@ -51,12 +51,6 @@ class ComponentsController {
           template: this.$sce.trustAsHtml('<address-template version-docs="$ctrl.versionCurrent"></address-template>')
         },
         {
-          label: 'Alert',
-          anchor: 'alert',
-          versions: ["3.2.0"],
-          template: this.$sce.trustAsHtml('<alert-template version-docs="$ctrl.versionCurrent" controllername="AlertController316"></alert-template>')
-        },
-        {
           label: 'Counter',
           anchor: 'counter',
           versions: ["3.2.0"],
@@ -187,12 +181,51 @@ class ComponentsController {
           anchor: 'table',
           versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<table-template version-docs="$ctrl.versionCurrent"></table-template>')
+        },
+        {
+          label: 'Upload',
+          anchor: 'upload',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<upload-template version-docs="$ctrl.versionCurrent"></upload-template>')
+        },
+        {
+          label: 'FileUpload',
+          anchor: 'fileupload',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<fileupload-template version-docs="$ctrl.versionCurrent"></fileupload-template>')
+        },
+        {
+          label: 'Number',
+          anchor: 'number',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<number-template version-docs="$ctrl.versionCurrent"></number-template>')
+        },
+        {
+          label: 'ImageUpload',
+          anchor: 'imageupload',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<imageupload-template version-docs="$ctrl.versionCurrent"></imageupload-template>')
         }
-      ]
+      ];
+
+      this.services = [
+        {
+          label: 'Alert',
+          anchor: 'alert',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<alert-template version-docs="$ctrl.versionCurrent" controllername="AlertController316"></alert-template>')
+        },
+        {
+          label: 'WebStorage',
+          anchor: 'webstorage',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<webstorage-template version-docs="$ctrl.versionCurrent"></webstorage-template>')
+        }
+      ];
 
       this.versions = [];
 
-      this.menus.concat(this.components).forEach((menu)=>{
+      this.menus.concat(this.services).concat(this.components).forEach((menu)=>{
           menu.versions.forEach((version)=>{
              if(this.versions.indexOf(version) == -1){
                this.versions.push(version);

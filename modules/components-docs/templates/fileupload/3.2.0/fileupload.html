@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaFileUpload</h3>
+      <p>
+        O componente gumgaFileUpload pode ser utilizado para fazer upload de arquivos. O framework GUMGA usa um método de upload de imagens que faz o upload do arquivo para uma pasta temporária e retorna um token. Quando o registro é salvo, o framework gumga faz o bind da string que está no atributo com o arquivo temporário.
+      </p>
+      <br/><br/>
+    </p>
+  </div>
+</div>
+<br/>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demonstração</h4>
+    <hr>
+    <form name="Example" gumga-form>
+      <gumga-file-upload
+        attribute="entity.image"
+        accepted="jpeg,zip,rar,deb"
+        max-size="1024"
+        endpoint="URLDAAPI"
+        on-upload-start="uploadStart()"
+        on-upload-complete="uploadComplete(e)"
+        on-upload-abort="uploadAbort(e)"
+        on-upload-error="uploadError(e)"
+        delete-method="remove()">
+      </gumga-file-upload>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 13px;"><code class="prettyprint">&lt;form name="Example" gumga-form&gt;
+    &lt;gumga-file-upload
+      attribute="entity.image"
+      accepted="jpeg,zip,rar,deb"
+      max-size="1024"
+      endpoint="URLDAAPI"
+      on-upload-start="uploadStart()"
+      on-upload-complete="uploadComplete(e)"
+      on-upload-abort="uploadAbort(e)"
+      on-upload-error="uploadError(e)"
+      delete-method="remove()"&gt;
+    &lt;/gumga-file-upload&gt;
+  &lt;/form&gt;</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint" ng-non-bindable>angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope, $q){
+
+    $scope.entity = {};
+
+    $scope.uploadStart = function() {
+      console.log('START')
+    }
+    $scope.uploadComplete = function(e) {
+      console.log('COMPLETE')
+    }
+    $scope.uploadAbort = function(e) {
+      console.log('ABORT')
+    }
+    $scope.uploadError = function(e) {
+      console.log('ERROR')
+    }
+
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>attribute</td>
+              <td>Object</td>
+              <td>Objeto que irá conter as informações do arquivo.</td>
+          </tr>
+          <tr>
+              <td>upload-accepted</td>
+              <td>String</td>
+              <td>Formatos (extensões) aceitos para upload, separados por vírgula. A verificação é feita via mimetype.</td>
+          </tr>
+          <tr>
+              <td>max-size</td>
+              <td>Integer</td>
+              <td>Tamanho máximo em KB aceito por arquivo.</td>
+          </tr>
+          <tr>
+              <td>on-upload-start</td>
+              <td>Function</td>
+              <td>Função que será disparada quando o upload iniciar.</td>
+          </tr>
+          <tr>
+              <td>on-upload-complete</td>
+              <td>Function</td>
+              <td>Função que será disparada quando o upload terminar.</td>
+          </tr>
+          <tr>
+              <td>on-upload-abort</td>
+              <td>Function</td>
+              <td>Função que será disparada se o upload for abortado.</td>
+          </tr>
+          <tr>
+              <td>on-upload-error</td>
+              <td>Function</td>
+              <td>Função que será disparada se houver algum erro.</td>
+          </tr>
+          <tr>
+              <td>delete-method</td>
+              <td>Function</td>
+              <td>Função que será executada para deletar a imagem do espaço temporário.</td>
+          </tr>
+      </table>
+  </div>
+</div>
