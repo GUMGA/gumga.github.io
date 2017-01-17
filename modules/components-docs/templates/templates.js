@@ -29,6 +29,8 @@ import fileuploadTemplate from './fileupload/fileupload'
 import numberTemplate from './number/number'
 import webstorageTemplate from './webstorage/webstorage'
 import imageuploadTemplate from './imageupload/imageupload'
+import baseTemplate from './base/base'
+import restTemplate from './rest/rest'
 
 const module = angular.module('components-templates', [])
                 .directive('instalationTemplate', instalationTemplate)
@@ -62,5 +64,7 @@ const module = angular.module('components-templates', [])
                 .directive('numberTemplate', numberTemplate)
                 .directive('webstorageTemplate', webstorageTemplate)
                 .directive('imageuploadTemplate', imageuploadTemplate)
+                .directive('baseTemplate', baseTemplate)
+                .directive('restTemplate', restTemplate)
 
 export default module.name;

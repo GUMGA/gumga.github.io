@@ -4,6 +4,10 @@ body, html{
   transition: all 2s linear;
 }
 
+h3{
+  color: #009688 !important;
+}
+
 pre{
   background: white;
 }

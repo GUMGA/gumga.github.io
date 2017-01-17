@@ -1,0 +1,232 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaBase (Depreciado)</h3>
+      <p>
+        O service GumgaBase pode ser utilizado como helper para fazer chamadas HTTP. Ele permite que o programador não precise incluir o service $http do AngularJS e já vem com algumas funções incluídas. Para utilizar o GumgaBase, basta íncluí-lo como dependência.
+        <br/>
+        <b>Depreciado - Substituido por: gumgaRest</b>
+      </p>
+      <br/><br/>
+  </div>
+</div>
+<br/>
+<h4>Método - get(url, params);</h4>
+<p>
+  O método get aceita dois parâmetros url e params e retorna uma promise de uma chamada HTTP do tipo GET.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>String</td>
+          <td>Endereço no qual a chamada http será feita.</td>
+      </tr>
+      <tr>
+          <td>params</td>
+          <td>Object</td>
+          <td>Parâmetros da query que será feita.</td>
+      </tr>
+  </table>
+  <b>Retorno do get: <i>HttpPromise</i> - Retona uma promise da chamada HTTP GET.</b>
+</p>
+<br/>
+<h4>Método - getById(url, id);</h4>
+<p>
+  O método getById aceita dois parâmetros url e id e retorna uma promise de uma chamada HTTP do tipo GET.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>String</td>
+          <td>Endereço no qual a chamada http será feita.</td>
+      </tr>
+      <tr>
+          <td>id</td>
+          <td>Number</td>
+          <td>Identificador do registro que será buscado.</td>
+      </tr>
+  </table>
+  <b>Retorno do getById: <i>HttpPromise</i> - Retona uma promise da chamada HTTP GET.</b>
+</p>
+<br/>
+<h4>Método - getNew(url);</h4>
+<p>
+  O método getNew aceita um parâmetro url e retorna uma promise de uma chamada HTTP do tipo GET contendo o modelo do objeto com valores vazios.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>String</td>
+          <td>Endereço no qual a chamada http será feita.</td>
+      </tr>
+  </table>
+  <b>Retorno do getNew: <i>HttpPromise</i> - Retona uma promise da chamada HTTP GET.</b>
+</p>
+<br/>
+<h4>Método - deleteAll(url, array);</h4>
+<p>
+  O método deleteAll aceita dois parâmetros url e array e retorna uma promise de uma série de chamadas http do tipo DELETE que serão resolvidas ao mesmo tempo.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>String</td>
+          <td>Endereço no qual a chamada http será feita.</td>
+      </tr>
+      <tr>
+          <td>array</td>
+          <td>Array</td>
+          <td>Array com todas os registros que serão deletados.</td>
+      </tr>
+  </table>
+  <b>Retorno do deleteAll: <i>HttpPromise</i> - Retorna uma promise após todas as chamadas terem sido resolvidas.</b>
+</p>
+<br/>
+<h4>Método - save(url, data);</h4>
+<p>
+  O método save aceita dois parâmetros url e data e retorna uma promise de de uma chamada HTTP POST.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>String</td>
+          <td>Endereço no qual a chamada http será feita.</td>
+      </tr>
+      <tr>
+          <td>data</td>
+          <td>Object</td>
+          <td>Objeto que deseja ser salvo.</td>
+      </tr>
+  </table>
+  <b>Retorno do save: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP POST.</b>
+</p>
+<br/>
+<h4>Método - update(url, data);</h4>
+<p>
+  O método update aceita dois parâmetros url e data e retorna uma promise de de uma chamada HTTP PUT.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>String</td>
+          <td>Endereço no qual a chamada http será feita.</td>
+      </tr>
+      <tr>
+          <td>data</td>
+          <td>Object</td>
+          <td>Objeto que deseja ser atualizado.</td>
+      </tr>
+  </table>
+  <b>Retorno do update: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP PUT.</b>
+</p>
+<br/>
+<h4>Método - del(url, data);</h4>
+<p>
+  O método del aceita dois parâmetros url e data e retorna uma promise de uma chamada HTTP DELETE. Esta função é chamada para cada registro passado dentro do Array na função deleteAll.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>String</td>
+          <td>Endereço no qual a chamada http será feita.</td>
+      </tr>
+      <tr>
+          <td>data</td>
+          <td>Object</td>
+          <td>Objeto que deseja ser deletado.</td>
+      </tr>
+  </table>
+  <b>Retorno do del: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP DELETE.</b>
+</p>
+<br/>
+<h4>Método - postImage(url, attribute, data);</h4>
+<p>
+  O método postImage aceita três parâmetros url,attribute e data e retorna uma promise de de uma chamada HTTP POST FORM-DATA.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>String</td>
+          <td>Endereço no qual a chamada http será feita.</td>
+      </tr>
+      <tr>
+          <td>attribute</td>
+          <td>Object</td>
+          <td>Nome do atributo contendo a imagem no objeto.</td>
+      </tr>
+      <tr>
+          <td>data</td>
+          <td>Object</td>
+          <td>Dados da imagem que foi selecionada.</td>
+      </tr>
+  </table>
+  <b>Retorno do postImage: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP POST. Nesta promise, será retornado o valor de uma String que deverá ser atribuída ao atributo onde estava a imagem. Esta string é um identificador para quando o registro for enviado através de um post.</b>
+</p>
+<br/>
+<h4>Método - deleteImage(url, attribute, data);</h4>
+<p>
+  O método del aceita três parâmetros url, attribute e data e retorna uma promise de uma chamada HTTP DELETE FORM-DATA.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>String</td>
+          <td>Endereço no qual a chamada http será feita.</td>
+      </tr>
+      <tr>
+          <td>attribute</td>
+          <td>Object</td>
+          <td>Nome do atributo contendo a imagem no objeto.</td>
+      </tr>
+      <tr>
+          <td>data</td>
+          <td>Object</td>
+          <td>Dados da imagem que foi selecionada.</td>
+      </tr>
+  </table>
+  <b>Retorno do deleteImage: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP DELETE.</b>
+</p>

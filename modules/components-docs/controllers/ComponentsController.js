@@ -220,6 +220,18 @@ class ComponentsController {
           anchor: 'webstorage',
           versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<webstorage-template version-docs="$ctrl.versionCurrent"></webstorage-template>')
+        },
+        {
+          label: 'Base',
+          anchor: 'base',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<base-template version-docs="$ctrl.versionCurrent"></base-template>')
+        },
+        {
+          label: 'Rest',
+          anchor: 'rest',
+          versions: ["3.2.0"],
+          template: this.$sce.trustAsHtml('<rest-template version-docs="$ctrl.versionCurrent"></rest-template>')
         }
       ];
 

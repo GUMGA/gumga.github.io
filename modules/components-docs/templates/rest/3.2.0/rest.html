@@ -1,0 +1,389 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaRest</h3>
+      <p>
+        O service GumgaRest é uma evolução do service gumgaBase, pois sua configuração não necessita de nenhuma outra configuração adicional no service que irá chamá-lo.
+
+      </p>
+      <br/><br/>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Exemplo de Uso</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="JavaScript">
+        <pre><code class="prettyprint">angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .service('yourService', function(GumgaRest){
+
+    var service = new GumgaRest('http://www.gumga.com.br/api');
+    // A variável service será populado com os métodos listados abaixo.
+    // caso não queira adicionar nenhum método, utilizar:
+    // return new GumgaRest('http://www.gumga.com.br/api');
+
+    service.get = function(page){
+      console.log('Modifiquei um método da service e chamei o padrão!');
+      return GumgaRest.prototype.get.call(this,page);
+    }
+
+    return service;
+
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+<br/>
+<h4>Método - get(params);</h4>
+<p>
+  O método get aceita um parâmetro params e retorna uma promise de uma chamada HTTP do tipo GET.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>params</td>
+          <td>Object</td>
+          <td>Parâmetros da query que será feita.</td>
+      </tr>
+  </table>
+  <b>Retorno do get: <i>HttpPromise</i> - Retona uma promise da chamada HTTP GET.</b>
+</p>
+
+<br/>
+<h4>Método - resetAndGet();</h4>
+<p>
+  O método resetAndGet reseta a query atual e performa uma chamada HTTP do tipo GET.
+  <h5>Parâmetros</h5>
+  <b>Retorno do resetAndGet: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP GET.</b>
+</p>
+
+<br/>
+<h4>Método - getById(id);</h4>
+<p>
+  O método getById aceita um parâmetro id e retorna uma promise de uma chamada HTTP do tipo GET.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>id</td>
+          <td>Number/String</td>
+          <td>Identificador do registro que será buscado.</td>
+      </tr>
+  </table>
+  <b>Retorno do getById: <i>HttpPromise</i> - Retona uma promise da chamada HTTP GET.</b>
+</p>
+
+<br/>
+<h4>Método - getNew();</h4>
+<p>
+  O método resetAndGet reseta a query atual e performa uma chamada HTTP do tipo GET.
+  <h5>Parâmetros</h5>
+  <b>Retorno do getNew: <i>HttpPromise</i> - retorna uma promise de uma chamada HTTP do tipo GET contendo o modelo do objeto com valores vazios.</b>
+</p>
+
+<br/>
+<h4>Método - delete(data);</h4>
+<p>
+  O método delete recebe como parâmetro um objeto que será deletado. O objeto deve ter um parâmetro ID, que será passado para a url da chamada.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>data</td>
+          <td>Object</td>
+          <td>Registro que será deletado.</td>
+      </tr>
+  </table>
+  <b>Retorno do delete: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP DELETE.</b>
+</p>
+
+<br/>
+<h4>Método - sort(field, way);</h4>
+<p>
+  O método sort recebe dois parâmetros para fazer a ordenação: field e way, que determinarão qual campo será ordenado e se será 'asc' ou 'desc'.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>field</td>
+          <td>String</td>
+          <td>Qual campo será feita a ordenação.</td>
+      </tr>
+      <tr>
+          <td>way</td>
+          <td>String</td>
+          <td>Em que sentido a ordenação será feita, se será ascendente asc ou descendente desc.</td>
+      </tr>
+  </table>
+  <b>Retorno do sort: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP GET.</b>
+</p>
+
+<br/>
+<h4>Método - deleteCollection(array);</h4>
+<p>
+  O método deleteCollection aceita um parâmetro array e retorna uma promise de uma série de chamadas http do tipo DELETE que serão resolvidas ao mesmo tempo.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>array</td>
+          <td>Array</td>
+          <td>Registros que serão deletados.</td>
+      </tr>
+  </table>
+  <b>Retorno do deleteCollection: <i>HttpPromise</i> - Retorna uma promise após todas as chamadas terem sido resolvidas.</b>
+</p>
+
+<br/>
+<h4>Método - saveImage(attribute, data);</h4>
+<p>
+  O método saveImage aceita dois parâmetros attribute e data e retorna uma promise de de uma chamada HTTP POST FORM-DATA.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>attribute</td>
+          <td>String</td>
+          <td>Atributo no qual a imagem será feito o bind após o form ter sido enviado completo.</td>
+      </tr>
+      <tr>
+          <td>data</td>
+          <td>Object</td>
+          <td>Dados da imagem que foi selecionada.</td>
+      </tr>
+  </table>
+  <b>Retorno do saveImage: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP POST. Nesta promise, será retornado o valor de uma String que deverá ser atribuída ao atributo onde estava a imagem. Esta string é um identificador para quando o registro for enviado através de um post.</b>
+</p>
+
+<br/>
+<h4>Método - deleteImage(attribute, data);</h4>
+<p>
+  O método deleteImage aceita dois parâmetros url e data e retorna uma promise de de uma chamada HTTP DELETE FORM-DATA.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>attribute</td>
+          <td>String</td>
+          <td>Atributo no qual a imagem será feito o bind após o form ter sido enviado completo.</td>
+      </tr>
+      <tr>
+          <td>data</td>
+          <td>Object</td>
+          <td>Dados da imagem que foi selecionada.</td>
+      </tr>
+  </table>
+  <b>Retorno do deleteImage: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP DELETE.</b>
+</p>
+
+<br/>
+<h4>Método - getSearch(field, param);</h4>
+<p>
+  O método getSearch aceita dois parâmetros field e param e retorna uma promise de uma chamada HTTP do tipo GET.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>field</td>
+          <td>String</td>
+          <td>Qual campo a busca será feita. Caso queira fazer a busca em mais de um campo, passar uma string com os nomes separados por vírgula.</td>
+      </tr>
+      <tr>
+          <td>param</td>
+          <td>Object</td>
+          <td>Objeto que irá conter os parâmetros da busca.</td>
+      </tr>
+  </table>
+  <b>Retorno do getSearch: <i>HttpPromise</i> - Retorna uma promise de uma chamada HTTP do tipo GET.</b>
+</p>
+
+<br/>
+<h4>Método - getAdvancedSearch(param);</h4>
+<p>
+  O método getAdvancedSearch aceita um parâmetro param e retorna uma promise de uma chamada HTTP do tipo GET.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>param</td>
+          <td>Object</td>
+          <td>Objeto que irá conter os parâmetros da busca.</td>
+      </tr>
+  </table>
+  <b>Retorno do getSearch: <i>HttpPromise</i> - Retona uma promise da chamada HTTP GET.</b>
+</p>
+
+<br/>
+<h4>Método - redoSearch();</h4>
+<p>
+  O método redoSearch é usado para resgatar o estado do último query.
+  <b>Retorno do getSearch: <i>HttpPromise</i> - Retona uma promise da chamada HTTP GET do objeto de query com seu último estado.</b>
+</p>
+
+<br/>
+<h4>Método - resetDefaultState();</h4>
+<p>
+  O método resetDefaultState retorna o objeto de query ao seu estado padrão.
+</p>
+
+<br/>
+<h4>Método - saveQuery(query);</h4>
+<p>
+  O método saveQuery aceita um parâmetro query e retorna uma promise de uma chamada HTTP do tipo POST.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>query</td>
+          <td>Object</td>
+          <td>Objeto que irá conter três atributos necessários para salvar a query. Os atributos são: page, data e name. Onde page é o nome da página atual, data é a busca e name é o nome da query a ser salva.</td>
+      </tr>
+  </table>
+  <b>Retorno do saveQuery: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP POST.</b>
+</p>
+
+<br/>
+<h4>Método - getQuery(page);</h4>
+<p>
+  O método getQuery aceita um parâmetro page e retorna uma promise de uma chamada HTTP do tipo GET. Este Parâmetro page é o valor de retorno do objeto location.hash disponível através do browser.
+  É necessário este atributo para pegar apenas as queries relacionadas a página. As informações do usuário já são passadas através do token.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>page</td>
+          <td>String</td>
+          <td>String que será utilizada para fazer a pesquisa das queries relacionadas com a página.</td>
+      </tr>
+  </table>
+  <b>Retorno do getQuery: <i>HttpPromise</i> - Retorna uma promise da chamada HTTP GET.</b>
+</p>
+
+<br/>
+<h4>Método - getSelectedTags(id);</h4>
+<p>
+  O método getSelectedTags aceita um parâmetro id e retorna uma promise de uma chamada HTTP do tipo GET. Este Parâmetro id é o identificador da entidade que está sendo editada.
+  Este atributo é necessário para buscar apenas as tags que estão ligadas aquele registro.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>id</td>
+          <td>Number</td>
+          <td>Number que será o identificador do registro.</td>
+      </tr>
+  </table>
+  <b>Retorno do getSelectedTags: <i>HttpPromise</i> -  Retorna uma promise da chamada HTTP GET.</b>
+</p>
+
+<br/>
+<h4>Método - getAvailableTags();</h4>
+<p>
+  O método getSelectedTags não necessita de parâmetros e retorna uma promise de uma chamada HTTP do tipo GET.
+  <b>Retorno do getAvailableTags: <i>HttpPromise</i> -  Retorna uma promise da chamada HTTP GET.</b>
+</p>
+
+<br/>
+<h4>Método - postTags(objectId, values);</h4>
+<p>
+  O método postTags é utilizado para salvar as tags que foram selecionadas pelo usuário para este registro.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>objectId</td>
+          <td>Number</td>
+          <td>Number que será o identificador do registro</td>
+      </tr>
+      <tr>
+          <td>values</td>
+          <td>Array</td>
+          <td>Array que irá conter uma lista das tags que foram selecionadas pelo usuário.</td>
+      </tr>
+  </table>
+  <b>Retorno do postTags: <i>HttpPromise</i> -  Retona uma promise da chamada HTTP POST.</b>
+</p>
+
+<br/>
+<h4>Método - extend(method, url,config);</h4>
+<p>
+  O método extend permite ao programador extender a url que foi construída. O programador pode escolher o método, a url que será adicionada depois da url que foi passada para o construtor e quaisquer configurações necessárias.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>method</td>
+          <td>String</td>
+          <td>Qual método que será usado para criar a chamada. Ex: 'get','post'.</td>
+      </tr>
+      <tr>
+          <td>url</td>
+          <td>String</td>
+          <td>O que será adicionado ao fim da url que foi passada como parâmetro no construtor do GumgaRest.</td>
+      </tr>
+      <tr>
+          <td>config</td>
+          <td>Object</td>
+          <td>Objeto de configuração utilizado nas chamadas <a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">http do Angular</a></td>
+      </tr>
+  </table>
+  <b>Retorno do extend: <i>HttpPromise</i> -  Retona uma promise da chamada HTTP POST.</b>
+</p>
