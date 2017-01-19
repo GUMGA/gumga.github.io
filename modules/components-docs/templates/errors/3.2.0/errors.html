@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaErrors</h3>
+      <p>
+        O componente gumgaErrors serve para mostrar todas mensagens de validações do formulário de forma agrupada.
+      </p>
+
+      <br/><br/>
+
+    </p>
+  </div>
+</div>
+
+
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demonstração</h4>
+    <hr>
+
+    <form name="myForm" gumga-form>
+      <label>Valor</label>
+      <input type="number" name="minNumber" ng-model="minNumber" gumga-min-number="20" class="form-control">
+      <br/>
+      <gumga-errors placement="right" icon="glyphicon glyphicon-info-sign" label="Campos inválidos" title="Campos inválidos"></gumga-errors>
+    </form>
+
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 10px;"><code class="prettyprint">&lt;form name="myForm" gumga-form&gt;
+  &lt;label&gt;Valor&lt;/label&gt;
+  &lt;input type="number" name="minNumber" ng-model="minNumber" gumga-min-number="20" class="form-control"&gt;
+  &lt;br/&gt;
+  &lt;gumga-errors placement="right" icon="glyphicon glyphicon-info-sign" label="Campos inválidos" title="Campos inválidos"&gt;&lt;/gumga-errors&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>placement</td>
+              <td>Onde irá aparecer, o padrão é top, mas também aceita right, bottom e left.</td>
+          </tr>
+          <tr>
+              <td>icon</td>
+              <td>Ícone do botão, por padrão é glyphicon glyphicon-info-sign.</td>
+          </tr>
+          <tr>
+              <td>label</td>
+              <td>Texto do botão.</td>
+          </tr>
+          <tr>
+              <td>label-hidden</td>
+              <td>Esconde o texto do botão.</td>
+          </tr>
+          <tr>
+              <td>title</td>
+              <td>Título do popover de erros.</td>
+          </tr>
+      </table>
+  </div>
+</div>

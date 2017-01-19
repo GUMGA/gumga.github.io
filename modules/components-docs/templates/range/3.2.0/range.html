@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaRange [Date|Number]</h3>
+      <p>
+        Obs: Todas as diretivas gumgaMin listadas abaixo, possuem o atributo "label" que é opcional, esse atributo é inserido na input,
+        ele é usado na integração com gumgaErrors para indicar em qual campo se encontra o erro. Se o atributo for omitido, a diretiva usará o atributo name do input.
+
+      </p>
+      <br/><br/>
+      <p>
+        <h4>gumgaRangeDate</h4>
+        O componente GumgaRangeDate serve para validar datas mínimas e máximas para entradas em formulários com campos do tipo date.<br/>
+        <b>O valor do atributo/diretiva é obrigatório e deve ser um objeto contendo duas propriedades, min e max com os valores de suas respectivas datas para execução da validação range.</b>
+      </p>
+    </p>
+  </div>
+</div>
+
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demonstração RangeDate</h4>
+    <hr>
+    <form name="myForm" gumga-form>
+      <label>Data</label>
+      <input type="date" name="rangedate" label="rangedate" ng-model="rangeDate" class="form-control" gumga-error gumga-range-date="{min: '1986-12-29', max: '2015-07-20'}" id="rangedate">
+    </form>
+  </div>
+
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 10px;"><code class="prettyprint">&lt;form name="myForm" gumga-form&gt;
+  &lt;label&gt;Data&lt;/label&gt;
+  &lt;input type="date" name="rangeDate" ng-model="rangeDate" class="form-control" gumga-error gumga-range-date="{min: '1986-12-29', max: '2015-07-20'}" id="rangedate"&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <p>
+        <h4>gumgaRangeNumber</h4>
+        O componente GumgaRangeNumber serve para validar números mínimos e máximos em entradas de formulários com campos do tipo number.<br/>
+      </p>
+    </p>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demonstração RangeNumber</h4>
+    <hr>
+    <form name="myForm" gumga-form>
+      <label>Valor</label>
+       <input type="number" name="rangeNumber" ng-model="rangeNumber" class="form-control" gumga-range-number="{min: 0, max: 20}">
+       <p ng-show="myForm.rangeNumber.$error.rangenumber" class="text-danger">O número informado não está entre os valores esperados</p>
+     </form>
+  </div>
+
+
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 10px;"><code class="prettyprint">&lt;form name="myForm" gumga-form&gt;
+   &lt;label&gt;Valor&lt;/label&gt;
+   &lt;input type="number" name="rangeNumber" ng-model="rangeNumber" class="form-control" gumga-range-number="{min: 0, max: 20}"&gt;
+   &lt;p ng-show="myForm.rangeNumber.$error.rangenumber" class="text-danger"&gt;O número informado não está entre os valores esperados&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+
+</div>

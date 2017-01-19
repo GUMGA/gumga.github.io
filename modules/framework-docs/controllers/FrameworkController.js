@@ -47,6 +47,54 @@ class FrameworkController {
                 versions: ["1.3.0"],
                 template: this.$sce.trustAsHtml('<pre-requisito version-docs="$ctrl.versionCurrent"></pre-requisito>')
             },
+            {
+                label: 'Estrutura do projeto',
+                anchor: 'archetype',
+                versions: ["1.3.0"],
+                template: this.$sce.trustAsHtml('<archetype version-docs="$ctrl.versionCurrent"></archetype>')
+            },
+            {
+                label: 'Entidade',
+                anchor: 'domain',
+                versions: ["1.3.0"],
+                template: this.$sce.trustAsHtml('<domain version-docs="$ctrl.versionCurrent"></domain>')
+            },
+            {
+                label: 'Repositório e Serviço',
+                anchor: 'application',
+                versions: ["1.3.0"],
+                template: this.$sce.trustAsHtml('<application version-docs="$ctrl.versionCurrent"></application>')
+            },
+            {
+                label: 'Api',
+                anchor: 'api',
+                versions: ["1.3.0"],
+                template: this.$sce.trustAsHtml('<api version-docs="$ctrl.versionCurrent"></api>')
+            },
+            {
+                label: 'Apresentação',
+                anchor: 'presentation',
+                versions: ["1.3.0"],
+                template: this.$sce.trustAsHtml('<presentation version-docs="$ctrl.versionCurrent"></presentation>')
+            },
+            {
+                label: 'Infrastructure',
+                anchor: 'infrastructure',
+                versions: ["1.3.0"],
+                template: this.$sce.trustAsHtml('<infrastructure version-docs="$ctrl.versionCurrent"></infrastructure>')
+            },
+            {
+                label: 'gateway',
+                anchor: 'gateway',
+                versions: ["1.3.0"],
+                template: this.$sce.trustAsHtml('<gateway version-docs="$ctrl.versionCurrent"></gateway>')
+            },
+            {
+                label: 'Enum',
+                anchor: 'enum',
+                versions: ["1.3.0"],
+                template: this.$sce.trustAsHtml('<enum version-docs="$ctrl.versionCurrent"></enum>')
+            }
         ]
 
     }

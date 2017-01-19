@@ -12,8 +12,31 @@ require('script-loader!./bower_components/ng-img-crop/compile/minified/ng-img-cr
 require('script-loader!./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
 require('script-loader!./bower_components/jquery/dist/jquery.min.js')
 require('script-loader!./bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js')
-require('script-loader!./bower_components/gumga-components/dist/gumga.min.js')
-require('script-loader!./assets/libs/run_prettify.min.js')
+require('script-loader!./assets/libs/run_prettify.min.js');
+
+var LAST_VERSION = '3.2.0';
+
+var version = sessionStorage.getItem('currrentVersion') || LAST_VERSION;
+
+function httpGet(url)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open('GET', url, true);
+    xmlHttp.send( null );
+    return xmlHttp.status;
+}
+
+if(httpGet('gumga-js/components/'+version+'/gumga.min.js') != 200){
+
+    sessionStorage.setItem('currrentVersion', LAST_VERSION);
+    if(version != LAST_VERSION){
+        location.href = location.href.replace(version, LAST_VERSION);
+        location.reload();
+    }
+
+}
+
+require('script-loader!./gumga-js/components/'+version+'/gumga.min.js');
 
 // Modules imports
 import Directives from './modules/directives/directives'
@@ -34,15 +57,18 @@ angular.module('app', [
     ,Components
     ,Framework
     ,'ngImgCrop'
-    ,'ui.bootstrap'
     ,'gumga.core'
+    ,'ui.bootstrap'
     ,'gumga.layout'
   ])
   .config(Routers)
   .run(['$rootScope', '$timeout', ($rootScope, $timeout) => {
-
     $rootScope.$on('$stateChangeStart',
     function(event, toState, toParams, fromState, fromParams){
+        if(toParams && toParams.version && toParams.version != version && toState.url.indexOf('components') != -1){
+            sessionStorage.setItem('currrentVersion', toParams.version);
+           location.reload();
+        }
         if(window.PR){
             $timeout(() => {
                 PR.prettyPrint();

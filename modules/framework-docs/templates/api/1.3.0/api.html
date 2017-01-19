@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Api</h3>
+        <br/>
+        <p>Nesta camada estão todos os métodos que serão invocados pelo front end via HTTP requests. Estes métodos são
+            mapeados como serviços REST (RESTful Web Services). Portanto, dada a classe de API abaixo:</p>
+        <br/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <pre>
+<code class="prettyprint">    @RestController
+    @RequestMapping("/api/pessoa")
+    public class PessoaAPI extends GumgaAPI&lt;Pessoa, Long&gt; {
+
+
+        @Autowired
+        public PessoaAPI(GumgaService&lt;Pessoa, Long&gt; service) {
+            super(service);
+        }
+    }
+</code>
+        </pre>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <h4>Gerando a camada de API</h4>
+        <p>Entre no modulo api e execute a seguinte linha de comando no Terminal do Linux:</p>
+        <pre>
+<code class="prettyprint">
+	mvn br.com.gumga:gumgag:api
+        -Dentidade=br.com.exemplo.domain.model.Pessoa
+</code>
+        </pre>
+    </div>
+</div>

@@ -1,0 +1,171 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaManyToMany</h3>
+      <p>
+        O componente gumgaManyToMany é um componente que é utilizado para mostrar duas listas lado a lado, e permitir que um registro seja trocado de uma lista para outra, assim como também visualizado os seus valores(caso seja um objeto). Para que o programador possa escolher como os valores serão demonstrados, foram desenvolvidas duas tags que devem estar dentro do componente manyToMany
+      </p>
+      <br/><br/>
+  </div>
+</div>
+
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demonstração</h4>
+    <hr>
+    <div class="col-sm-12">
+      <gumga-many-to-many
+        left-list="dados"
+        right-list="selecionados"
+        left-search="searchLeft(param)"
+        authorize-add="false">
+        <left-field>{{$value.nome}}</left-field>
+        <right-field>{{$value.nome}}</right-field>
+      </gumga-many-to-many>
+    </div>
+    <label>Selecionados</label>
+    <pre>{{selecionados | json}}</pre>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre><code class="prettyprint" ng-non-bindable>&lt;div class="col-sm-12"&gt;
+  &lt;gumga-many-to-many
+    left-list="dados"
+    right-list="selecionados"
+    left-search="searchLeft(param)"
+    authorize-add="false"&gt;
+    &lt;left-field&gt;{{$value.nome}}&lt;/left-field&gt;
+    &lt;right-field&gt;{{$value.nome}}&lt;/right-field&gt;
+  &lt;/gumga-many-to-many&gt;
+&lt;/div&gt;
+&lt;label&gt;Selecionados&lt;/label&gt;
+&lt;pre&gt;{{selecionados | json}}&lt;/pre&gt;
+</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint" ng-non-bindable>angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope, GumgaAlert){
+    $scope.searchLeft = function(param){
+        console.info('Filtro:', param);
+    }
+
+    $scope.selecionados = [
+      {
+        nome: 'Smart TV LED 43" Samsung'
+      }
+    ];
+
+    $scope.dados = [
+      {
+        nome: 'Notebook Acer Aspire'
+      },
+      {
+        nome: 'Motorola Moto X (2a Geração) 32GB'
+      },
+      {
+        nome: 'Smart TV LED 43" Samsung'
+      },
+      {
+        nome: 'Ar Condicionado Split 7000 BTU/s'
+      }
+    ]
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>left-search</td>
+              <td>Atributo obrigatório que irá conter uma funcão que irá retornar um array. A lista da esquerda será filtrada e não terá valores que estão presentes na lista da direita.</td>
+          </tr>
+          <tr>
+              <td>right-search</td>
+              <td>Atributo opcional que irá conter uma funcão que irá retornar um array. A lista da direita será filtrada de acordo com o atributo informado em <b>right-search-field</b> e não terá valores que estão presentes na lista da esquerda.</td>
+          </tr>
+          <tr>
+              <td>right-search-field</td>
+              <td>Atributo opcional que irá conter uma string com o nome do atributo que será usado para filtrar a lista da direita.</td>
+          </tr>
+          <tr>
+              <td>left-list</td>
+              <td>Atributo obrigatório que irá conter um array que será a lista esquerda.</td>
+          </tr>
+          <tr>
+              <td>right-list</td>
+              <td>Atributo obrigatório que irá conter um array que será a lista direita.</td>
+          </tr>
+          <tr>
+              <td>post-method</td>
+              <td>Atributo opcional que irá conter uma uma função que irá ser executada quando o usuário desejar adicionar um valor.</td>
+          </tr>
+          <tr>
+              <td>on-list-change</td>
+              <td>Atributo opcional que irá conter uma função que irá ser executada quando o usuário tiver clicado em um registro e o mesmo tiver trocado de lista.</td>
+          </tr>
+          <tr>
+              <td>on-value-visualization-opened</td>
+              <td>Atributo opcional que irá conter uma função que irá ser executada quando o usuário tiver aberto o modal para visualização de dados.</td>
+          </tr>
+          <tr>
+              <td>on-value-visualization-closed</td>
+              <td>Atributo opcional que irá conter uma variável que possuirá uma função que irá ser executada quando o usuário tiver fechado o modal.</td>
+          </tr>
+          <tr>
+              <td>authorize-add</td>
+              <td>Atributo opcional que irá conter uma um booleano que irá fazer o controle para mostrar o botão de adicionar um registro.</td>
+          </tr>
+          <tr>
+              <td>validate-item</td>
+              <td>Atributo opcional que irá conter uma função, ela deve retornar um booleano após uma condição feita com o valor passado via parâmetro.</td>
+          </tr>
+          <tr>
+              <td>validate-message</td>
+              <td>Atributo opcional que irá conter uma string que aparecerá na mensagem de erro.</td>
+          </tr>
+          <tr>
+              <td>text-left-empty</td>
+              <td>Atributo opcional que irá conter uma String que irá aparecer quando a lista da esquerda for vazia.</td>
+          </tr>
+          <tr>
+              <td>text-right-empty</td>
+              <td>Atributo opcional que irá conter uma String que irá aparecer quando a lista da direita for vazia.</td>
+          </tr>
+          <tr>
+              <td>text-left-placeholder</td>
+              <td>Atributo opcional que irá conter uma String que irá aparecer na input da esquerda.</td>
+          </tr>
+          <tr>
+              <td>text-right-placeholder</td>
+              <td>Atributo opcional que irá conter uma String que irá aparecer na input da direita.</td>
+          </tr>
+          <tr>
+              <td>text-heading-left</td>
+              <td>Atributo opcional que irá conter uma String que irá aparecer como titulo da lista da esquerda.</td>
+          </tr>
+          <tr>
+              <td>text-heading-right</td>
+              <td>Atributo opcional que irá conter uma String que irá aparecer como titulo da lista da direita.</td>
+          </tr>
+          <tr>
+              <td>text-moveall-left</td>
+              <td>Atributo opcional que irá conter uma String que será aparecer no botão de mover todos os itens da esquerda.</td>
+          </tr>
+          <tr>
+              <td>text-moveall-right</td>
+              <td>Atributo opcional que irá conter uma String que será aparecer no botão de mover todos os itens da direita.</td>
+          </tr>
+      </table>
+  </div>
+</div>

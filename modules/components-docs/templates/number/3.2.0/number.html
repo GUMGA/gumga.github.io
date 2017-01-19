@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaNumber</h3>
+      <p>
+        O componente GumgaNumber é usado para formatar valores numéricos, é composto por outros sub-componentes que serão apresentados a seguir.
+      </p>
+      <br/><br/>
+    </p>
+  </div>
+</div>
+<br/>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demonstração</h4>
+    <hr>
+    <form name="Example">
+      Exemplo apenas números
+      <input type="text" ng-model="number.integer" gumga-number integer-number class="form-control">
+      Exemplo máximo de números
+      <input type="text" ng-model="number.iplaces" gumga-number integer-places="2" class="form-control">
+      Exemplo máximo de casas decimais
+      <input type="text" ng-model="number.dplaces" gumga-number decimal-places="2" class="form-control">
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 13px;"><code class="prettyprint">&lt;form name="Example"&gt;
+  Exemplo apenas números
+  &lt;input type="text" ng-model="number.integer" gumga-number integer-number class="form-control"&gt;
+  Exemplo máximo de números
+  &lt;input type="text" ng-model="number.iplaces" gumga-number integer-places="2" class="form-control"&gt;
+  Exemplo máximo de casas decimais
+  &lt;input type="text" ng-model="number.dplaces" gumga-number decimal-places="2" class="form-control"&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>integer-number</td>
+              <td>atributo ou classe</td>
+              <td>Números inteiros.</td>
+          </tr>
+          <tr>
+              <td>integer-places</td>
+              <td>atributo</td>
+              <td>Número de casas do número.</td>
+          </tr>
+          <tr>
+              <td>decimal-places</td>
+              <td>atributo</td>
+              <td>Número de casas decimais após o ponto.</td>
+          </tr>
+      </table>
+  </div>
+</div>

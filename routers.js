@@ -1,6 +1,7 @@
 export default function Routers(
     $stateProvider
-    ,$urlRouterProvider){
+    ,$urlRouterProvider
+    ,$httpProvider){
 
       $urlRouterProvider.otherwise('/app/home');
 
@@ -15,4 +16,5 @@ export default function Routers(
 
 Routers.$inject = [
     '$stateProvider'
-    ,'$urlRouterProvider'];
+    ,'$urlRouterProvider'
+    ,'$httpProvider'];

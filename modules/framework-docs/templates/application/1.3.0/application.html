@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Aplicação</h3>
+        <br/>
+        <p>Esta camada contém as classes Repositories e Services responsáveis pela persistência e regras de negócios respectivamente.
+        </p>
+        <p>Exemplo de interface Repository. Interfaces são utilizadas ao invés de classes devido ao Spring Data, framework responsável pela a persistência.</p>
+        <br/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <h5>Repositório</h5>
+        <pre><code class="prettyprint">public interface PessoaRepository extends GumgaCrudRepository&lt;Pessoa, Long&gt; {}
+            </code>
+        </pre>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <h5>Serviço</h5>
+        <pre><code class="prettyprint">    @Service
+    public class PessoaService extends GumgaService&lt;Pessoa, Long&gt; {
+
+        private final PessoaRepository repository;
+
+        @Autowired
+        public PessoaService(PessoaRepository repository) {
+            super(repository);
+            this.repository = repository;
+        }
+    }
+            </code>
+        </pre>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        <h4>Gerando a camada de aplicação</h4>
+        <p>Entre no modulo application e execute a seguinte linha de comando no Terminal do Linux:</p>
+        <pre>
+<code class="prettyprint">
+    mvn io.gumga:gumgag:aplicacao
+        -Dentidade=br.com.exemplo.domain.model.Pessoa
+</code>
+        </pre>
+    </div>
+</div>

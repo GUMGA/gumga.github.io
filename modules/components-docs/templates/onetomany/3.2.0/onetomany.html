@@ -1,0 +1,206 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaOneToMany</h3>
+      <p>
+        A directive gumgaOneToMany pode ser usada quando é necessária a criação de uma lista de objetos dentro do formulário, especialmente quando esses objetos acessam outros Services. Ela lança um modal para a criação destes objetos, que podem ser recursivos. Além disso, possui suporte a edição e remoção destes registros.
+      </p>
+      <br/><br/>
+  </div>
+</div>
+
+<br/>
+<div class="row">
+  <div class="col-sm-6" >
+    <h4>Demonstração</h4>
+    <hr>
+    <form name="Example" gumga-form>
+        <gumga-one-to-many
+          name="Novo Cliente"
+          children="clientes"
+          template-url="modules/components-docs/templates/onetomany/{{versionDocs}}/modal.html"
+          displayable-property="nome"
+          controller="ModalClienteController"
+          property="nome"
+          edit-button-class="gmd btn btn-primary pull-right"
+          remove-button-class="gmd btn btn-danger margin-right-10 pull-right"
+          class="ng-isolate-scope">
+        </gumga-one-to-many>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre><code class="prettyprint" ng-non-bindable>&lt;form name="Example" gumga-form&gt;
+    &lt;gumga-one-to-many
+      name="Novo Cliente"
+      children="clientes"
+      template-url="modal.html"
+      displayable-property="nome"
+      controller="ModalClienteController"
+      property="nome"
+      edit-button-class="gmd btn btn-primary pull-right"
+      remove-button-class="gmd btn btn-danger margin-right-10 pull-right"
+      class="ng-isolate-scope"&gt;
+    &lt;/gumga-one-to-many&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint" ng-non-bindable>angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope, GumgaAlert){
+
+    $scope.clientes = [{
+      nome: 'Mateus Miranda',
+      id: 1
+    }];
+
+  })
+  .controller('ModalClienteController',
+    function($scope, entity, $uibModalInstance){
+
+    $scope.entity = angular.copy(entity) || {};
+
+    $scope.cancelar = function(){
+      $uibModalInstance.dismiss('cancel');
+    }
+
+    $scope.salvar = function(entity){
+      $uibModalInstance.close(entity);
+    }
+
+  })</code></pre>
+      </uib-tab>
+      <uib-tab index="2" heading="modal.html">
+        <pre><code class="prettyprint" ng-non-bindable>&lt;div class="modal-header"&gt;
+  &lt;h3 class="modal-title"&gt;OneToMany Example&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class="modal-body"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-sm-12"&gt;
+      &lt;form name="ExampleOneToMany"&gt;
+        &lt;label&gt;Nome&lt;/label&gt;
+        &lt;input ng-model="entity.nome" class="form-control"&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="modal-footer"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-sm-12"&gt;
+      &lt;button ng-click="cancelar()"
+                 class="gmd btn btn-default"&gt;
+                 Cancelar
+      &lt;/button&gt;
+      &lt;button ng-click="salvar(entity)"
+                 ng-disabled="!entity.nome"
+                 class="gmd btn btn-primary"&gt;
+                 Salvar
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>children</td>
+              <td>Array</td>
+              <td>Parâmetro obrigatório que irá conter um Array que será utilizado para construir a lista.</td>
+          </tr>
+          <tr>
+              <td>template-url</td>
+              <td>String</td>
+              <td>Parâmetro obrigatório que irá conter uma string referenciando a url na qual o template do modal estará.</td>
+          </tr>
+          <tr>
+              <td>property</td>
+              <td>String</td>
+              <td>Parâmetro obrigatório que irá conter uma string com a propriedade do objeto que será mostrada na lista.</td>
+          </tr>
+          <tr>
+              <td>modal-title</td>
+              <td>String</td>
+              <td>Parâmetro não obrigatório que irá conter uma string com o título que será passado para o controller.</td>
+          </tr>
+          <tr>
+              <td>name</td>
+              <td>String</td>
+              <td>Valor que aparecerá no botão.</td>
+          </tr>
+          <tr>
+              <td>controller</td>
+              <td>String</td>
+              <td>Parâmetro obrigatório que irá conter uma String que referenciará o nome do controller que será atribuido ao modal. Este controller necessita injetar além do $scope, as propriedades entity e title.</td>
+          </tr>
+          <tr>
+              <td>on-delete</td>
+              <td>Function</td>
+              <td>Parâmetro não obrigatório que irá conter uma variável que irá conter uma função que será chamada quando um elemento da lista for deletado.</td>
+          </tr>
+          <tr>
+              <td>on-value-visualization-opened</td>
+              <td>Function</td>
+              <td>Parâmetro não obrigatório que irá conter uma variável que possuirá uma função que irá ser executada quando o usuário tiver aberto o modal para visualização de dados.</td>
+          </tr>
+          <tr>
+              <td>on-value-visualization-closed</td>
+              <td>Function</td>
+              <td>Parâmetro não obrigatório que irá conter uma variável que possuirá uma função que irá ser executada quando o usuário tiver fechado o modal para visualização de dados.</td>
+          </tr>
+          <tr>
+              <td>edit-button</td>
+              <td>String</td>
+              <td>Atributo opcional para definir o texto do botão editar.</td>
+          </tr>
+          <tr>
+              <td>edit-button-title</td>
+              <td>String</td>
+              <td>Atributo opcional para definir o atributo title do botão editar.</td>
+          </tr>
+          <tr>
+              <td>edit-button-class</td>
+              <td>String</td>
+              <td>Atributo opcional para definir o atributo class do botão editar.</td>
+          </tr>
+          <tr>
+              <td>edit-button-icon</td>
+              <td>String</td>
+              <td>Atributo opcional para definir o atributo class do ícone do botão editar.</td>
+          </tr>
+          <tr>
+              <td>remove-button</td>
+              <td>String</td>
+              <td>Atributo opcional para definir o texto do botão remover.</td>
+          </tr>
+          <tr>
+              <td>remove-button-title</td>
+              <td>String</td>
+              <td>Atributo opcional para definir o atributo title do botão remover.</td>
+          </tr>
+          <tr>
+              <td>remove-button-class</td>
+              <td>String</td>
+              <td>Atributo opcional para definir o atributo class do botão remover.</td>
+          </tr>
+          <tr>
+              <td>remove-button-icon</td>
+              <td>String</td>
+              <td>Atributo opcional para definir o atributo class do ícone do botão remover.</td>
+          </tr>
+      </table>
+  </div>
+</div>

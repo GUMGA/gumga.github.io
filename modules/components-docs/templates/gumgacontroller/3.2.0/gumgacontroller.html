@@ -1,0 +1,422 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Service - GumgaController</h3>
+        <p>
+            O componente GumgaController foi desenvolvido como um substituto ao componente $populate. Sentimos que os desenvolvedores,
+            ao utilizar o $populate, não entenderam muito bem o porquê do componente(talvez por causa do nome, também). Demos
+            um passo atrás e chegamos neste componente que faz o que o $populate faz, porém funcionando também fora do $scope
+            do controller, podendo ser colocado dentro de qualquer objeto. <br/> Este componente pode ser utilizado
+            para criar os métodos que fazem conexão com o service GumgaREST, que podem ser utilizados para fazer a comunicação
+            com o BackEnd, respeitando o modelo MVC do Angular. Além disse, ele tem suporte a eventos próprios, não necessitando
+            do $scope.
+        </p>
+        <br/><br/>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-sm-12">
+        <h4>Exemplo de código</h4>
+        <hr>
+        <uib-tabset active="activePill">
+            <uib-tab index="0" heading="JavaScript">
+                <pre><code class="prettyprint">define([], function(){
+    SampleController.$inject = ['$scope','SampleService','gumgaController'];
+    function SampleController($scope, SampleService, gumgaController){
+        gumgaController.createRestMethods($scope,SampleService,'sample')
+        // O objeto pode ser retornado caso queira
+        // var user = gumgaController.createRestMethods({}, SampleService, {
+        // noScope: true,
+        // identifier: 'Sample'
+        // })
+
+        $scope
+        .sample
+        .methods.get(0)
+        .on('getSuccess',function(data){
+            // ...
+        })
+        .on('getError', function(data){
+            // ...
+        })
+        .methods.post({});
+
+        $scope
+        .sample
+        .on('postTagSuccess', function (data){
+            $scope.sample.execute('post');
+        })
+    }
+    return SampleController;
+    })</code></pre>
+            </uib-tab>
+            <uib-tab index="1" heading="HTML">
+                <pre><code class="prettyprint">&lt;div ng-controller="SampleController"&gt;
+        &lt;ul&gt;
+        &lt;li ng-repeat="s in sample.data track by $index"&gt;
+            {{s}}
+            &lt;button type="button" ng-click="sample.put(s)"&gt;
+            Atualizar
+            &lt;/button&gt;
+            &lt;button type="button" ng-click="sample.delete([s])"&gt;
+            Deletar
+            &lt;/button&gt;
+        &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;</code></pre>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+</div>
+
+<br/>
+<h4>Função - createRestMethods(container, service, config/id);</h4>
+<p>
+    A função createRestMethods é a função responsável pelo comportamento de criar os métodos do controlador. Ela cria um objeto que serve para agrupar os comportamentos. O objeto tem o seguinte formato:
+<pre><code>{
+    data: (Object|Array),
+    methods: Object,
+    pageSize: Number,
+    count: Number
+}</code></pre>
+  <h5>Atributos</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Atributo</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>data</td>
+          <td>Object/Array</td>
+          <td>Atributo que irá conter o valor resultante das chamadas $http feitas no GumgaRest. Este atributo pode ser tanto um Array, para quando houver mais de um resultado, quanto um objeto, quando o $http retornar apenas um objeto( como no caso do getId e getNew.)</td>
+      </tr>
+      <tr>
+          <td>methods</td>
+          <td>Object</td>
+          <td>Atributo que irá conter o valor resultante das chamadas $http feitas no GumgaRest. Este atributo pode ser tanto um Array, para quando houver mais de um resultado, quanto um objeto, quando o $http retornar apenas um objeto( como no caso do getId e getNew.)</td>
+      </tr>
+      <tr>
+          <td>pageSize</td>
+          <td>Number</td>
+          <td>Este atributo apenas existe em métodos que retornam um Array do servidor. Contém o número de itens que será retornado de cada vez.</td>
+      </tr>
+      <tr>
+          <td>count</td>
+          <td>Number</td>
+          <td>Número de itens que estão disponíveis no servidor.</td>
+      </tr>
+  </table>
+</p>
+
+<br/>
+<h4>Métodos</h4>
+<p>
+  No antigo componente $populate, sentimos que era trabalhoso para o desenvolvedor para escolher os métodos que seriam incluído e, como não faz muita diferença para o desenvolvedor, nesta versão decidimos incluir todos os métodos possíveis que fazem conexão com o GumgaRest. Todas as funções emitem três eventos: start, success ou error. Além disso, os métodos podem ser encadeados. Os métodos são os seguintes:
+</p>
+
+<br/>
+<h4>Método - get(page)</h4>
+<p>
+  Função responsável para fazer o get(valor default: 1). Aceita a página que irá buscar como parâmetro. 
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>page</td>
+          <td>Number</td>
+          <td>Número da página que listara os registros.</td>
+      </tr>
+  </table>
+  <b>Retorna um <i>array</i> para o atributo data e popula os atributos pageSize e count.</b>
+</p>
+
+<br/>
+<h4>Método - getId(id)</h4>
+<p>
+  Função responsável para fazer o get de um registro específico(valor default: 0).
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>id</td>
+          <td>Number</td>
+          <td>Número do Id que deseja buscar.</td>
+      </tr>
+  </table>
+  <b>Retorna um <i>objeto</i> e exclui os atributos pageSize e count.</b>
+</p>
+
+<br/>
+<h4>Método - getNew()</h4>
+<p>
+  Função responsável para fazer o get de um novo registro. <br/>
+  <b>Retorna um <i>objeto</i> e exclui os atributos pageSize e count.</b>
+</p>
+
+<br/>
+<h4>Método - put(value)</h4>
+<p>
+  Função responsável por fazer o put de um registro. 
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>value</td>
+          <td>Object</td>
+          <td>Objeto que sera feito o put.</td>
+      </tr>
+  </table>
+  <b>O resultado da chamada é obtido apenas pelo evento <i>putSuccess</i> ou <i>putError</i>.</b>
+</p>
+
+<br/>
+<h4>Método - post(value)</h4>
+<p>
+  Função responsável por fazer o post de um novo registro.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>value</td>
+          <td>Object</td>
+          <td>Objeto que sera feito o post.</td>
+      </tr>
+  </table>
+  <b>O resultado da chamada é obtido apenas pelo evento <i>postSuccess</i> ou <i>postError</i>.</b>
+</p>
+
+<br/>
+<h4>Método - delete(values)</h4>
+<p>
+  Função responsável por fazer um delete de uma lista de registros.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>values</td>
+          <td>Array/Object</td>
+          <td>Lista de objetos ou Objeto que sera deletado.</td>
+      </tr>
+  </table>
+  <b>O resultado da chamada é obtido apenas pelo evento <i>deleteSuccess</i> ou <i>deleteError</i>.</b>
+</p>
+
+<br/>
+<h4>Método - sort(field, way)</h4>
+<p>
+  Função responsável por fazer a ordenação dos valores no servidor.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>field</td>
+          <td>String</td>
+          <td>Campo que deseja ser ordenado.</td>
+      </tr>
+      <tr>
+          <td>way</td>
+          <td>String</td>
+          <td>Ordenação que deseja fazer.</td>
+      </tr>
+  </table>
+  <b>Retorna um <i>array</i> para o atributo <b>data</b> e popula os atributos pageSize e count.</b>
+</p>
+
+<br/>
+<h4>Método - search(field, param)</h4>
+<p>
+    Função responsável por fazer a busca dos valores no servidor. 
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>field</td>
+          <td>String</td>
+          <td>Campo que deseja buscar.</td>
+      </tr>
+      <tr>
+          <td>param</td>
+          <td>String</td>
+          <td>Qual parametro de busca que deseja realizar</td>
+      </tr>
+  </table>
+  <b>Retorna um <i>array</i> para o atributo <b>data</b> e popula os atributos pageSize e count.</b>
+</p>
+
+<br/>
+<h4>Método - advancedSearch(param)</h4>
+<p>
+    Função responsável por fazer a busca avançada dos valores no servidor.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>param</td>
+          <td>String</td>
+          <td>Método de busca que irá realizar no servidor.</td>
+      </tr>
+  </table>
+  <b>Retorna um <i>array</i> para o atributo <b>data</b> e popula os atributos pageSize e count.</b>
+</p>
+
+<br/>
+<h4>Método - redoSearch()</h4>
+<p>
+    Função que re-executa a busca com o último estado.
+</p>
+
+<br/>
+<h4>Método - postQuery(query, name)</h4>
+<p>
+    Função responsável por fazer um post para salvar a query do busca avançada.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>query</td>
+          <td>String</td>
+          <td>Método de busca que irá realizar no servidor.</td>
+      </tr>
+      <tr>
+          <td>name</td>
+          <td>String</td>
+          <td>Nome da busca.</td>
+      </tr>
+  </table>
+  <b>O resultado da chamada é obtido apenas pelo evento <i>postQuerySuccess</i> ou <i>postQueryError</i>.</b>
+</p>
+
+<br/>
+<h4>Método - getQuery(query)</h4>
+<p>
+    Função responsável por retornar o get de um chamada para o servidor.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>query</td>
+          <td>String</td>
+          <td>Nome da busca que vai ser feito o Get.</td>
+      </tr>
+  </table>
+  <b>Esta função retorna uma <i>promise HTTP</i> e, quando for resolvida, emite os eventos <i>getQuerySuccess</i> e <i>getQueryError</i>.</b>
+</p>
+
+<br/>
+<h4>Método - postImage(attribute, model)</h4>
+<p>
+    Função responsável por retornar o post de um chamada para o servidor.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>attribute</td>
+          <td>Object</td>
+          <td>Objeto que irá conter as informações do arquivo.</td>
+      </tr>
+      <tr>
+          <td>model</td>
+          <td>Object</td>
+          <td>Atributo que receberá o model usado no form para validar se houve edição nos dados.</td>
+      </tr>
+  </table>
+  <b>Esta função retorna uma <i>promise HTTP</i> e, quando for resolvida, faz o post para salvar uma imagem.</b>
+</p>
+
+<br/>
+<h4>Método - deleteImage(attribute, model)</h4>
+<p>
+    Função responsável por fazer um delete de alguma imagem de uma entidade.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>attribute</td>
+          <td>Object</td>
+          <td>Objeto que irá conter as informações do arquivo.</td>
+      </tr>
+      <tr>
+          <td>model</td>
+          <td>Object</td>
+          <td>Atributo que receberá o model usado no form para validar se houve edição nos dados.</td>
+      </tr>
+  </table>
+  <b>O resultado da chamada é obtido apenas pelo evento <i>deleteImageSuccess</i> ou <i>deleteImageError</i>.</b>
+</p>
+
+<br/>
+<h4>Método - reset()</h4>
+<p>
+    Função responsável por resetar os parâmetros para o seu valor inicial. <br/>
+  <b>Ela emite apenas um evento, <i>resetStart</i>.</b>
+</p>
+
+<br/>
+<h4>Método - getAvailableTags()</h4>
+<p>
+    Função responsável por buscar as tags disponíveis para o registro. <br/>
+  <b>Ela emite apenas um evento, <i>getAvailableTagsStart<i>.</b>
+</p>
+
+<br/>
+<h4>Método - getSelectedTags()</h4>
+<p>
+    Função responsável por buscar as tags que estão selecionadas para o registro.<br/>
+  <b>Ela emite apenas um evento, <i>getSelectedTagsStart<i>.</b>
+</p>
+
+<br/>
+<h4>Método - postTag()</h4>
+<p>
+    Função responsável por salvar as tags que foram selecionadas na entidade.<br/>
+  <b>O resultado da chamada é obtido apenas pelo evento <i>postTagSuccess</i> ou <i>postTagError</i>.</b>
+</p>

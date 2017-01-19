@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaPattern</h3>
+      <p>
+        O componente GumgaPattern serve para validar expressões regulares de formulários.
+      </p>
+      <br/><br/>
+    </p>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demonstração</h4>
+    <hr>
+    <form name="myForm" gumga-form>
+      <label>CEP</label>
+      <input type="text" name="cep" ng-model="cep" class="form-control" gumga-pattern="(\d{5})\-(\d{3})" id="cep" placeholder="99999-999">
+      <p ng-show="myForm.cep.$error.pattern" class="text-danger">Expressão não corresponde com o formato esperado</p>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre style="font-size: 10px;"><code class="prettyprint">&lt;form name="myForm" gumga-form&gt;
+  &lt;label&gt;CEP&lt;/label&gt;
+  &lt;input type="text" name="cep" ng-model="cep" class="form-control" gumga-pattern="(\d{5})\-(\d{3})" id="cep" placeholder="99999-999"&gt;
+  &lt;p ng-show="myForm.cep.$error.pattern" class="text-danger"&gt;Expressão não corresponde com o formato esperado&lt;/p&gt;
+&lt;/form&gt;</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>label</td>
+              <td>Usado na integração com gumga.core:gumgaErrors para indicar em qual campo se encontra o erro. Se o atributo for omitido, a diretiva usará o atributo name do input.</td>
+          </tr>
+      </table>
+  </div>
+</div>

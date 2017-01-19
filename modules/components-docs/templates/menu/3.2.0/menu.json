@@ -1,0 +1,13 @@
+[
+  {
+    "label": "Home",
+    "URL": "welcome",
+    "key": "CRUD-BASE",
+    "icon": "glyphicon glyphicon-home",
+    "icon_color": "",
+    "imageUrl": "",
+    "imageWidth": "",
+    "imageHeight": "",
+    "filhos": []
+  }
+]

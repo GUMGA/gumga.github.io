@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3>Gumga Components</h3>
+    <p>
+      Os componentes listados aqui, são os mesmos utilizados no Gumga Framework.
+    </p>
+
+    <br/>
+
+    <h4>Pré-requisitos</h4>
+
+    <ul>
+      <li>AngularJS - 1.5.8</li>
+      <li>Angular UI Bootstrap - 2.4.0</li>
+      <li>ngImgCrop (A partir da versão 3.0.0 deve-se adicionar dependências da lib ng-img-crop ao projeto, esta lib é usada no componente GumgaImageUpload, caso esteja usando a versão 2.11.6 e ocorra erro na injeção de dependência, também adicione a lib ng-img-crop ao projeto).</li>
+      <li>JQuery - 2.1.4</li>
+      <li>Bootstrap Notify - 3.1.3</li>
+    </ul>
+
+    <br/>
+
+    <h4>Instalação</h4>
+    <p>
+      Para realizar a instalação execute o comando abaixo na pasta raiz do seu projeto.<br/>
+      <br/>
+      <code>
+        bower install gumga-components --save
+      </code>
+      <br/><br/>
+      Adicione o script dos componentes em seu HTML:
+      <br/><br/>
+      <code style="padding-left: 0px;">
+&lt;script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"&gt;&lt;/script&gt;<br/>
+&lt;script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"&gt;&lt;/script&gt;<br/>
+&lt;script src="bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js"&gt;&lt;/script&gt;<br/>
+&lt;script src="bower_components/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;<br/>
+&lt;script src="bower_components/gumga-components/dist/gumga.min.js"&gt;&lt;/script&gt;<br/>
+      </code><br/>
+      Em seguida, injete os módulos <b>ngImgCrop</b>, <b>ui.bootstrap</b> e <b>gumga.core</b> na sua aplicação, como por exemplo:<br/>
+      <br/>
+      <code>
+        angular.module('yourApp', ['ngImgCrop', 'ui.bootstrap', 'gumga.core']);
+      </code>
+      <br/><br/>
+      Se você estiver usando RequireJs, temos um exemplo para você:<br/><br/>
+      </p>
+      <uib-tabset active="activePill">
+        <uib-tab index="0" heading="app.js" ><pre><code class="prettyprint">require('angular');
+require('angular-ui-router');
+require('jquery');
+require('ngImgCrop');
+require('gumga-components');
+
+angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])</code></pre></uib-tab>
+        <uib-tab index="2" heading="config.js"><pre><code class="prettyprint">'use strict';
+requirejs.config({
+    paths: {
+        "angular": "bower_components/angular/angular.min",
+        "angular-bootstrap": "bower_components/angular-bootstrap/ui-bootstrap-tpls.min",
+        "jquery": "bower_components/jquery/dist/jquery.min",
+        "ngImgCrop": "bower_components/ng-img-crop/compile/minified/ng-img-crop"
+    },
+    waitSeconds: 10000,
+    shim: {
+        "jquery": {exports: "jQuery"},
+        "angular": {exports: "angular", deps: ["jquery"]},
+	"angular-bootstrap": {deps: ["angular","jquery"]},
+        "ngImgCrop": {deps: ["angular", "jquery"]}
+    }
+});
+</code></pre></uib-tab>
+      </uib-tabset>
+      <p><br/>
+        Também é necessário adicionar o css em seu HTML:
+        <br/><br/>
+        <code>
+          &lt;link rel="stylesheet" href="bower_components/gumga-components/dist/gumga.min.css"/&gt;
+        </code>
+        <br/><br/>
+        <b>Ao completar a instalação você está apto a começar utilizar os componentes abaixo.</b>
+      </p>
+  </div>
+</div>

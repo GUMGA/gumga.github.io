@@ -1,0 +1,174 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Service - gumgaWebStorage</h3>
+      <p>
+        O service GumgaWebStorage é utilizado para ajudar o desenvolvedor a trabalhar com o storage do Browser.
+      </p>
+
+    </p>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Exemplo de Uso</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="JavaScript">
+        <pre><code class="prettyprint">angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope, GumgaWebStorage){
+
+    GumgaWebStorage.setLocalStorageItem('nome', 'Mateus');
+
+    console.log(GumgaWebStorage.getLocalStorageItem('nome')); //Mateus
+
+    GumgaWebStorage.removeLocalStorageItem('nome');
+
+    console.log(GumgaWebStorage.getLocalStorageItem('nome')); //NULL
+
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<br/>
+<h4>Método - setSessionStorageItem(key, value);</h4>
+<p>
+  O método setSessionStorageItem aceita dois parâmetros key e value.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>key</td>
+          <td>String</td>
+          <td>Qual o identificador do valor que será salvo.</td>
+      </tr>
+      <tr>
+          <td>value</td>
+          <td>String/Number/Object	</td>
+          <td>Valor que será salvo no sessionStorage.</td>
+      </tr>
+  </table>
+</p>
+<br/>
+<h4>Método - getSessionStorageItem(key);</h4>
+<p>
+  O método getSessionStorageItem aceita um parâmetro key.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>key</td>
+          <td>String</td>
+          <td>Qual o identificador do valor que deseja recuperar.</td>
+      </tr>
+  </table>
+  <b>Retorno do getSessionStorageItem: <i>[String|Number|Object]</i> - Retorna o valor que estiver na sessionStorage daquela key específica. Caso não encontre, o valor retornado é null.</b>
+</p>
+<br/>
+<h4>Método - removeSessionStorageItem(key);</h4>
+<p>
+  O método removeSessionStorageItem aceita um parâmetro key.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>key</td>
+          <td>String</td>
+          <td>Qual o identificador do valor que será removido da sessionStorage.</td>
+      </tr>
+  </table>
+</p>
+<br/>
+<h4>Método - clearSessionStorage();</h4>
+<p>
+  O método clearSessionStorage não aceita nenhum parâmetro e limpa a sessionStorage.
+</p>
+<br/>
+<h4>Método - getNumberOfItemsInSessionStorage();</h4>
+<p>
+  O método getNumberOfItemsInSessionStorage não aceita nenhum parâmetro, e retorna o número de itens no localStorage.
+</p>
+<br/>
+<h4>Método - setLocalStorageItem(key, value);</h4>
+<p>
+  O método setLocalStorageItem aceita dois parâmetros key e value.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>key</td>
+          <td>String</td>
+          <td>Qual o identificador do valor que será salvo.</td>
+      </tr>
+      <tr>
+          <td>value</td>
+          <td>String/Number/Object</td>
+          <td>Valor que será salvo no localStorage.</td>
+      </tr>
+  </table>
+</p>
+<br/>
+<h4>Método - getLocalStorageItem(key);</h4>
+<p>
+  O método getLocalStorageItem aceita um parâmetro key.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>key</td>
+          <td>String</td>
+          <td>Qual o identificador do valor que deseja recuperar.</td>
+      </tr>
+  </table>
+  <b>Retorno do getLocalStorageItem: <i>[String|Number|Object]</i> - Retorna o valor que estiver na LocalStorage daquela key específica. Caso não encontre, o valor retornado é null.</b>
+</p>
+<br/>
+<h4>Método - removeLocalStorageItem(key);</h4>
+<p>
+  O método removeLocalStorageItem aceita um parâmetro key.
+  <h5>Parâmetros</h5>
+  <table class="table table-bordered table-striped">
+      <tr>
+          <th>Parâmetro</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+      </tr>
+      <tr>
+          <td>key</td>
+          <td>String</td>
+          <td>Qual o identificador do valor que será removido da LocalStorage.</td>
+      </tr>
+  </table>
+</p>
+<br/>
+<h4>Método - clearLocalStorage();</h4>
+<p>
+  O método clearLocalStorage não aceita nenhum parâmetro e limpa o localStorage.
+</p>
+<br/>
+<h4>Método - getNumberOfItemsInLocalStorage();</h4>
+<p>
+  O método getNumberOfItemsInLocalStorage não aceita nenhum parâmetro, e retorna o número de itens no localStorage.
+</p>
