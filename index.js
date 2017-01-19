@@ -27,11 +27,13 @@ function httpGet(url)
 }
 
 if(httpGet('gumga-js/components/'+version+'/gumga.min.js') != 200){
+
     sessionStorage.setItem('currrentVersion', LAST_VERSION);
     if(version != LAST_VERSION){
-      location.href = location.href.replace(version, LAST_VERSION);
-      location.reload();
+        location.href = location.href.replace(version, LAST_VERSION);
+        location.reload();
     }
+
 }
 
 require('script-loader!./gumga-js/components/'+version+'/gumga.min.js');
@@ -41,6 +43,7 @@ import Directives from './modules/directives/directives'
 
 import Home from './modules/home/home'
 import Components from './modules/components-docs/components-docs'
+import Framework from './modules/framework-docs/framework-docs'
 
 //Imports Configs
 import Routers from './routers'
@@ -52,6 +55,7 @@ angular.module('app', [
     ,Directives
     ,Home
     ,Components
+    ,Framework
     ,'ngImgCrop'
     ,'gumga.core'
     ,'ui.bootstrap'
@@ -61,8 +65,8 @@ angular.module('app', [
   .run(['$rootScope', '$timeout', ($rootScope, $timeout) => {
     $rootScope.$on('$stateChangeStart',
     function(event, toState, toParams, fromState, fromParams){
-        if(toParams && toParams.version && toParams.version != version){
-           sessionStorage.setItem('currrentVersion', toParams.version);
+        if(toParams && toParams.version && toParams.version != version && toState.url.indexOf('components') != -1){
+            sessionStorage.setItem('currrentVersion', toParams.version);
            location.reload();
         }
         if(window.PR){
