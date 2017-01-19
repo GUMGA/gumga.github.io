@@ -20,6 +20,7 @@ import Directives from './modules/directives/directives'
 
 import Home from './modules/home/home'
 import Components from './modules/components-docs/components-docs'
+import Framework from './modules/framework-docs/framework-docs'
 
 //Imports Configs
 import Routers from './routers'
@@ -31,6 +32,7 @@ angular.module('app', [
     ,Directives
     ,Home
     ,Components
+    ,Framework
     ,'ngImgCrop'
     ,'ui.bootstrap'
     ,'gumga.core'
