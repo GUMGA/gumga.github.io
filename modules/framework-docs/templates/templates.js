@@ -7,6 +7,8 @@ import enumGumga from './enum/enum'
 import infrastructure from './infrastructure/infrastructure'
 import gateway from './gateway/gateway'
 import presentation from './presentation/presentation'
+import javaDocs from './java-docs/java-docs'
+
 
 const module = angular.module('framework-templates', [])
     .directive('preRequisito', preRequisito)
@@ -18,6 +20,8 @@ const module = angular.module('framework-templates', [])
     .directive('infrastructure', infrastructure)
     .directive('gateway', gateway)
     .directive('presentation', presentation)
+    .directive('javaDocs', javaDocs)
+
 
 
 

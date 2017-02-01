@@ -48,6 +48,12 @@ class FrameworkController {
                 template: this.$sce.trustAsHtml('<pre-requisito version-docs="$ctrl.versionCurrent"></pre-requisito>')
             },
             {
+                label: 'Java docs',
+                anchor: 'java-docs',
+                versions: ["1.3.0"],
+                template: this.$sce.trustAsHtml('<java-docs version-docs="$ctrl.versionCurrent"></java-docs>')
+            },
+            {
                 label: 'Estrutura do projeto',
                 anchor: 'archetype',
                 versions: ["1.3.0"],
