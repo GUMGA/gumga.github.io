@@ -45,6 +45,7 @@ import Home from './modules/home/home'
 import Components from './modules/components-docs/components-docs'
 import Framework from './modules/framework-docs/framework-docs'
 import Academy from './modules/academy/academy'
+import SecurityEmbedded from './modules/security-embedded/security-embedded'
 
 //Imports Configs
 import Routers from './routers'
@@ -58,6 +59,7 @@ angular.module('app', [
     ,Components
     ,Framework
     ,Academy
+    ,SecurityEmbedded
     ,'ngImgCrop'
     ,'gumga.core'
     ,'ui.bootstrap'

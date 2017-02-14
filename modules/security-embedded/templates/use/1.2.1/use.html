@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Exemplo de uso</h3>
+        <p>
+          Para começar a usar o segurança embutido basta adicionar o código abaixo em seu html.
+        </p>
+        <pre><code class="prettyprint">&lt;security-embedded configuration="config"&gt;&lt;/security-embedded&gt;</code></pre>
+        <br/>
+        <p>
+          É necessário que você informe uma configuração para o security-embedded.
+        </p>
+        <pre><code class="prettyprint">$scope.config = {
+    appURL : 'http://SEU_SITE.EXEMPLO/SUA_API',
+    eternalToken: '', // Caso esse atributo não for informado, pegaremos o token da sessionStorage.
+    user: true, // Caso não for informado o valor padrão é TRUE.
+    perfil: true // Caso não for informado o valor padrão é TRUE.
+};</code></pre>
+        <br/>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Segurança Embarcado - Instalação</h3>
+        <p>
+          Segurança embutido para aplicações feitas com framework Gumga.
+        </p>
+        <br/>
+
+        <h4>Pré-requisitos Backend</h4>
+
+        <ul>
+            <li><a ui-sref="app.framework" target="_blank">Framework Gumga - ^1.5.0 </a></li>
+            <li><a >Security Gumga - ^1.2.19</a></li>
+        </ul>
+        <br/>
+        <h4>Pré-requisitos Frontend</h4>
+
+        <ul>
+            <li><a href="https://github.com/angular/bower-angular-sanitize/" target="_blank">angular-sanitize - ^1.5.8 </a></li>
+            <li><a href="https://angular-ui.github.io/bootstrap/" target="_blank">angular-ui-bootstrap - ^2.5.0</a></li>
+        </ul>
+        <br/>
+        <h4>Instalação em 3 passos</h4>
+        <p>
+           1 - Baixe o gumga-security-embedded via bower
+        </p>
+        <pre><code class="prettyprint">bower install gumga-security-embedded --save</code></pre>
+        <p>
+           2 - Após a baixar adicione o arquivo de distribuição.
+        </p>
+        <pre><code class="prettyprint">&lt;script type="text/javascript" src="bower_components/gumga-security-embedded/dist/security-embedded.min.js"&gt;&lt;/script&gt;</code></pre>
+        <p>
+           3 - Adicione o modulo gumga.securityEmbedded na sua aplicação.
+        </p>
+        <pre><code class="prettyprint">angular.module('yourApp', ['gumga.securityEmbedded'])</code></pre>
+        <br/>
+        <h5>Tudo certo, agora você já pode começar a usar o segurança embutido.</h5>
+    </div>
+</div>
