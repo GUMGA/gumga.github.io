@@ -44,6 +44,7 @@ import Directives from './modules/directives/directives'
 import Home from './modules/home/home'
 import Components from './modules/components-docs/components-docs'
 import Framework from './modules/framework-docs/framework-docs'
+import Academy from './modules/academy/academy'
 
 //Imports Configs
 import Routers from './routers'
@@ -56,6 +57,7 @@ angular.module('app', [
     ,Home
     ,Components
     ,Framework
+    ,Academy
     ,'ngImgCrop'
     ,'gumga.core'
     ,'ui.bootstrap'
