@@ -18,27 +18,27 @@ require('script-loader!./bower_components/showdown/src/showdown.js');
 require('script-loader!./bower_components/angular-markdown-directive/markdown.js');
 
 
-var LAST_VERSION = '3.2.0';
+var LAST_VERSION = '3.3.1';
 
 var version = sessionStorage.getItem('currrentVersion') || LAST_VERSION;
 
-function httpGet(url)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open('GET', url, true);
-    xmlHttp.send( null );
-    return xmlHttp.status;
-}
+// function httpGet(url)
+// {
+//     var xmlHttp = new XMLHttpRequest();
+//     xmlHttp.open('GET', url, true);
+//     xmlHttp.send( null );
+//     return xmlHttp.status;
+// }
 
-if(httpGet('gumga-js/components/'+version+'/gumga.min.js') != 200){
+// if(httpGet('gumga-js/components/'+version+'/gumga.min.js') != 200){
 
-    sessionStorage.setItem('currrentVersion', LAST_VERSION);
-    if(version != LAST_VERSION){
-        location.href = location.href.replace(version, LAST_VERSION);
-        location.reload();
-    }
+//     sessionStorage.setItem('currrentVersion', LAST_VERSION);
+//     if(version != LAST_VERSION){
+//         location.href = location.href.replace(version, LAST_VERSION);
+//         location.reload();
+//     }
 
-}
+// }
 
 require('script-loader!./gumga-js/components/'+version+'/gumga.min.js');
 

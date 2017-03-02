@@ -26,6 +26,8 @@
       <advanced-search-field type="cnpj"    label="CNPJ"    field="cnpj"></advanced-search-field>
       <advanced-search-field type="boolean" label="Ativo"   field="ativo" true-label="True" false-label="False"></advanced-search-field>
       <advanced-search-field type="select"  label="Estados" field="id" data="selects"></advanced-search-field>
+      <advanced-search-field type="enum"    label="Sexo"    field="sexo" data="sexos"></advanced-search-field>
+      <advanced-search-field type="date"    label="Data de Cadastro" field="dataCadastro"></advanced-search-field>
     </gumga-filter>
 
     <div ng-show="result">
@@ -49,39 +51,56 @@
     <uib-tabset active="activePill">
       <uib-tab index="0" heading="HTML">
         <pre style="font-size: 10px;"><code class="prettyprint">&lt;gumga-filter search="searchFilter(param)"&gt;
-  &lt;advanced-search-field type="string" label="Nome" field="nome">&lt;/advanced-search-field&gt;
-  &lt;advanced-search-field type="number" label="Idade" field="idade">&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="string" label="Nome" field="nome"&gt;&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="number" label="Idade" field="idade"&gt;&lt;/advanced-search-field&gt;
   &lt;advanced-search-field type="float" label="Peso" field="peso"&gt;&lt;/advanced-search-field&gt;
   &lt;advanced-search-field type="money" label="Preço" field="preco"&gt;&lt;/advanced-search-field&gt;
   &lt;advanced-search-field type="cpf" label="CPF" field="cpf"&gt;&lt;/advanced-search-field&gt;
-  &lt;advanced-search-field type="cnpj"  label="CNPJ" field="cnpj"&gt;&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="cnpj" label="CNPJ" field="cnpj"&gt;&lt;/advanced-search-field&gt;
   &lt;advanced-search-field type="boolean" label="Ativo" field="ativo" true-label="True" false-label="False"&gt;&lt;/advanced-search-field&gt;
   &lt;advanced-search-field type="select" label="Estados" field="id" data="selects"&gt;&lt;/advanced-search-field&gt;
-  &lt;advanced-search-field type="enum" label="Roles" field="states" data="selects"&gt;&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="enum" label="Sexo" field="sexo" data="sexos"&gt;&lt;/advanced-search-field&gt;
+  &lt;advanced-search-field type="date" label="Data de Cadastro" field="dataCadastro"&gt;&lt;/advanced-search-field&gt;
 &lt;/gumga-filter&gt;</code></pre>
       </uib-tab>
       <uib-tab index="1" heading="JavaScript">
-        <pre><code class="prettyprint">angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+        <pre style="font-size: 10px;"><code class="prettyprint">angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
   .controller('ctrl', function($scope, GumgaAlert){
 
     $scope.searchFilter = function(value){
       $scope.result = value;
     }
 
+    $scope.sexos = [
+        {
+            "field": "MASCULINO",
+            "label": "Masculino"
+        },
+        {
+            "field": "FEMININO",
+            "label": "Feminino"
+        },
+        {
+            "field": "NAO_INFORMADO",
+            "label": "Não informado"
+        }
+    ]
+
     $scope.selects = [
-      {
-        "field": "selectField1",
-        "label": "selectLabel 1"
-      },
-      {
-        "field": "selectField2",
-        "label": "selectLabel 2"
-      },
-      {
-        "field": "selectField3",
-        "label": "selectLabel 3"
-      }
+        {
+            "field": "selectField1",
+            "label": "selectLabel 1"
+        },
+        {
+            "field": "selectField2",
+            "label": "selectLabel 2"
+        },
+        {
+            "field": "selectField3",
+            "label": "selectLabel 3"
+        }
     ];
+
   })</code></pre>
       </uib-tab>
     </uib-tabset>
@@ -185,7 +204,7 @@
           </tr>
           <tr>
               <td>date</td>
-              <td>'eq', 'ne', 'gt', 'ge', 'lt', 'le'</td>
+              <td>'date_eq', 'date_ne', 'gt', 'ge', 'lt', 'le'</td>
           </tr>
           <tr>
               <td>select</td>

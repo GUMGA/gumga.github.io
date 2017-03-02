@@ -47,7 +47,7 @@ class ComponentsController {
         {
           label: 'Address',
           anchor: 'address',
-          versions: ["3.2.0", "3.3.2"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<address-template version-docs="$ctrl.versionCurrent"></address-template>')
         },
         {
@@ -65,7 +65,7 @@ class ComponentsController {
         {
           label: 'Filter',
           anchor: 'filter',
-          versions: ["3.2.0", "3.3.0"],
+          versions: ["3.2.0", "3.3.0","3.3.1"],
           template: this.$sce.trustAsHtml('<filter-template version-docs="$ctrl.versionCurrent"></filter-template>')
         },
         {
@@ -143,7 +143,7 @@ class ComponentsController {
         {
           label: 'ManyToOne',
           anchor: 'manytoone',
-          versions: ["3.2.0", "3.3.2"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<manytoone-template version-docs="$ctrl.versionCurrent"></manytoone-template>')
         },
         {
@@ -167,7 +167,7 @@ class ComponentsController {
         {
           label: 'OneToMany',
           anchor: 'onetomany',
-          versions: ["3.2.0", "3.3.2"],
+          versions: ["3.2.0"],
           template: this.$sce.trustAsHtml('<onetomany-template version-docs="$ctrl.versionCurrent"></onetomany-template>')
         },
         {
