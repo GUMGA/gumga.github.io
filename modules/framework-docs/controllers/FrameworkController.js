@@ -11,8 +11,8 @@ class FrameworkController {
     }
 
     $onInit() {
-        this.versions = ["1.3.0"];
-        window.currentHash = 'pre-requisito';
+        this.versions = ["1.3.0", "1.4.0", "1.4.2", "1.5.0", "1.5.1", "1.5.2", "1.5.3"];
+        window.currentHash = 'release';
 
         if(!this.$stateParams.version){
             this.setVersion(this.versions[0])
@@ -40,76 +40,96 @@ class FrameworkController {
             }
         }
 
+
+
         this.menu = [
             {
                 label: 'Pré-requisito',
                 anchor: 'pre-requisito',
                 versions: ["1.3.0"],
-                template: this.$sce.trustAsHtml('<pre-requisito version-docs="$ctrl.versionCurrent"></pre-requisito>')
+                template: this.$sce.trustAsHtml('<pre-requisito version-docs="$ctrl.getLatestVersion('+"'pre-requisito'"+', $ctrl.versionCurrent)"></pre-requisito>')
             },
             {
                 label: 'Java docs',
                 anchor: 'java-docs',
                 versions: ["1.3.0"],
-                template: this.$sce.trustAsHtml('<java-docs version-docs="$ctrl.versionCurrent"></java-docs>')
+                template: this.$sce.trustAsHtml('<java-docs version-docs="$ctrl.getLatestVersion('+"'java-docs'"+', $ctrl.versionCurrent)"></java-docs>')
             },
             {
                 label: 'Estrutura do projeto',
                 anchor: 'archetype',
                 versions: ["1.3.0"],
-                template: this.$sce.trustAsHtml('<archetype version-docs="$ctrl.versionCurrent"></archetype>')
+                template: this.$sce.trustAsHtml('<archetype version-docs="$ctrl.getLatestVersion('+"'archetype'"+', $ctrl.versionCurrent)"></archetype>')
             },
             {
                 label: 'Entidade',
                 anchor: 'domain',
                 versions: ["1.3.0"],
-                template: this.$sce.trustAsHtml('<domain version-docs="$ctrl.versionCurrent"></domain>')
+                template: this.$sce.trustAsHtml('<domain version-docs="$ctrl.getLatestVersion('+"'domain'"+', $ctrl.versionCurrent)"></domain>')
             },
             {
                 label: 'Repositório e Serviço',
                 anchor: 'application',
                 versions: ["1.3.0"],
-                template: this.$sce.trustAsHtml('<application version-docs="$ctrl.versionCurrent"></application>')
+                template: this.$sce.trustAsHtml('<application version-docs="$ctrl.getLatestVersion('+"'application'"+', $ctrl.versionCurrent)"></application>')
             },
             {
                 label: 'Api',
                 anchor: 'api',
                 versions: ["1.3.0"],
-                template: this.$sce.trustAsHtml('<api version-docs="$ctrl.versionCurrent"></api>')
+                template: this.$sce.trustAsHtml('<api version-docs="$ctrl.getLatestVersion('+"'api'"+', $ctrl.versionCurrent)"></api>')
             },
             {
                 label: 'Apresentação',
                 anchor: 'presentation',
                 versions: ["1.3.0"],
-                template: this.$sce.trustAsHtml('<presentation version-docs="$ctrl.versionCurrent"></presentation>')
+                template: this.$sce.trustAsHtml('<presentation version-docs="$ctrl.getLatestVersion('+"'presentation'"+', $ctrl.versionCurrent)"></presentation>')
             },
             {
                 label: 'Infrastructure',
                 anchor: 'infrastructure',
                 versions: ["1.3.0"],
-                template: this.$sce.trustAsHtml('<infrastructure version-docs="$ctrl.versionCurrent"></infrastructure>')
+                template: this.$sce.trustAsHtml('<infrastructure version-docs="$ctrl.getLatestVersion('+"'infrastructure'"+', $ctrl.versionCurrent)"></infrastructure>')
             },
             {
                 label: 'gateway',
                 anchor: 'gateway',
                 versions: ["1.3.0"],
-                template: this.$sce.trustAsHtml('<gateway version-docs="$ctrl.versionCurrent"></gateway>')
+                template: this.$sce.trustAsHtml('<gateway version-docs="$ctrl.getLatestVersion('+"'gateway'"+', $ctrl.versionCurrent)"></gateway>')
             },
             {
                 label: 'Enum',
                 anchor: 'enum',
                 versions: ["1.3.0"],
-                template: this.$sce.trustAsHtml('<enum version-docs="$ctrl.versionCurrent"></enum>')
+                template: this.$sce.trustAsHtml('<enum version-docs="$ctrl.getLatestVersion('+"'enum'"+', $ctrl.versionCurrent)"></enum>')
             }
         ]
 
+    }
+
+    getLatestVersion(anchor, versionCurrent) {
+        let item = this.menu.filter(m=>{return anchor == m.anchor});
+        let versions = item[0].versions.filter(v=>{return v == versionCurrent });
+
+        if(versions.length == 0) {
+            let result = item[0].versions.sort(this.compareNumbers);
+            return result[0];
+        }
+        return versions[0];
+    }
+
+    compareNumbers(a, b) {
+        let v1 = Number(a.replace('.', '').replace('.', ''))
+        let v2 = Number(b.replace('.', '').replace('.', ''))
+
+        return v2 - v1;
     }
 
     thereIsThisVersion(versions){
         const toReturn = versions.filter(version=>{
                 return version == this.versionCurrent;
             }).length > 0;
-        return toReturn;
+        return true;
     }
 
     setVersion(version){
@@ -118,14 +138,17 @@ class FrameworkController {
 
     getMenuStyle(menu){
         const toReturn = {};
-        if(window.currentHash == menu.anchor){
+        if(window.currentHash == menu.anchor || window.currentHash == menu){
             toReturn['background'] = 'rgba(76, 175, 80, 0.05)';
             toReturn['border-left'] = '3px solid #009688';
         }else{
             toReturn['border-left'] = '3px solid transparent';
         }
         toReturn['padding-left'] = '10px';
-        toReturn['padding-top'] = '3px';
+        if(menu != 'release') {
+            toReturn['padding-top'] = '3px';
+        }
+
         return toReturn;
     }
 

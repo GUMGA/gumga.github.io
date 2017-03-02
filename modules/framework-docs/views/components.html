@@ -3,6 +3,9 @@
 <main>
     <div class="container-fluid content">
         <div class="row">
+            <div  class="col-sm-8 col-sm-offset-3 components-container hash" id="release">
+                <release owner="GUMGA" repo="frameworkbackend" tag="$ctrl.versionCurrent"></release>
+            </div>
             <div class="col-sm-8 col-sm-offset-3 components-container hash" ng-repeat="menu in $ctrl.menu"
                  id="{{menu.anchor}}">
                 <div ng-if="$ctrl.thereIsThisVersion(menu.versions)" bind-html-compile="menu.template"></div>
@@ -34,7 +37,12 @@
         </li>
 
         <br/>
-        <li ng-repeat="menu in $ctrl.menu | filter:{label: $ctrl.search, versions: $ctrl.versionCurrent}"
+        <li>
+            <a data-ng-click="$ctrl.gotoAnchor('release')" ng-style="$ctrl.getMenuStyle('release')">
+                O que há de novo?
+            </a>
+        </li>
+        <li ng-repeat="menu in $ctrl.menu | filter:{label: $ctrl.search}"
             ng-style="$ctrl.getMenuStyle(menu)">
             <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
         </li>
