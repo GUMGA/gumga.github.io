@@ -65,7 +65,7 @@ class ComponentsController {
         {
           label: 'Filter',
           anchor: 'filter',
-          versions: ["3.2.0"],
+          versions: ["3.2.0","3.3.1"],
           template: this.$sce.trustAsHtml('<filter-template version-docs="$ctrl.versionCurrent"></filter-template>')
         },
         {

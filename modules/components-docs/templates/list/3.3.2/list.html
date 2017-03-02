@@ -1,0 +1,278 @@
+<div class="row">
+  <div class="col-sm-12">
+      <h3>Diretiva - gumgaList</h3>
+      <p>
+        O componente gumgaList foi criado no intuito de substituir a gumgaTable. A partir de uma fonte de dados, é gerado uma tabela que é configurada através de um objeto javascript.
+      </p>
+      <br/><br/>
+  </div>
+</div>
+<br/>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Demonstração</h4>
+    <hr>
+    <form name="Example">
+      <gumga-list
+        sort="ordenar(field,dir)"
+        class="gmd table table-striped"
+        data="dados"
+        configuration="configuracao">
+      </gumga-list>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <h4>Exemplo de código</h4>
+    <hr>
+    <uib-tabset active="activePill">
+      <uib-tab index="0" heading="HTML">
+        <pre><code class="prettyprint">&lt;gumga-list
+  sort="ordenar(field,dir)"
+  class="gmd table table-striped"
+  data="dados"
+  configuration="configuracao"&gt;
+&lt;/gumga-list&gt;
+</code></pre>
+      </uib-tab>
+      <uib-tab index="1" heading="JavaScript">
+        <pre><code class="prettyprint">angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+  .controller('ctrl', function($scope, GumgaAlert){
+    //A ordenação abaixo é um exemplo de ordenação no front,
+    //se você usa o framework gumga é recomendado
+    //fazer a ordenação no backend
+    $scope.ordenar = function(field, dir){
+        console.log("Field:" + field, "Dir: " + dir);
+        $scope.dados = $scope.dados.sort(function(a, b){
+            a = parseInt(a[field]);
+            b = parseInt(b[field]);
+            return dir == 'asc' ? a - b : b - a;
+        });
+    }
+
+    $scope.configuracao = {
+      columns: 'nome,idade',
+      headers: true,
+      checkbox: true,
+      selection: 'multi',
+      sortDefault: 'nome,idade',
+      columnsConfig: [
+        {
+          name: 'nome',
+          sortField: 'name',
+          conditional: function(value){
+            return {
+              '2px solid black': value.idade <= 35,
+              '2px solid red': value.idade < 22,
+              '2px solid blue': value.idade > 35
+            }
+          },
+          title: 'Nome do cliente'
+        },
+        {
+          name: 'idade',
+          title: 'Idade',
+          sortField: 'idade',
+          content: '<b>{{$value.idade}}</b>'
+        }
+      ]
+    }
+
+    $scope.dados = [
+      {
+        nome: 'Mateus Miranda de Almeida',
+        idade: 20
+      },
+      {
+        nome: 'João Ribeiro da Silva',
+        idade: 34,
+      },
+      {
+        nome: 'Maria Ferreira dos Santos',
+        idade: 49,
+      },
+      {
+        nome: 'Felipe Sabadini',
+        idade: 23
+      }
+    ];
+  })</code></pre>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Atributos</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>sort</td>
+              <td>Atributo opcional que irá conter uma função que será chamada quando o usuário clicar no título da tabela. Os parâmetros desta função necessitam obrigatóriamente ser: field e dir, como por exemplo: sort="sortFunction(field,dir)".</td>
+          </tr>
+          <tr>
+              <td>class</td>
+              <td>Atributo opcional que irá conter uma string que será utilizada para adicionar classes a mais no componente. Por padrão, apenas a classe table é utilizada.</td>
+          </tr>
+          <tr>
+              <td>data</td>
+              <td>Atributo obrigatório que irá conter um array com o qual os dados serão mostrados na tabela.</td>
+          </tr>
+          <tr>
+              <td>configuration</td>
+              <td>Atributo obrigatório que irá conter um objeto com o qual os dados serão formatados para montar a tabela.</td>
+          </tr>
+          <tr>
+              <td>on-sort</td>
+              <td>Atributo opcional que irá conter uma função que será executada toda vez que o usuário ordenar alguma coluna. O padrão de parâmetros é igual ao do atributo sort.</td>
+          </tr>
+          <tr>
+              <td>on-click</td>
+              <td>Atributo opcional que irá conter uma função que será executada toda vez que o usuário clicar em uma linha da tabela. Para receber o valor da linha em que houve o click, adiciona o parâmetro $value na função, como por exemplo: on-click="foo($value)".</td>
+          </tr>
+          <tr>
+              <td>on-double-click</td>
+              <td>Atributo opcional que irá conter uma função que será executada toda vez que o usuário clicar duas vezes em uma linha da tabela. Para receber o valor da linha em que houve o double click, seguir o mesmo padrão de parâmetro igual ao do onClick.</td>
+          </tr>
+          <tr>
+              <td>selected-values</td>
+              <td>Atributo opcional que irá conter um array que conterá os valores que foram selecionados. Este array pode ser manipulado de fora da tabela para alterar os valores que foram selecionados.</td>
+          </tr>
+          <tr>
+              <td>change-per-page</td>
+              <td>Atributo opcional que irá conter uma função que será executada sempre que o select de itemsPerPage for alterado.</td>
+          </tr>
+      </table>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-12">
+      <h4>Configuração da tabela</h4>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Parâmetro</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+          </tr>
+          <tr>
+              <td>selection</td>
+              <td>String</td>
+              <td>Será utilizada para definir como será a seleção da tabela. Possíveis valores: multi e single. Como padrão, o valor é single. A partir da versão 3.1.0 em diante podemos usar também none para desabilitar o selection.</td>
+          </tr>
+          <tr>
+              <td>itemsPerPage</td>
+              <td>Array</td>
+              <td>Será utilizado para mostrar um select com as opções do Array. Ele é utilizado para definir quantos itens pela página serão utilizados. O valor selecionado no array será exposto no escopo da tabela através da variável itemsPerPage.</td>
+          </tr>
+          <tr>
+              <td>sortDefault</td>
+              <td>String</td>
+              <td>Será utilizada para definir qual o campo padrão de ordenação. Este valor deve ser o mesmo identificador que está no atributo columns.</td>
+          </tr>
+          <tr>
+              <td>headers</td>
+              <td>Boolean</td>
+              <td>Irá definir se aparecerá os cabeçalhos das colunas.</td>
+          </tr>
+          <tr>
+              <td>checkbox</td>
+              <td>Boolean</td>
+              <td>Irá definir se aparecerá a coluna de checkbox.</td>
+          </tr>
+          <tr>
+              <td>columns</td>
+              <td>String</td>
+              <td>Irá definir quais as colunas e a ordem que elas terão dentro da tabela.. O formato deve estar no seguinte padrão: *[column1,column2,...,columnN]*.</td>
+          </tr>
+          <tr>
+              <td>conditional</td>
+              <td>Function</td>
+              <td>será utilizada para fazer a formatação condicional do registro. A função deve retornar um objeto que contém a classe e a comparação utilizada.</td>
+          </tr>
+          <tr>
+              <td>columnsConfig</td>
+              <td>Array</td>
+              <td>
+                Será utilizado para configurar as colunas que foram definidas no atributo columns. Cada valor deste array é um objeto de configuração para cada coluna, não sendo obrigatório a configuração de todas as colunas. Os valores deste objeto são:
+                <table class="table table-bordered table-striped">
+                    <tr>
+                      <th>Parâmetro</th>
+                      <th>Tipo</th>
+                      <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>String</td>
+                        <td>Irá conter o nome identificador da coluna que será configurada. Este nome deve ser o mesmo nome que está no atributo columns, do objeto de configuração da tabela.</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>String</td>
+                        <td>Irá conter o conteúdo que irá no título da coluna. É possível passar qualquer tipo de expressão angular válida e quaisquer tags html. Para dicas de como não ter que escrever templates através do html, veja a seção Utilizando <a style="color: blue;" ng-click="gotoAnchor('listwithtemplate')">TEMPLATES</a> no GumgaList.</td>
+                    </tr>
+                    <tr>
+                        <td>size</td>
+                        <td>String</td>
+                        <td>Irá conter o tamanho da coluna, baseado no padrão do bootstrap, como por exemplo: col-md-3, col-xs-10, etc.</td>
+                    </tr>
+                    <tr>
+                        <td>content</td>
+                        <td>String</td>
+                        <td>Irá conter o conteúdo que irá nas células da coluna. É possível passar qualquer tipo de expressão angular válida e quaisquer tags html. Para dicas de como não ter que escrever templates através do html, veja a seção: Utilizando <a style="color: blue;" ng-click="gotoAnchor('listwithtemplate')">TEMPLATES</a> no GumgaList.</td>
+                    </tr>
+                    <tr>
+                        <td>sortField</td>
+                        <td>String</td>
+                        <td>Irá conter o o campo em que será feita a ordenação. Este campo será o que irá para o campo field na função de ordenação.</td>
+                    </tr>
+                    <tr>
+                        <td>conditional</td>
+                        <td>Function</td>
+                        <td>Será utilizada para fazer a formatação condicional do registro. A função deve retornar um objeto que contém a classe e a comparação utilizada.</td>
+                    </tr>
+                </table>
+              </td>
+          </tr>
+      </table>
+  </div>
+</div>
+
+
+<div class="row" id="listwithtemplate">
+  <div class="col-sm-12">
+      <h4>Templates no GumgaList</h4>
+      <p>
+        Para não ter que escrever o html direto na string, pode-se utilizar templates angular e resgatá-los através do service $templateCache do Angular.
+      </p>
+
+      <div class="row" ng-non-bindable>
+          <div class="col-sm-6">
+            <pre><code class="prettyprint">&lt;gumga-list data="array" configuration="tableConfig"&gt;
+&lt;/gumga-list&gt;
+
+&lt;script type="text/ng-template" id="tpl.html"&gt;
+  {{$value.name | uppercase }}
+&lt;/script&gt;</code></pre>
+          </div>
+          <div class="col-sm-6">
+            <pre><code class="prettyprint">angular.module('app', ['ngImgCrop', 'ui.bootstrap', 'gumga.core'])
+.controller('ctrl', function($scope, GumgaAlert){
+    $scope.array = [];
+    $scope.tableConfig = {
+      columns: 'name',
+      columnsConfig: {
+        name: 'name',
+        content: $templateCache.get('tpl.html')
+      }
+    }
+})</code></pre>
+          </div>
+      </div>
+
+  </div>
+</div>
