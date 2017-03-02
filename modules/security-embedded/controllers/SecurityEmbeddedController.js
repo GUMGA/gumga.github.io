@@ -11,8 +11,8 @@ class SecurityEmbeddedController {
     }
 
     $onInit() {
-        this.versions = ["1.2.1"];
-        window.currentHash = 'instalation';
+        this.versions = ["1.2.1", "1.2.2"];
+        window.currentHash = 'release';
 
         if(!this.$stateParams.version){
             this.setVersion(this.versions[0])
@@ -45,29 +45,49 @@ class SecurityEmbeddedController {
                 label: 'Instalação',
                 anchor: 'instalation',
                 versions: ["1.2.1"],
-                template: this.$sce.trustAsHtml('<security-instalation version-docs="$ctrl.versionCurrent"></security-instalation>')
+                template: this.$sce.trustAsHtml('<security-instalation version-docs="$ctrl.getLatestVersion('+"'instalation'"+', $ctrl.versionCurrent)"></security-instalation>')
             },
             {
                 label: 'Uso',
                 anchor: 'use',
                 versions: ["1.2.1"],
-                template: this.$sce.trustAsHtml('<security-use version-docs="$ctrl.versionCurrent"></security-use>')
+                template: this.$sce.trustAsHtml('<security-use version-docs="$ctrl.getLatestVersion('+"'use'"+', $ctrl.versionCurrent)"></security-use>')
             },
             {
                 label: 'Configuração',
                 anchor: 'configuration',
                 versions: ["1.2.1"],
-                template: this.$sce.trustAsHtml('<security-configuration version-docs="$ctrl.versionCurrent"></security-configuration>')
+                template: this.$sce.trustAsHtml('<security-configuration version-docs="$ctrl.getLatestVersion('+"'configuration'"+', $ctrl.versionCurrent)"></security-configuration>')
             }
         ]
 
     }
 
+    getLatestVersion(anchor, versionCurrent) {
+        let item = this.menu.filter(m=>{return anchor == m.anchor});
+        let versions = item[0].versions.filter(v=>{return v == versionCurrent });
+
+        if(versions.length == 0) {
+            let result = item[0].versions.sort(this.compareNumbers);
+            console.log(result)
+            return result[0];
+        }
+        return versions[0];
+    }
+
+    compareNumbers(a, b) {
+        let v1 = Number(a.replace('.', '').replace('.', ''))
+        let v2 = Number(b.replace('.', '').replace('.', ''))
+
+        return v2 - v1;
+    }
+
     thereIsThisVersion(versions){
-        const toReturn = versions.filter(version=>{
-                return version == this.versionCurrent;
-            }).length > 0;
-        return toReturn;
+        // const toReturn = versions.filter(version=>{
+        //         return version == this.versionCurrent;
+        //     }).length > 0;
+        // return toReturn;
+        return true;
     }
 
     setVersion(version){
@@ -76,14 +96,17 @@ class SecurityEmbeddedController {
 
     getMenuStyle(menu){
         const toReturn = {};
-        if(window.currentHash == menu.anchor){
+        if(window.currentHash == menu.anchor || window.currentHash == menu){
             toReturn['background'] = 'rgba(76, 175, 80, 0.05)';
             toReturn['border-left'] = '3px solid #009688';
         }else{
             toReturn['border-left'] = '3px solid transparent';
         }
         toReturn['padding-left'] = '10px';
-        toReturn['padding-top'] = '3px';
+        if(menu != 'release') {
+            toReturn['padding-top'] = '3px';
+        }
+
         return toReturn;
     }
 

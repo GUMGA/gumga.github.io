@@ -14,7 +14,7 @@ class ComponentsController {
 
     $onInit() {
       const ctrl = this;
-      ctrl.currentHash = 'instalation';
+      ctrl.currentHash = 'release';
 
       function isScrolledIntoView(elem) {
         var docViewTop = $(window).scrollTop();
@@ -47,7 +47,7 @@ class ComponentsController {
         {
           label: 'Address',
           anchor: 'address',
-          versions: ["3.2.0"],
+          versions: ["3.2.0", "3.3.2"],
           template: this.$sce.trustAsHtml('<address-template version-docs="$ctrl.versionCurrent"></address-template>')
         },
         {
@@ -65,7 +65,7 @@ class ComponentsController {
         {
           label: 'Filter',
           anchor: 'filter',
-          versions: ["3.2.0"],
+          versions: ["3.2.0", "3.3.0"],
           template: this.$sce.trustAsHtml('<filter-template version-docs="$ctrl.versionCurrent"></filter-template>')
         },
         {
@@ -131,7 +131,7 @@ class ComponentsController {
         {
           label: 'List',
           anchor: 'list',
-          versions: ["3.2.0"],
+          versions: ["3.2.0", "3.3.2"],
           template: this.$sce.trustAsHtml('<list-template version-docs="$ctrl.versionCurrent"></list-template>')
         },
         {
@@ -143,7 +143,7 @@ class ComponentsController {
         {
           label: 'ManyToOne',
           anchor: 'manytoone',
-          versions: ["3.2.0"],
+          versions: ["3.2.0", "3.3.2"],
           template: this.$sce.trustAsHtml('<manytoone-template version-docs="$ctrl.versionCurrent"></manytoone-template>')
         },
         {
@@ -167,7 +167,7 @@ class ComponentsController {
         {
           label: 'OneToMany',
           anchor: 'onetomany',
-          versions: ["3.2.0"],
+          versions: ["3.2.0", "3.3.2"],
           template: this.$sce.trustAsHtml('<onetomany-template version-docs="$ctrl.versionCurrent"></onetomany-template>')
         },
         {
@@ -288,14 +288,16 @@ class ComponentsController {
     getMenuStyle(menu){
       const toReturn = {};
       const ctrl = this;
-      if(ctrl.currentHash == menu.anchor){
+      if(ctrl.currentHash == menu.anchor || ctrl.currentHash == menu){
           toReturn['background'] = 'rgba(76, 175, 80, 0.05)';
           toReturn['border-left'] = '3px solid #009688';
       }else{
         toReturn['border-left'] = '3px solid transparent';
       }
       toReturn['padding-left'] = '10px';
-      toReturn['padding-top'] = '3px';
+      if(ctrl.currentHash != 'release') {
+          toReturn['padding-top'] = '3px';
+      }
       return toReturn;
     }
 

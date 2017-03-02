@@ -13,6 +13,10 @@ require('script-loader!./bower_components/angular-bootstrap/ui-bootstrap-tpls.mi
 require('script-loader!./bower_components/jquery/dist/jquery.min.js')
 require('script-loader!./bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js')
 require('script-loader!./assets/libs/run_prettify.min.js');
+require('script-loader!./bower_components/angular-sanitize/angular-sanitize.min.js');
+require('script-loader!./bower_components/showdown/src/showdown.js');
+require('script-loader!./bower_components/angular-markdown-directive/markdown.js');
+
 
 var LAST_VERSION = '3.2.0';
 
@@ -64,6 +68,8 @@ angular.module('app', [
     ,'gumga.core'
     ,'ui.bootstrap'
     ,'gumga.layout'
+    ,'ngSanitize'
+    ,'btford.markdown'
   ])
   .config(Routers)
   .run(['$rootScope', '$timeout', ($rootScope, $timeout) => {

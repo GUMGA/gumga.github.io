@@ -33,7 +33,6 @@
     "commit": "0b02126e17fbf7f2e45511f4a6ba03b97b09bfc0"
   },
   "_source": "https://github.com/GUMGA/layout.git",
-  "_target": "^1.2.2",
-  "_originalSource": "gumga-layout",
-  "_direct": true
+  "_target": "1.2.2",
+  "_originalSource": "gumga-layout"
 }
