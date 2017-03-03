@@ -11,7 +11,7 @@ const Errors = () => {
               return './modules/components-docs/templates/errors/'+$scope.versionDocs+'/errors.html';
           }
 
-          $scope.minNumber = 13;
+          $scope.minNumber = 130;
 
         }
     }

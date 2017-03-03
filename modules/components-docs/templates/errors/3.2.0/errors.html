@@ -21,6 +21,8 @@
     <form name="myForm" gumga-form>
       <label>Valor</label>
       <input type="number" name="minNumber" ng-model="minNumber" gumga-min-number="20" class="form-control">
+      <label>Email</label>
+      <input type="email" name="email" ng-init="email='user@host.com';" ng-model="email" class="form-control" gumga-validate-type >
       <br/>
       <gumga-errors placement="right" icon="glyphicon glyphicon-info-sign" label="Campos inválidos" title="Campos inválidos"></gumga-errors>
     </form>
@@ -35,6 +37,8 @@
   &lt;label&gt;Valor&lt;/label&gt;
   &lt;input type="number" name="minNumber" ng-model="minNumber" gumga-min-number="20" class="form-control"&gt;
   &lt;br/&gt;
+  &lt;label&gt;Email&lt;/label&gt;
+  &lt;input type="email" name="email" ng-init="email='user@host.com';" ng-model="email" class="form-control" gumga-validate-type /&gt;
   &lt;gumga-errors placement="right" icon="glyphicon glyphicon-info-sign" label="Campos inválidos" title="Campos inválidos"&gt;&lt;/gumga-errors&gt;
 &lt;/form&gt;</code></pre>
       </uib-tab>

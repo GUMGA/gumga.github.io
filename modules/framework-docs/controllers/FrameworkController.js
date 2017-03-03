@@ -121,14 +121,10 @@ class FrameworkController {
     compareNumbers(a, b) {
         let v1 = Number(a.replace('.', '').replace('.', ''))
         let v2 = Number(b.replace('.', '').replace('.', ''))
-
         return v2 - v1;
     }
 
     thereIsThisVersion(versions){
-        const toReturn = versions.filter(version=>{
-                return version == this.versionCurrent;
-            }).length > 0;
         return true;
     }
 

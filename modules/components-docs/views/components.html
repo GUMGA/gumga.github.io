@@ -56,13 +56,13 @@
     <li >
       <label class="menu-separator">Componentes</label>
     </li>
-    <li ng-repeat="menu in $ctrl.components | filter:{label: $ctrl.search, versions: $ctrl.versionCurrent} | orderBy : 'label'" ng-style="$ctrl.getMenuStyle(menu)">
+    <li ng-repeat="menu in $ctrl.components | filter:{label: $ctrl.search} | orderBy : 'label'" ng-style="$ctrl.getMenuStyle(menu)">
       <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
     </li>
     <li >
       <label class="menu-separator">Services</label>
     </li>
-    <li ng-repeat="menu in $ctrl.services | filter:{label: $ctrl.search, versions: $ctrl.versionCurrent} | orderBy : 'label'" ng-style="$ctrl.getMenuStyle(menu)">
+    <li ng-repeat="menu in $ctrl.services | filter:{label: $ctrl.search} | orderBy : 'label'" ng-style="$ctrl.getMenuStyle(menu)">
       <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>
     </li>
   </ul>
