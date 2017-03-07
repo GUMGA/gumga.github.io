@@ -17,6 +17,8 @@
       <gumga-many-to-many
         left-list="dados"
         right-list="selecionados"
+        text-left="Listando {{$value}} {{$value > 1 ? 'itens': 'item'}}"
+        text-right="Listando {{$value}} {{$value > 1 ? 'itens': 'item'}}"
         left-search="searchLeft(param)"
         authorize-add="false">
         <left-field>{{$value.nome}}</left-field>
@@ -34,6 +36,8 @@
         <pre><code class="prettyprint" ng-non-bindable>&lt;div class="col-sm-12"&gt;
   &lt;gumga-many-to-many
     left-list="dados"
+    text-left="Listando {{$value}} {{$value > 1 ? 'itens': 'item'}}"
+    text-right="Listando {{$value}} {{$value > 1 ? 'itens': 'item'}}"
     right-list="selecionados"
     left-search="searchLeft(param)"
     authorize-add="false"&gt;
@@ -133,6 +137,14 @@
           <tr>
               <td>validate-message</td>
               <td>Atributo opcional que irá conter uma string que aparecerá na mensagem de erro.</td>
+          </tr>
+          <tr>
+              <td>text-left</td>
+              <td>Atributo opcional que irá conter uma String que irá aparecer na lista da esquerda.</td>
+          </tr>
+          <tr>
+              <td>text-right</td>
+              <td>Atributo opcional que irá conter uma String que irá aparecer na lista da direita.</td>
           </tr>
           <tr>
               <td>text-left-empty</td>
