@@ -12,6 +12,7 @@ const Filter = () => {
       }
 
       $scope.searchFilter = function (value) {
+        value.source = value.source.substring(0,30)+"...";
         $scope.result = value;
       }
 
