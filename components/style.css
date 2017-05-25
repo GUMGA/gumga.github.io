@@ -2,5 +2,7 @@
   border-top-right-radius: 0;
   border-top-left-radius: 0;
   border-top-width: 0;
+}
+.tab-content > .tab-pane > pre code {
   white-space: inherit;
 }
