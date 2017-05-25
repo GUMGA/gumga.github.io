@@ -1,0 +1,5 @@
+.tab-content > .tab-pane > pre {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-width: 0;
+}
