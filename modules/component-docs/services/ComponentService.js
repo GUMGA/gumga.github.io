@@ -7,6 +7,8 @@ export default function ComponentService($http){
         getRepos: getRepos
     };
 
+    
+    
     return Service;
 }
 
