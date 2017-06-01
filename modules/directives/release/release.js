@@ -14,7 +14,7 @@ const Release = ($http) => {
               return;
           }
 
-          $http.get('https://api.github.com/repos/'+scope.owner+'/'+scope.repo+'/releases/tags/' + scope.tag + '?access_token=66d50ddaf48b775369aa6484610dd04b594e205c')
+          $http.get('https://api.github.com/repos/'+scope.owner+'/'+scope.repo+'/releases/tags/' + scope.tag + '?access_token=a9d1505678d6c828078190db4245c313619cd635')
               .then((response)=> {
                   scope.loading = false;
                   scope.markdown = response.data.body && response.data.body.trim().length > 0 ? response.data.body : '###### Sem novidades no momento.';
