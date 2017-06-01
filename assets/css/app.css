@@ -98,7 +98,13 @@ span[tabindex]:hover > span > div{
   /*-webkit-transform: rotateZ(360deg);
   -moz-transform: rotateZ(360deg);
   transform: rotateZ(360deg);*/
-  color: #475857;
+  color: #1b9a59;
+  opacity: .8;
+}
+
+.docs-item-container.danger > i:hover {
+  color: #de3e35;
+  opacity: .8;
 }
 
 .docs-item-container > h3{
@@ -115,4 +121,16 @@ span[tabindex]:hover > span > div{
   font-weight: 500;
   margin-top: 11px;
   cursor: pointer;
+}
+
+.text-success {
+  color: #1b9a59;
+}
+.text-danger {
+  color: #de3e35;
+}
+
+.content .page-header {
+  padding: 0;
+  margin: 0 0 40px;
 }

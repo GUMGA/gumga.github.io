@@ -1,0 +1,37 @@
+<gumga-header menu="$ctrl.navMenu"></gumga-header>
+<main>
+    <div class="container-fluid content home-container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3 class="text-center page-header">Lista de Componentes</h3>
+                <div class="panel panel-default">
+                    <table class="table gmd table-hover table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Repositório</th>
+                                <th>Documentação</th>
+                                <th>Última alteração</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="repo in $ctrl.repos">
+                                <td>
+                                    <!--<i class="material-icons">github-circle</i>-->
+                                    <a class="btn gmd btn-success" ng-href="{{repo.html_url}}" ng-bind="repo.name" target="_blank"></a>
+                                </td>
+                                <td>
+                                    <a class="btn gmd btn-info" ng-href="{{repo.homepage}}" ng-bind="repo.homepage" target="_blank"></a>
+                                </td>
+                                <td>
+                                    <span class="label gmd label-info" ng-bind="repo.updated_at | date: 'dd/MM/yyyy HH:mm'"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>

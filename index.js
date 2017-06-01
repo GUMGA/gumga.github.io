@@ -18,7 +18,7 @@ require('script-loader!./bower_components/showdown/src/showdown.js');
 require('script-loader!./bower_components/angular-markdown-directive/markdown.js');
 
 
-var LAST_VERSION = '3.3.1';
+var LAST_VERSION = '3.3.2';
 
 var version = sessionStorage.getItem('currrentVersion') || LAST_VERSION;
 
@@ -46,6 +46,7 @@ require('script-loader!./gumga-js/components/'+version+'/gumga.min.js');
 import Directives from './modules/directives/directives'
 
 import Home from './modules/home/home'
+import Component from './modules/component-docs/component-docs'
 import Components from './modules/components-docs/components-docs'
 import Framework from './modules/framework-docs/framework-docs'
 import Academy from './modules/academy/academy'
@@ -60,6 +61,7 @@ angular.module('app', [
     ,AngularAnimate
     ,Directives
     ,Home
+    ,Component
     ,Components
     ,Framework
     ,Academy
@@ -75,7 +77,7 @@ angular.module('app', [
   .run(['$rootScope', '$timeout', ($rootScope, $timeout) => {
     $rootScope.$on('$stateChangeStart',
     function(event, toState, toParams, fromState, fromParams){
-        if(toParams && toParams.version && toParams.version != version && toState.url.indexOf('components') != -1){
+        if(toParams && toParams.version && toParams.version != version && toState.url.indexOf('componentsallinone') != -1){
             sessionStorage.setItem('currrentVersion', toParams.version);
            location.reload();
         }
