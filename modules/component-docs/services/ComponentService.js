@@ -1,6 +1,6 @@
 export default function ComponentService($http){
     function getRepos() {
-        return $http.get('https://api.github.com/users/GUMGA/repos?access_token=66d50ddaf48b775369aa6484610dd04b594e205c')
+        return $http.get('https://api.github.com/users/GUMGA/repos?access_token=a9d1505678d6c828078190db4245c313619cd635')
     }
 
     const Service = {
