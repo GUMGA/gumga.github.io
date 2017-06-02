@@ -7,7 +7,7 @@ class ComponentController {
     }
 
     $onInit() {
-        // let onlyFront = value => 
+        // let onlyFront = value =>
         let repos;
         this.service.getRepos()
             .then(res => {
@@ -18,6 +18,14 @@ class ComponentController {
             label: 'Começando'
           }
       ]
+
+      this.getRamdomColor = (repo) => {
+        if(repo.homepage){
+          return '#009688';
+        }else{
+          return '#F11C00';
+        }
+      }
     }
 
 

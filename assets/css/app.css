@@ -4,6 +4,73 @@ body, html{
   transition: all 2s linear;
 }
 
+.docs-home form{
+  width: 100%;
+  max-width: 735px;
+  margin: 53px auto 92px;
+  position: relative;
+}
+
+.component-container{
+  cursor: pointer;
+  background: #ffffff;
+  border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12)!important;
+  transition: all .4s cubic-bezier(.25,.8,.25,1)!important;
+  border-radius: 2px!important;
+  border: 1px solid #ccc;
+}
+
+.component-container:hover{
+  border: 1px solid #009688;
+  background: rgb(251, 251, 251);
+}
+
+.component-container:hover i{
+  color: #06d5c2;
+}
+
+.component-container i {
+  font-size: 3em;
+  color: #009688;
+}
+
+.component-container span {
+
+  color: #666;
+}
+
+.component-container label {
+  color: #666666;
+}
+
+.docs-home form:before{
+  font: normal normal normal 14px/1 FontAwesome;
+  -webkit-font-smoothing: antialiased;
+  content: "\f002";
+  font-size: 27px;
+  font-weight: 800;
+  color: #576070;
+  position: absolute;
+  top: 14px;
+  left: 19px;
+}
+
+.docs-home form input:placeholder-shown{
+  color: #9da5b3;
+}
+
+.docs-home form input{
+  border-radius: 35px;
+  border-color: #e6e9ee;
+  padding: 5px 5px 5px 52px;
+  height: 56px;
+  font-size: 18px;
+  box-shadow: none;
+}
+
 h3{
   color: #009688 !important;
 }

@@ -2,9 +2,42 @@
 <main>
     <div class="container-fluid content home-container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3 class="text-center page-header">Lista de Componentes</h3>
-                <div class="panel panel-default">
+            <div class="col-md-8 col-md-offset-2 docs-home">
+                <h3 class="text-center">
+                  Agora nossos componentes estão separados. <i class="material-icons">widgets</i>
+                </h3>
+                <p class="text-center">
+                  Essa nova atualização permitirá instalar apenas os componentes que você realmente precisar!!!
+                </p>
+
+                <form class="form-group search ng-pristine ng-valid">
+                  <input   type="text"
+                           class="form-control search-input ng-pristine ng-valid ng-touched"
+                           placeholder="Qual componente você está procurando ?"
+                           data-searchpos="index"
+                           ng-model="search" style="">
+                </form>
+
+
+
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h4 class="text-center" ng-if="($ctrl.repos | filter: {name : search}).length == 0 && search">
+                      Oops! não temos nenhum componente com esse nome.
+                    </h4>
+                  </div>
+                  <a class="col-md-3" ng-repeat="repo in $ctrl.repos | filter: {name : search}" ng-href="{{repo.homepage || repo.html_url}}">
+                      <div class="col-sm-12 component-container form-group" >
+                        <i class="material-icons" ng-style="{color: $ctrl.getRamdomColor(repo)}">widgets</i> <br>
+                        <label>{{repo.name}}</label>  <br>
+                        <span>Atualizado em {{repo.updated_at | date: 'dd/MM/yyyy HH:mm'}}</span>
+                      </div>
+                  </a>
+                </div>
+
+
+                <!-- <div class="panel panel-default">
                     <table class="table gmd table-hover table-striped table-bordered">
                         <thead>
                             <tr>
@@ -17,7 +50,7 @@
                             <tr ng-repeat="repo in $ctrl.repos">
                                 <td>
                                     <!--<i class="material-icons">github-circle</i>-->
-                                    <a class="btn gmd btn-success" ng-href="{{repo.html_url}}" ng-bind="repo.name" target="_blank"></a>
+                                    <!-- <a class="btn gmd btn-success" ng-href="{{repo.html_url}}" ng-bind="repo.name" target="_blank"></a>
                                 </td>
                                 <td>
                                     <a class="btn gmd btn-info" ng-href="{{repo.homepage}}" ng-bind="repo.homepage" target="_blank"></a>
@@ -27,7 +60,8 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
+
                 </div>
             </div>
         </div>
