@@ -11,6 +11,10 @@ h1{
   color: rgb(0, 150, 136) !important; 
 }
 
+div > p {
+  text-align: justify;
+}
+
 .navbar-inverse .navbar-brand{color: #fff;} 
 
 .navbar-inverse .navbar-nav>li>a{color: #fff;} 
