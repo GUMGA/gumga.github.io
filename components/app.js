@@ -9,5 +9,11 @@ angular.module('app')
     $http.get('../versions.json').then(function(resp){
       ctrl.versions = resp.data;
     })
+  
+    var componentTitle = document.querySelector('a.navbar-brand');
+    if(componentTitle){
+       componentTitle.href = "https://github.com/gumga/"+componentTitle.text;
+       componentTitle.target = "_blank"; 
+    }
 
   })
