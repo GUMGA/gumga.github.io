@@ -1,5 +1,5 @@
 
-window.TOKEN = '3b8d2ba0d55342d73622b01f89ade42b031f653e';
+window.TOKEN = '';
 
 //Imports Libs
 import angular from 'angular'
