@@ -6,3 +6,9 @@
 .tab-content > .tab-pane > pre code {
   white-space: inherit;
 }
+
+.navbar-inverse .navbar-brand{color: #fff;} 
+
+.navbar-inverse .navbar-nav>li>a{color: #fff;} 
+
+.navbar-inverse{background: rgb(0, 150, 136);border: none;}
