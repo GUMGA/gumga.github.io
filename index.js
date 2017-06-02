@@ -1,5 +1,5 @@
 
-window.TOKEN = '';
+window.TOKEN = 'MGFmYjFlZjQ0YTgwYmJmMmM0NDQ2YjQyNTljNzA4NGJhOGVhNTA2YQ==';
 
 //Imports Libs
 import angular from 'angular'

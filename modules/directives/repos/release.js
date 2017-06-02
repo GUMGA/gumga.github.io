@@ -23,7 +23,7 @@ const Release = ($http) => {
               +scope.owner
               +'/'+scope.repo
               +'/releases/tags/'
-              + scope.tag + '?access_token='+window.TOKEN)
+              + scope.tag + '?access_token=' + atob(window.TOKEN))
               .then((response)=> {
                   scope.loading = false;
                   scope.markdown = response.data.body && response.data.body.trim().length > 0 ? response.data.body : '###### Sem novidades no momento.';
