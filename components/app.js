@@ -12,7 +12,8 @@ angular.module('app')
   
     var componentTitle = document.querySelector('a.navbar-brand');
     if(componentTitle){
-       componentTitle.href = "https://github.com/gumga/"+componentTitle.text;
+//        componentTitle.href = "https://github.com/gumga/"+componentTitle.text;
+       componentTitle.href = "https://gumga.github.io/#/app/component";
        componentTitle.target = "_blank"; 
     }
 
