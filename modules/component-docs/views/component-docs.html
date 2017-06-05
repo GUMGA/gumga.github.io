@@ -18,19 +18,25 @@
                            ng-model="search" style="">
                 </form>
 
-
-
-
-                <div class="row">
+                <div class="row"  ng-if="($ctrl.repos | filter: {name : search}).length == 0 && search">
                   <div class="col-sm-12">
-                    <h4 class="text-center" ng-if="($ctrl.repos | filter: {name : search}).length == 0 && search">
+                    <h4 class="text-center">
                       Oops! não temos nenhum componente com esse nome.
                     </h4>
                   </div>
-                  <a class="col-md-3" ng-repeat="repo in $ctrl.repos | filter: {name : search}" ng-href="{{repo.homepage || repo.html_url}}">
+                </div>
+
+                <div class="row equal">
+                  <a class="col-sm-4 col-md-3"
+                     ng-repeat="repo in $ctrl.repos | filter: {name : search}" ng-href="{{repo.homepage}}">
                       <div class="col-sm-12 component-container form-group" >
+                        {{$ctrl.redirectTo}}
                         <i class="material-icons" ng-style="{color: $ctrl.getRamdomColor(repo)}">widgets</i> <br>
+                        <i class="fa fa-github" ng-click="$ctrl.redirectTo(repo.html_url)" uib-tooltip="Github" aria-hidden="true"></i>
                         <label>{{repo.name}}</label>  <br>
+                        <p uib-tooltip="{{repo.description}}" tooltip-popup-delay="500">
+                          {{repo.description}}
+                        </p> <br>
                         <span>Atualizado em {{repo.updated_at | date: 'dd/MM/yyyy HH:mm'}}</span>
                       </div>
                   </a>
