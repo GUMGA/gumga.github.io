@@ -14,7 +14,7 @@ angular.module('app')
     if(componentTitle){
 //        componentTitle.href = "https://github.com/gumga/"+componentTitle.text;
        componentTitle.href = "https://gumga.github.io/#/app/component";
-       componentTitle.target = "_blank"; 
+//        componentTitle.target = "_blank"; 
     }
 
   })
