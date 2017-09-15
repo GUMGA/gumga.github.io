@@ -20,12 +20,3 @@ div > p {
 .navbar-inverse .navbar-nav>li>a{color: #fff;} 
 
 .navbar-inverse{background: rgb(0, 150, 136);border: none;}
-
-
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
-    color: #fff;
-    cursor: default;
-    background-color: #009688;
-    border: 1px solid #009688;
-    border-bottom-color: #009688;
-}
