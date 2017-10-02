@@ -3,7 +3,7 @@ angular.module('app')
 
     var ctrl = this;
     var url = location.href.split('/')
-    ctrl.version =  location.href.match(/[0-9].[0-9].[0-9]/g)[0];
+    ctrl.version =  location.href.match(/[0-9].[0-9]{1,}.[0-9]/g)[0];
     window.version = ctrl.version
 
     $http.get('../versions.json').then(function(resp){
