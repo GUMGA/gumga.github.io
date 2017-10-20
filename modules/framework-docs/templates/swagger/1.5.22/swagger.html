@@ -1,0 +1,93 @@
+<div class="row">
+	<div class="col-sm-12">
+		<h3>Gumga Swagger</h3>
+		<br/>
+		<p>O Swagger é uma ferramenta para documentação de APIs, considerando isto, o framework oferece facilitadores para você documentar sua API. </p>
+		<p>Documentar a API é uma tarefa essencial quando são feitas integrações com sua aplicação, além de tornar sua aplicação mais elegante, torna a integração de aplicativos à sua aplicação mais prática e fácil. </p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<h4>Configuração e utilização</h4>
+		<p>Para fazer com que GumgaSwagger seja ativo, é necessário fazer algumas configurações.</p>
+		<p>Primeiramente, entre no módulo de <i>infrastructure</i> de sua aplicação e crie uma classe de configuração conforme abaixo.</p>
+		<pre>
+<code class="prettyprint">
+	// Anotação que torna sua classe reconhecida pelo Spring como uma classe de configurações.
+	@Configuration
+	@EnableSwagger2
+	public class SwaggerConfig {
+
+		// Método que criará a documentação e mapeamento das rotas.
+		@Bean
+		public Docket createApiDocumentation() {
+			return new Docket(DocumentationType.SWAGGER_2)
+					.select()
+					.apis(RequestHandlerSelectors.withMethodAnnotation(GumgaSwagger.class))
+					.paths(PathSelectors.regex("/api.*"))
+					.build()
+					.apiInfo(apiInfo());
+		}
+
+		// Método que retornará informações adicionais presentes na documentação
+		private ApiInfo apiInfo() {
+			ApiInfo apiInfo = new ApiInfo(
+					"MinhaAplicacao-WEB",
+					"API para acessar ou inserir informações no software",
+					"",
+					"",
+					"",
+					"",
+					""
+			);
+			return apiInfo;
+		}
+	}
+</code>
+		</pre>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-12">
+<p>Após criar a classe de configurações, entre na classe Application e importe a mesma.</p>
+		<pre>
+<code class="prettyprint">
+	@Configuration
+	@ComponentScan(basePackages = {"br.com.minhaapp", "io.gumga"})
+	@EnableJpaRepositories(repositoryFactoryBeanClass = GumgaRepositoryFactoryBean.class, basePackages = {"br.com.minhaapp", "io.gumga"})
+	@EnableTransactionManagement(proxyTargetClass = true)
+	@Import(SwaggerConfig.class) // Importando classe de configurações Swagger
+	public class Application {
+		...
+	}
+</code>
+		</pre>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-8">
+<p>Pronto, agora sua aplicação está preparada para você começar sua documentação. Para documentar uma rota em sua API, adicione as Anotações @GumgaSwagger e @ApiOperation acima dos métodos que queira documentar.</p>
+<p>Uma observação importante: é uma boa prática que seus métodos da API sempre retornem algum valor e nunca <i>void</i>. Abaixo alguns exemplos de utlização.</p>
+		<pre>
+<code class="prettyprint">
+	// Anote com GumgaSwagger para ser um método "mapeável" pelo Swagger
+	@GumgaSwagger
+	// Especifique informações que aparecerão na descrição deste método
+	@ApiOperation(
+			value = "pessoasPorNome",
+			notes = "Busca pessoas por nome."
+	)
+	@RequestMapping(value = "/pessoas-por-nome", method = RequestMethod.GET)
+	@Transactional(readOnly = true)
+	public List<Pessoa> pessoasPorNome(@RequestParam nome) {
+		return service.buscaPessoasComEsteNome(nome);
+	}
+</code>
+		</pre>
+	</div>
+	<div class="col-sm-4">
+		<img class="img-responsive" src="assets/images/swagger.png" alt="Swagger">
+	</div>
+</div>

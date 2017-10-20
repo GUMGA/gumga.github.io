@@ -51,6 +51,7 @@ import Directives from './modules/directives/directives'
 import Home from './modules/home/home'
 import Component from './modules/component-docs/component-docs'
 import Components from './modules/components-docs/components-docs'
+import Gerador from './modules/gerador-docs/gerador-docs'
 import Framework from './modules/framework-docs/framework-docs'
 import Academy from './modules/academy/academy'
 import SecurityEmbedded from './modules/security-embedded/security-embedded'
@@ -67,6 +68,7 @@ angular.module('app', [
     ,Component
     ,Components
     ,Framework
+    ,Gerador
     ,Academy
     ,SecurityEmbedded
     ,'ngImgCrop'

@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col-sm-12">
+		<h3>Gumga Custom Fields</h3>
+		<br/>
+		<p>O GumgaCustomFields é um recurso presente no framework que possibilita adicionar campos a uma entidade sem alterar a estruta na tabela do banco de dados. (POR CLIENTE)</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<h4>Utilização</h4>
+		<p>Para utiliza-lo, é necessário fazer uma simples alteração na entitade desejada, apenas altere a especialização de GumgaModal para GumgaCustomizableModel.</p>
+		<p>Se você sua aplicação segue os padrões utilizados pelo Gerador, então provavelmente será necessário a implementação do componente no frontend para este recurso. <a href="#/gumga-custom-fields-ng">Clique aqui</a> e veja como implementa-lo.</p>
+		
+		<p>Se você busca mais informações desta ferramenta, <a href="https://mvnrepository.com/artifact/io.gumga/gumga-amazon-ses" target="_blank">clique aqui</a> e veja o JavaDocs completo, abaixo segue um exemplo de utilização do mesmo:</p>
+		<pre>
+<code class="prettyprint">
+@Entity
+@SequenceGenerator(name = GumgaModel.SEQ_NAME, sequenceName = "SEQ_CAR")
+@GumgaMultitenancy
+// Alteração
+public class Car extends GumgaCustomizableModel<Long> {
+	
+	public Car() {
+		
+	}
+	
+	public Car(String color) {
+		this.color = color;
+	}
+	
+	private String color;
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+
+}
+</code>
+		</pre>
+	</div>
+</div>

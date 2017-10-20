@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col-sm-12">
+		<h3>GQuery</h3>
+		<br/>
+		<p>O GQuery é uma ferramenta existente no framework, que possibilita pesquisa avançada sem a necessidade de se preocupar com qual banco está sendo utilizado.</p>
+		<p>Este recurso surgiu com o intuito de resolver problemas de compatibilidade entre bancos e facilitar consultas complexas utilizando orientação a objetos, excluindo assim, a necessidade de escrita de HQL para pesquisas Objeto Relacional. </p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<h4>Utilização</h4>
+		<p>Sua utilização é simples, entre em alguma classe <i>service</i>, e crie uma instancia do Objeto tipo GQuery, passando um "critério" de pesquisa, onde seus parâmetros são: campo, condição e valor.</p>
+		<p>Se você busca mais informações desta ferramenta, <a href="https://mvnrepository.com/artifact/io.gumga/gumga-amazon-ses" target="_blank">clique aqui</a> e veja o JavaDocs completo, abaixo segue um exemplo de utilização do mesmo:</p>
+		<pre>
+<code class="prettyprint">
+@Service
+public class PessoaService extends GumgaService<Pessoa, Long> {
+
+	private final PessoaRepository repository;
+
+	@Autowired
+	public PessoaService(PessoaRepository repository) {
+		super(repository);
+		this.repository = repository;
+	}
+
+	public List<Pessoa> buscaPessoasComEsteNome(String nome) {
+		// Nova instância do GQuery recebendo um critério de busca
+		GQuery gQuery = new GQuery(new Criteria("nome", ComparisonOperator.CONTAINS, "Willian");
+		// Adicione ao objeto QueryObject
+		QueryObject query = new QueryObject();
+		query.setgQuery(gQuery);
+		// Agora é só fazer a pesquisa
+		return service.pesquisa(query).getValues();
+	}
+}
+</code>
+		</pre>
+	</div>
+</div>

@@ -37,12 +37,30 @@
     <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .carousel-control.left, .carousel-control.right {
+            background-image: none;
+        }
+
+        .right.carousel-control, .left.carousel-control {
+            color: #009688;
+        }
+        .carousel-caption > h4 {
+            color: white;
+        }
+        .carousel-caption {
+            padding-bottom: 30px;
+            background-color: rgba(0, 150, 136, 0.5);
+            padding: 20px;
+            margin-bottom: 8px;
+        }
+    </style>
 </head>
 
 <body>
     <link rel="stylesheet" href="gumga-layout/gumga-layout.min.css" />
     <div ui-view ng-clock class="gumga-layout"></div>
-      <!-- <script type="text/javascript" src="app.js"></script> -->
+       <!--<script type="text/javascript" src="app.js"></script> -->
 
     <script type="text/javascript" src="dist/app.min.js?v=4.0.0"></script>
 

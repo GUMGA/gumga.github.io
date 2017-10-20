@@ -1,27 +1,17 @@
-import preRequisito from './pre-requisito/pre-requisito'
-import archetype from './archetype/archetype'
-import domain from './domain/domain'
-import application from './application/application'
-import api from './api/api'
-import enumGumga from './enum/enum'
-import infrastructure from './infrastructure/infrastructure'
-import gateway from './gateway/gateway'
-import presentation from './presentation/presentation'
-import javaDocs from './java-docs/java-docs'
-
+import preRequisitoFramework from './pre-requisito/pre-requisito'
+import gumgaAmazonSes from './gumga-amazon-ses/gumga-amazon-ses'
+import javaDocsFramework from './java-docs/java-docs'
+import gquery from './gquery/gquery'
+import swagger from './swagger/swagger'
+import customFields from './custom-fields/custom-fields'
 
 const module = angular.module('framework-templates', [])
-    .directive('preRequisito', preRequisito)
-    .directive('archetype', archetype)
-    .directive('domain', domain)
-    .directive('application', application)
-    .directive('api', api)
-    .directive('enum', enumGumga)
-    .directive('infrastructure', infrastructure)
-    .directive('gateway', gateway)
-    .directive('presentation', presentation)
-    .directive('javaDocs', javaDocs)
-
+    .directive('preRequisitoFramework', preRequisitoFramework)
+    .directive('gumgaAmazonSes', gumgaAmazonSes)
+    .directive('javaDocsFramework', javaDocsFramework)
+    .directive('gquery', gquery)
+    .directive('swagger', swagger)
+    .directive('customFields', customFields)
 
 
 
