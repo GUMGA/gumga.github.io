@@ -1,4 +1,4 @@
-const PreRequisito = () => {
+const Instalation = () => {
     return {
         restrict: 'E',
         template: '<div ng-include="getContent()"></div>',
@@ -8,13 +8,13 @@ const PreRequisito = () => {
         link($scope, elm, attrs){
 
             $scope.getContent = function() {
-                return './modules/gerador-docs/templates/pre-requisito/'+$scope.versionDocs+'/pre-requisito.html';
+                return './modules/gerador-docs/templates/instalation/'+$scope.versionDocs+'/pre-requisito.html';
             }
 
         }
     }
 }
 
-PreRequisito.$inject = [];
+Instalation.$inject = [];
 
-export default PreRequisito;
+export default Instalation;

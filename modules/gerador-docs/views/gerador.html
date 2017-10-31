@@ -4,7 +4,7 @@
     <div class="container-fluid content">
         <div class="row">
             <div  class="col-sm-8 col-sm-offset-3 components-container hash" id="release">
-                <release owner="GUMGA" repo="frameworkbackend" tag="$ctrl.versionCurrent"></release>
+                <!-- <release owner="GUMGA" repo="gumga-cli" tag="$ctrl.versionCurrent"></release> -->
             </div>
             <div class="col-sm-8 col-sm-offset-3 components-container hash" ng-repeat="menu in $ctrl.menu"
                  id="{{menu.anchor}}">
@@ -37,11 +37,6 @@
         </li>
 
         <br/>
-        <li>
-            <a data-ng-click="$ctrl.gotoAnchor('release')" ng-style="$ctrl.getMenuStyle('release')">
-                O que há de novo?
-            </a>
-        </li>
         <li ng-repeat="menu in $ctrl.menu | filter:{label: $ctrl.search}"
             ng-style="$ctrl.getMenuStyle(menu)">
             <a data-ng-click="$ctrl.gotoAnchor(menu.anchor)">{{menu.label}}</a>

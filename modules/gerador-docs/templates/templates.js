@@ -1,4 +1,4 @@
-import preRequisito from './pre-requisito/pre-requisito'
+import instalation from './instalation/instalation'
 import archetype from './archetype/archetype'
 import domain from './domain/domain'
 import application from './application/application'
@@ -11,7 +11,7 @@ import javaDocs from './java-docs/java-docs'
 
 
 const module = angular.module('gerador-templates', [])
-    .directive('preRequisito', preRequisito)
+    .directive('instalation', instalation)
     .directive('archetype', archetype)
     .directive('domain', domain)
     .directive('application', application)
