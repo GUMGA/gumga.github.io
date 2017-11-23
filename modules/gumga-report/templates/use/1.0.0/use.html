@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Arquivo para configuração</h3>
+        <p>
+          Após a execução dos passos de instalação, é possível configurar propriedades que poderão ser utilizadas no serviço.
+        </p>
+        <br/>
+        <p>
+          Abaixo segue um exemplo de properties de configuração da aplicação.
+        </p>
+        <pre><code class="prettyprint">#---------------------------------------------------------------------------
+#Hibernate
+
+hibernate.ejb.naming_strategy= org.hibernate.cfg.EJB3NamingStrategy
+hibernate.show_sql = false
+hibernate.format_sql = false
+hibernate.connection.charSet = UTF-8
+hibernate.connection.characterEncoding = UTF-8
+hibernate.connection.useUnicode = true
+hibernate.jdbc.batch_size = 50
+hibernate.hbm2ddl.auto = update
+hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+
+
+#---------------------------------------------------------------------------
+#Datasource
+name = MYSQL
+dataSource.className = com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+dataSource.url = jdbc:mysql://localhost:3306/reportservice?zeroDateTimeBehavior=convertToNull&useUnicode=yes&characterEncoding=utf8&createDatabaseIfNotExist=true
+dataSource.user = root
+dataSource.password = senha
+
+#---------------------------------------------------------------------------
+#Segurança
+url.host = https://www.meuseguranca.com
+#security.token = eterno
+</code></pre>
+        <br/>
+    </div>
+</div>

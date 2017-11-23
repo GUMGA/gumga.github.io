@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Gumga Report - Instalação</h3>
+        <p>
+          Módulo e serviço para criação e gerenciamento de relatórios do stimulsoft.
+        </p>
+        <p>Atualmente existem duas opções para utilização do gumga-report. Incluir o módulo do mesmo em sua aplicação <a href="https://github.com/GUMGA/frameworkbackend/tree/master/gumga-reports" title="Clique para acessar o projeto" target="_blank">(framework gumga-reports)</a>, ou o serviço disponibilizado. </p>
+
+        <br/>
+
+        <h4>Pré-requisitos módulo Backend</h4>
+
+        <ul>
+            <li><a ui-sref="app.framework" target="_blank">Framework Gumga - ^1.5.0 </a></li>
+            <li><a >Módulo Report Gumga - ^1.2.19</a></li>
+        </ul>
+        <br/>
+        <h4>Instalação do módulo report</h4>
+        <p>
+           1 - Em algum módulo de sua aplicação, adicione a seguinte dependência:
+        <pre><code class="prettyprint">&lt;dependency>
+        &lt;groupId>io.gumga&lt;/groupId>
+        &lt;artifactId>gumga-reports&lt;/artifactId>
+        &lt;version>2.0.3/version>
+&lt;/dependency>
+</code></pre>
+        </p>
+        <h4>Instalação do Serviço report-service</h4>
+        <p>Se preferir, é possível utilizar um serviço separado do gumga-report.</p>
+        <p><a href="https://github.com/GumgaMGA/report-service" target="_blank">Clique aqui</a> e baixe ou clone o projeto disponível no github para deploy do serviço.</p>
+        <p>Se você não sabe como fazê-lo, não se preocupe, faça conforme abaixo:</p>
+        <p>- Deseja clonar pelo github? Primeiramente execute: <code>git clone https://github.com/GumgaMGA/report-service.git</code> em um diretório desejado.</p>
+        <p>- O próximo passo será compilar o projeto, e para isto será necessário utilizar o <a href="https://maven.apache.org/" target="_blank" title="Clique aqui para conhecer o Maven">Maven</a>. Após instalado, execute no diretório do projeto o seguinte comando: <code>mvn clean install</code>.</p>
+        <p>- Pronto, se a seguinte mensagem aparecer, estará tudo pronto para o deploy.</p>
+        <img src="assets/images/print_copile.png" alt="Compilação">
+        <br><br>
+        <p>- Agora é só copiar os arquivos compilados .war (caso utilize tomcat) ou .jar (caso não utilize tomcat) dentro do diretório api e fazer o deploy.</p>
+        <p></p>
+    </div>
+</div>

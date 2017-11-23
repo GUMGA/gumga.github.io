@@ -55,6 +55,7 @@ import Gerador from './modules/gerador-docs/gerador-docs'
 import Framework from './modules/framework-docs/framework-docs'
 import Academy from './modules/academy/academy'
 import SecurityEmbedded from './modules/security-embedded/security-embedded'
+import GumgaReport from './modules/gumga-report/gumga-report'
 
 //Imports Configs
 import Routers from './routers'
@@ -71,6 +72,7 @@ angular.module('app', [
     ,Gerador
     ,Academy
     ,SecurityEmbedded
+    ,GumgaReport
     ,'ngImgCrop'
     ,'gumga.core'
     ,'ui.bootstrap'

@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Configurações adicionais</h3>
+        <div class="row">
+          <div class="col-sm-12">
+              <h4>Atributos</h4>
+              <table class="table table-bordered table-striped">
+                  <tr>
+                      <th>Propriedade</th>
+                      <th>Tipo</th>
+                      <th>Exemplo</th>
+                      <th>Descrição</th>
+                  </tr>
+                  <tr>
+                      <td>stimulsoft.datasource.limitPresentationTables</td>
+                      <td>STRING|INT</td>
+                      <td><pre><code>stimulsoft.datasource.limitPresentationTables=ALL|0</code></pre></td>
+                      <td>Limita a quantidade de tabelas exibidas na criação de data source. Quando utilizado ALL é buscado todas as tabelas do banco ao criar data source.</td>
+                  </tr>
+                  <tr>
+                      <td>stimulsoft.search.usesObj</td>
+                      <td>BOOLEAN</td>
+                      <td><pre><code>stimulsoft.search.usesObj=true</code></pre></td>
+                      <td>Obriga a utilização do alias obj nas querys dos data sources.</td>
+                  </tr>
+              </table>
+              <p>É possível criar propriedades que serão utilizadas como parâmetros nas querys. Para isto, é preciso que a propriedade tenha por prefixo a palavra 'stimulsoft'. ex: <code>stimulsoft.minhapropriedade.usuario = teste</code>. Na <a href="https://gumga.github.io/gumga-report-ng" target="_blank" title="Clique aqui para ir a documentação do componente">documentação do componente</a> gumga-report-ng contém exemplos de como utilizar os parâmetros personalizados.</p>
+
+          </div>
+        </div>
+        <br/>
+    </div>
+</div>
