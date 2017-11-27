@@ -15,7 +15,7 @@ const Routers = $stateProvider => {
 }
 
 Routers.$inject = ['$stateProvider'];
-console.log("asd")
+
 const module = angular.module('app.gumgaReport', [Templates])
                 .controller('GumgaReportController', GumgaReportController)
                 .service('GumgaReportService', GumgaReportService)

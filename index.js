@@ -2,15 +2,17 @@
 window.TOKEN = 'MGFmYjFlZjQ0YTgwYmJmMmM0NDQ2YjQyNTljNzA4NGJhOGVhNTA2YQ==';
 
 //Imports Libs
+import 'jquery';
 import angular from 'angular'
 import UiRouter from 'angular-ui-router'
 import AngularAria from 'angular-aria'
 import AngularAnimate from 'angular-animate'
 
+
 //Libs es5 - bower
 require("script-loader!./bower_components/jquery/dist/jquery.min.js")
+angular.element.fn = window.$;
 require("script-loader!./bower_components/bootstrap/dist/js/bootstrap.min.js")
-require('script-loader!./gumga-layout/gumga-layout.min.js')
 require('script-loader!./bower_components/ng-img-crop/compile/minified/ng-img-crop.js')
 require('script-loader!./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
 require('script-loader!./bower_components/jquery/dist/jquery.min.js')
@@ -19,6 +21,7 @@ require('script-loader!./assets/libs/run_prettify.min.js');
 require('script-loader!./bower_components/angular-sanitize/angular-sanitize.min.js');
 require('script-loader!./bower_components/showdown/src/showdown.js');
 require('script-loader!./bower_components/angular-markdown-directive/markdown.js');
+require('script-loader!./gumga-layout/gumga-layout.js');
 
 
 var LAST_VERSION = '3.3.2';

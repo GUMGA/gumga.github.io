@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Entidade</h3>
+        <br/>
+        <p>A camada domain compreende as entidades do sistema e é nela que configuramos os mapeamentos JPA. Lembrando
+            que o framework de persistência utilizado é o Hibernate. Porém devemos ressaltar que NÃO é nesta camada que
+            configuramos o persistence.xml</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <pre>
+<code class="prettyprint">    @GumgaMultitenancy
+    @Audited
+    @Entity(name = "Pessoa")
+    @Table(name = "Pessoa", indexes = {
+        @Index(name = "Pessoa_gum_oi", columnList = "oi")
+    })
+    public class Pessoa extends GumgaModelUUID {
+
+        @Version
+        private Integer version;
+        @Column(name = "nome")
+        private String nome;
+
+        public Pessoa() {
+        }
+
+        public String getNome() {
+            return nome;
+        }
+
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+    }
+</code>
+        </pre>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <h4>Gerando a classe de entidade</h4>
+        <p>Entre na pasta raiz do seu projeto e execute a seguinte linha de comando no Terminal do Linux:</p>
+        <pre><code class="prettyprint">gg entity</code></pre>
+        <p>Siga as instruções que forem apresentadas para a geração da sua entidade.</p>
+    </div>
+</div>

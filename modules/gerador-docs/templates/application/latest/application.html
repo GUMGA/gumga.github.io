@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-sm-12">
         <h5>Repositório</h5>
-        <pre><code class="prettyprint">public interface PessoaRepository extends GumgaCrudRepository&lt;Pessoa, Long&gt; {}
+        <pre><code class="prettyprint">public interface PessoaRepository extends GumgaCrudRepository&lt;Pessoa, String&gt; {}
             </code>
         </pre>
     </div>
@@ -20,7 +20,7 @@
     <div class="col-sm-12">
         <h5>Serviço</h5>
         <pre><code class="prettyprint">    @Service
-    public class PessoaService extends GumgaService&lt;Pessoa, Long&gt; {
+    public class PessoaService extends GumgaService&lt;Pessoa, String&gt; {
 
         private final PessoaRepository repository;
 
@@ -35,14 +35,10 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-12">
         <h4>Gerando a camada de aplicação</h4>
-        <p>Entre no modulo application e execute a seguinte linha de comando no Terminal do Linux:</p>
-        <pre>
-<code class="prettyprint">
-    mvn io.gumga:gumgag:aplicacao
-        -Dentidade=br.com.exemplo.domain.model.Pessoa
-</code>
-        </pre>
+        <p>Entre na pasta raiz do seu projeto e execute a seguinte linha de comando no Terminal do Linux:</p>
+        <pre><code class="prettyprint">gg service</code></pre>
+        <p>Siga as instruções que forem apresentadas para a geração da service e repository.</p>
     </div>
 </div>

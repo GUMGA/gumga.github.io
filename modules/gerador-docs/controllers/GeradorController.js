@@ -11,7 +11,7 @@ class GeradorController {
     }
 
     $onInit() {
-        this.versions = ["1.1.0"];
+        this.versions = ["latest"];
         window.currentHash = 'release';
 
         if(!this.$stateParams.version){
@@ -46,7 +46,7 @@ class GeradorController {
             {
                 label: 'Instalação',
                 anchor: 'instalation',
-                versions: ["1.1.0"],
+                versions: ["latest"],
                 template: this.$sce.trustAsHtml('<instalation version-docs="$ctrl.getLatestVersion('+"'instalation'"+', $ctrl.versionCurrent)"></instalation>')
             },
             // {
@@ -58,49 +58,49 @@ class GeradorController {
             {
                 label: 'Estrutura do projeto',
                 anchor: 'archetype',
-                versions: ["1.1.0"],
+                versions: ["latest"],
                 template: this.$sce.trustAsHtml('<archetype version-docs="$ctrl.getLatestVersion('+"'archetype'"+', $ctrl.versionCurrent)"></archetype>')
             },
             {
                 label: 'Entidade',
                 anchor: 'domain',
-                versions: ["1.1.0"],
+                versions: ["latest"],
                 template: this.$sce.trustAsHtml('<domain version-docs="$ctrl.getLatestVersion('+"'domain'"+', $ctrl.versionCurrent)"></domain>')
             },
             {
                 label: 'Repositório e Serviço',
                 anchor: 'application',
-                versions: ["1.1.0"],
+                versions: ["latest"],
                 template: this.$sce.trustAsHtml('<application version-docs="$ctrl.getLatestVersion('+"'application'"+', $ctrl.versionCurrent)"></application>')
             },
             {
                 label: 'Api',
                 anchor: 'api',
-                versions: ["1.1.0"],
+                versions: ["latest"],
                 template: this.$sce.trustAsHtml('<api version-docs="$ctrl.getLatestVersion('+"'api'"+', $ctrl.versionCurrent)"></api>')
             },
             {
                 label: 'Apresentação',
                 anchor: 'presentation',
-                versions: ["1.1.0"],
+                versions: ["latest"],
                 template: this.$sce.trustAsHtml('<presentation version-docs="$ctrl.getLatestVersion('+"'presentation'"+', $ctrl.versionCurrent)"></presentation>')
             },
             {
                 label: 'Infrastructure',
                 anchor: 'infrastructure',
-                versions: ["1.1.0"],
+                versions: ["latest"],
                 template: this.$sce.trustAsHtml('<infrastructure version-docs="$ctrl.getLatestVersion('+"'infrastructure'"+', $ctrl.versionCurrent)"></infrastructure>')
             },
             {
                 label: 'gateway',
                 anchor: 'gateway',
-                versions: ["1.1.0"],
+                versions: ["latest"],
                 template: this.$sce.trustAsHtml('<gateway version-docs="$ctrl.getLatestVersion('+"'gateway'"+', $ctrl.versionCurrent)"></gateway>')
             },
             {
                 label: 'Enum',
                 anchor: 'enum',
-                versions: ["1.1.0"],
+                versions: ["latest"],
                 template: this.$sce.trustAsHtml('<enum version-docs="$ctrl.getLatestVersion('+"'enum'"+', $ctrl.versionCurrent)"></enum>')
             }
         ]

@@ -1,6 +1,6 @@
-<gumga-header show-icon-menu="true"></gumga-header>
+<gumga-header show-icon-menu="false"></gumga-header>
 
-<main>
+<main class="gl-main">
     <div class="container-fluid content">
         <div class="row">
             <div  class="col-sm-8 col-sm-offset-3 components-container hash" id="release">
@@ -18,24 +18,6 @@
 
 <nav class="gl-nav collapsed gumga-docs-nav">
     <ul class="gumga-docs-nav-ul">
-        <li>
-            <br/>
-            <gmd-input>
-                <input type="text" class="form-control gmd" ng-model="$ctrl.search" id="text">
-                <span class="bar"></span>
-                <label for="text" class="control-label">Pesquisar documentação</label>
-            </gmd-input>
-        </li>
-        <br>
-        <li>
-            <label class="text-muted">Versão</label>
-            <select class="form-control gmd"
-                    data-ng-options="item as item for item in $ctrl.versions"
-                    data-ng-change="$ctrl.setVersion($ctrl.versionCurrent)"
-                    data-ng-model="$ctrl.versionCurrent">
-            </select>
-        </li>
-
         <br/>
         <li ng-repeat="menu in $ctrl.menu | filter:{label: $ctrl.search}"
             ng-style="$ctrl.getMenuStyle(menu)">
