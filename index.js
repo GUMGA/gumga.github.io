@@ -59,6 +59,7 @@ import Framework from './modules/framework-docs/framework-docs'
 import Academy from './modules/academy/academy'
 import SecurityEmbedded from './modules/security-embedded/security-embedded'
 import GumgaReport from './modules/gumga-report/gumga-report'
+import GumgaVideo from './modules/video/video'
 
 //Imports Configs
 import Routers from './routers'
@@ -75,6 +76,7 @@ angular.module('app', [
     ,Gerador
     ,Academy
     ,SecurityEmbedded
+    ,GumgaVideo
     ,GumgaReport
     ,'ngImgCrop'
     ,'gumga.core'

@@ -10,7 +10,14 @@ class ComponentController {
       let repos;
       this.service.getRepos()
           .then(res => {
-              this.repos = res.data.filter(value => value.name.indexOf('gumga-') > -1)
+              this.repos = res.data.filter(value => value.name.indexOf('gumga-') > -1);
+              this.repos.push({
+                html_url: 'https://gumga.github.io/#/app/video',
+                homepage: 'https://gumga.github.io/#/app/video',
+                name: 'video',
+                description: 'Componente de video do HTML5.',
+                updated_at: new Date()
+              })
           });
 
       this.navMenu = [

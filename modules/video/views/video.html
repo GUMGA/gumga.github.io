@@ -1,0 +1,78 @@
+<gumga-header show-icon-menu="false"></gumga-header>
+
+<main>
+    <div class="container-fluid content">
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+                <div class="panel-heading">Usando componente video | HTML5</div>
+                <div class="panel-body">
+
+                    <p>
+                        Devido às inconsistências dos navegadores, era preciso adicionar tanto o elemento
+                        <object> quanto o elemento
+                            <embed>, duplicando muitos atributos. Isso sem falar que plugins como o Flash causam muitas instabilidades
+                            e, eventualmente, fecham o navegador.
+                            <br>
+                    </p>
+
+                    <p>
+                        Agora, com o HTML5, podemos finalmente servir conteúdo multimídia de forma confiável, através dos elementos
+                        <b>&lt;video&gt;</b> e
+                        <b>&lt;audio&gt;</b> e suas APIs de JavaScript, sem ter que criar exceções para os diferentes navegadores.
+                        <br>
+                        <br> Aquele código necessário para que o Flash funcione pode ser substituído, em teoria, por um muito
+                        mais simples:
+                        <br> 
+                    </p>
+
+                    <pre><code class="prettyprint">&lt;video controls src="video.mp4" width="426" height="240"&gt;&lt;/video&gt;</code></pre>
+
+                    <p>
+
+                        O ponto é que usar o atributo src não ajuda muito se você quer atingir um número maior de navegadores. Por isso, é muito
+                        mais comum vermos a tag
+                        &lt;video&gt; sendo usada com outro elemento chamado de
+                            &lt;source&gt;. <br> <br> 
+                            O elemento &lt;source&gt; pode ser usado múltiplas vezes e permite definir um formato de vídeo para cada navegador, fazendo
+                            com que você tenha um alcance maior.
+                    </p>
+
+                    <pre><code class="prettyprint">&lt;video width="426" height="240"&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;source src="video.webm" type="video/webm"&gt;
+&lt;/video&gt;</code></pre>
+
+
+                    <p>
+                        Uma coisa interessante da tag &lt;video&gt; é que você pode definir um fallback caso o vídeo não consiga ser exibido. Um dos motivos seria a falta de um formato adequado para aquele navegador em particular. Você exibir uma imagem, um link para download ou até mesmo o vídeo através do Flash.
+                    </p>
+
+                    <pre><code class="prettyprint">&lt;video width="426" height="240"&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;source src="video.webm" type="video/webm"&gt;
+
+    &lt;object width="426" height="240"&gt;
+        &lt;param name="movie" value="http://www.youtube.com/v/-TdbsZg6CC4"&gt;&lt;/param&gt;
+        &lt;param name="allowFullScreen" value="true"&gt;&lt;/param&gt;
+        &lt;param name="allowscriptaccess" value="always"&gt;&lt;/param&gt;
+        &lt;embed src="http://www.youtube.com/v/-TdbsZg6CC4"
+        type="application/x-shockwave-flash"
+        allowscriptaccess="always"
+        allowfullscreen="true"
+        width="426"
+        height="240"&gt;
+        &lt;/embed&gt;
+    &lt;/object&gt;
+&lt;/video&gt;</code></pre>
+
+
+                    <p>Se quiser saber mais sobre o componente video do HTML5 <a href="https://www.w3schools.com/tags/tag_video.asp" target="_blank">clique aqui.</a></p>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
