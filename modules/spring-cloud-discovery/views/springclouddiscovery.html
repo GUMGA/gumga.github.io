@@ -1,0 +1,40 @@
+<gumga-header show-icon-menu="false"></gumga-header>
+
+<main>
+    <div class="container-fluid content">
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+                <div class="panel-heading">Adicionando o Spring Cloud Discovery no projeto com o framework GUMGA</div>
+                <div class="panel-body">
+                    <p><b>Primeiro passo:</b> Entrar no site https://start.spring.io/ para gerar uma aplicação. Esta aplicação será o servidor de descoberta aonde toda aplicação irá se registrar. 
+                    </p>
+                    <img src="https://i.imgur.com/5TZXhpH.png" alt="" style="width: 100%;">
+                    <p><b>Obs:</b>Depois de adicionar as dependências web e eureka server clicar em generate project.</p>
+                    <p><b>Segundo passo:</b> Depois de gerar a aplicação, é necessário descompactar e abrir a aplicação na IDE e logo em seguida fazer o build.</p>            
+                    <p><b>Terceiro passo:</b>Adicionar as seguintes propriedades no arquivo de configurações do projeto, que se encontra na pasta src/main/java/resources chamado application.properties:</p>
+<pre><code class="prettyprint">eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+</code></pre>                    
+                    <p><b>Quarto passo:</b>Inserir a anotação @EnableEurekaServer na classe Application do projeto.
+                    </p>
+                    <p><b>Quinto passo:</b>Adicionar a seguinte dependência no módulo boot da aplicação:
+                    </p>
+                    <pre><code class="prettyprint">&lt;dependency&gt;
+    &lt;groupId>org.springframework.cloud&lt/groupId&gt;
+    &lt;artifactId>spring-cloud-starter-eureka&lt/artifactId&gt;
+    &lt;version>1.2.7.RELEASE&lt/version&gt;
+&lt/dependency&gt;
+</code></pre>                    
+                    <p><b>Sexto passo:</b> Inserir no arquivo no properties de configuração do módulo boot as propriedades abaixo, se não existir um arquivo de configuração no módulo boot será necessário criar um arquivo no caminho src/main/java/resources com o nome bootstrap.properties</p>
+<pre><code class="prettyprint">spring.application.name=nomeDaAplicacao
+eureka.client.serviceUrl.defaultZone=http://ip e porta do servidor de descoberta/eureka
+</code></pre>                                 
+                    <p><b>Sétimo passo:</b>Após configurar o arquivo properties, adicionar a anotação @EnableDiscoveryClient para que a aplicação procure o servidor de descoberta para se registrar, essa anotação será colocada na classe Application do módulo boot da aplicação.</p>
+                    <p><b>Oitavo passo:</b>Executar a aplicação que foi criado no primeiro passo e depois executar o projeto em que foi adicionado a anotação @EnableDiscoveryClient para que o projeto se registre na aplicação de descoberta.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>

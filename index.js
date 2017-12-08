@@ -60,6 +60,8 @@ import Academy from './modules/academy/academy'
 import SecurityEmbedded from './modules/security-embedded/security-embedded'
 import GumgaReport from './modules/gumga-report/gumga-report'
 import GumgaVideo from './modules/video/video'
+import SpringCloudConfig from './modules/spring-cloud-config/springcloudconfig'
+import SpringCloudDiscovery from './modules/spring-cloud-discovery/springclouddiscovery'
 
 //Imports Configs
 import Routers from './routers'
@@ -78,6 +80,8 @@ angular.module('app', [
     ,SecurityEmbedded
     ,GumgaVideo
     ,GumgaReport
+    ,SpringCloudConfig
+    ,SpringCloudDiscovery
     ,'ngImgCrop'
     ,'gumga.core'
     ,'ui.bootstrap'

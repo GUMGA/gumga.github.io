@@ -1,0 +1,102 @@
+<gumga-header show-icon-menu="false"></gumga-header>
+
+<main>
+    <div class="container-fluid content">
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+                <div class="panel-heading">Adicionando Spring Cloud Configuration no projeto com o framework GUMGA</div>
+                <div class="panel-body">
+                    <p><b>Spring Cloud Config - Local File ou GitHub</b></p>
+                    <p><b>Primeiro passo:</b> Em sua aplicação, adicionar no pom.xml do módulo configuration a seguinte dependência:
+                    </p>
+                    <pre><code class="prettyprint">&lt;dependency&gt;
+    &lt;groupId>org.springframework.cloud&lt/groupId&gt;
+    &lt;artifactId>spring-cloud-config-server&lt/artifactId&gt;
+    &lt;version>1.2.3.RELEASE&lt/version&gt;
+&lt/dependency&gt;
+</code></pre>
+                    <p><b>Segundo passo:</b> Criar um arquivo chamado bootstrap.properties no módulo boot para que a aplicação consiga buscar os dados externos utilizando o spring cloud config.
+                    </p>
+                    <p>Para utilizar local, utilize as seguintes propriedades:</p>
+<pre><code class="prettyprint">spring.application.name=nomeDaAplicacao
+spring.profiles.active=native
+spring.cloud.config.server.bootstrap=true
+spring.cloud.config.server.prefix=/gumgafiles
+spring.cloud.config.server.native.search-locations=file://${user.home}/gumgafiles
+</code></pre>                    
+                    <p>Para utilizar com o GitHub, utilize as seguintes propriedades:</p>
+<pre><code class="prettyprint">spring.application.name=nomeDaAplicacao
+spring.cloud.config.server.bootstrap=true
+spring.cloud.config.server.git.uri=url do repository
+spring.cloud.config.server.git.search-paths=pasta dentro do repository que contenha as configurações
+spring.cloud.config.server.git.force-pull=true
+spring.cloud.config.server.git.username=login do github
+spring.cloud.config.server.git.password=senha
+</code></pre>                      
+                    <p><b>Obs:</b>O bootstrap.properties precisa ser colocado na pasta src/main/resources do módulo boot.</p>
+
+                    <p><b>Terceiro passo:</b> Criar a classe GumgaProperties dentro do módulo configuration da aplicação. Essa classe é responsável por ler e armazenar todas as propriedades de ambiente da aplicação.
+                    </p>
+<pre><code class="prettyprint">
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.EnumerablePropertySource;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.Map;
+
+@Component
+public class GumgaProperties {
+    private final Map<String, Object> properties = new HashMap<>();
+
+    @Autowired
+    private ConfigurableEnvironment configurableEnvironment;
+
+    @PostConstruct
+    private void loadProperties() {
+        this.configurableEnvironment
+                .getPropertySources()
+                .forEach(propertySource -> {
+                    if (propertySource instanceof EnumerablePropertySource) {
+                        for (String key : ((EnumerablePropertySource) propertySource).getPropertyNames()) {
+                            properties.put(key, propertySource.getProperty(key));
+                        }
+                    }
+                });
+    }
+
+    public String getProperty(String key) {
+        return this.properties.get(key).toString();
+    }
+
+    public String getProperty(String key, String defaultValue) {
+        return this.properties.getOrDefault(key, defaultValue).toString();
+    }
+
+    private void addAll(Map<String, Object> properties) {
+        this.properties.putAll(properties);
+    }
+}
+        
+</code></pre>       
+                    <p><b>Quarto passo:</b>
+                        <p>
+                                Local: Colocar o arquivo properties de configuração da aplicação com o nome que foi colocado na propriedade("spring.application.name") e dentro da pasta especificada na propriedade("spring.cloud.config.server.native.search-locations"). Essas propriedades são as que estão no arquivo bootstrap.properties que está dentro do módulo boot da aplicação.
+                        </p>
+                        <p>
+                                GitHub: Colocar o arquivo properties dentro da pasta especificada na propriedade("spring.cloud.config.server.git.search-paths") do repositorio do github que especificou na propriedade("spring.cloud.config.server.git.uri") do arquivo bootstrap.properties que está dentro do módulo boot.
+                        </p>
+                    </p>             
+                    <p><b>Quinto passo:</b> Injetar o GumgaProperties dentro das classes de configuração do projeto para obter os dados de configuração apartir dele.
+                    </p>             
+                    <p><b>Sexto passo:</b> Para finalizar a configuração é necessário colocar a anotação @EnableConfigServer na classe Application do módulo boot de sua aplicação.
+                    </p>             
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
