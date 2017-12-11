@@ -63,7 +63,7 @@ import GumgaVideo from './modules/video/video'
 import SpringCloudConfig from './modules/spring-cloud-config/springcloudconfig'
 import SpringCloudDiscovery from './modules/spring-cloud-discovery/springclouddiscovery'
 import Freshdesk from './modules/freshdesk/freshdesk'
-
+import Docker from './modules/docker/docker'
 //Imports Configs
 import Routers from './routers'
 
@@ -84,6 +84,7 @@ angular.module('app', [
     ,SpringCloudConfig
     ,SpringCloudDiscovery
     ,Freshdesk
+    ,Docker
     ,'ngImgCrop'
     ,'gumga.core'
     ,'ui.bootstrap'
