@@ -1,0 +1,91 @@
+<gumga-header show-icon-menu="false"></gumga-header>
+
+<main>
+    <div class="container-fluid content">
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+                <div class="panel-heading">Integrando o Freshdesk em sua aplicação</div>
+                <div class="panel-body">
+                    <p>
+                        O <a href="http://freshdesk.com.br/">Freshdesk</a> é um software de suporte ao cliente baseado na nuvem que permite que você forneça suporte aos seus clientes através de canais tradicionais como o telefone e o email, canais sociais como o Facebook e o Twitter e a própria comunidade da sua marca.
+                        Sendo assim, está disponível no framework backend um módulo com facilitadores para abertura e gerenciamento de tickets em uma determinada conta no Freshdesk.
+                    </p>
+                    <p>Primeiramente, é necessário adicionar a seguinte dependência em sua aplicação:
+                    </p>
+                    <pre><code class="prettyprint">&lt;dependency>
+    &lt;groupId>io.gumga&lt;/groupId>
+    &lt;artifactId>gumga-freshdesk&lt;/artifactId>
+    &lt;version>3.0.5&lt;/version>
+&lt;/dependency>
+</code></pre>                    
+                    <p>
+                        Após adicionar o módulo em sua aplicação, é possível configurar algumas propriedades no arquivo properties da mesma.
+                        <br>
+                        <code>
+                            freshdesk.domain
+                        </code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Domínio da conta no freshdesk.
+                        <br>
+                        <code>
+                            freshdesk.user
+                        </code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Usuário no freshdesk.
+                        <br>
+                        <code>
+                            freshdesk.password
+                        </code> &nbsp;&nbsp;&nbsp;&nbsp; Senha no freshdesk.
+                        <br>
+                    </p>
+                    <p>
+                        Exemplo:
+                        <pre><code class="prettyprint">freshdesk.domain=gumga
+freshdesk.user=meuemail@email.com
+freshdesk.password=minhasenha</code></pre>
+                    </p>
+                    <br>
+                    <hr>
+                    <h5>Injetando o serviço</h5>
+                    <p>
+                        Após configurado em seu projeto, faça a injeção da dependência do serviço do Freshdesk disponível no módulo.
+                        A mesma pode ser feita da seguinte forma:
+                        <pre><code class="prettyprint">@Service
+    public class MeuServico {
+
+        @Autowired
+        public FreshdeskService freshdeskService;
+
+        ...
+}</code></pre>
+                    </p>
+                    <h5>Utilizando o serviço</h5>
+                    <p>
+                        O serviço pode ser utilizado de duas formas: a primeira se estiver configurado o arquivo de propriedades ou a segunda se não estiver.
+                        <pre><code class="prettyprint">fresdeskService.createATicket(Freshdesk.build()
+                .description("Uma descrição")
+                .email("email@teste.com")
+                .group("Grupo")
+                .name("nome")
+                .priority(1l)
+                .status(1l)
+                .subject("Teste")
+                .type("Bug")
+                .builder());
+
+
+fresdeskService.createATicket(Freshdesk.build()
+                .description("Uma descrição")
+                .email("email@teste.com")
+                .group("Grupo")
+                .name("nome")
+                .priority(1l)
+                .status(1l)
+                .subject("Teste")
+                .type("Bug")
+                .builder(), "dominio", "usuario", "senha");
+                        </code></pre>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
