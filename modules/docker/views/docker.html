@@ -24,7 +24,34 @@
         &lt;/execution>
     &lt;/executions>
 &lt;/plugin>
-    
+
+&lt;plugin>
+    &lt;groupId>org.apache.maven.plugins&lt;/groupId>
+    &lt;artifactId>maven-resources-plugin&lt;/artifactId>
+    &lt;version>3.0.1&lt;/version>
+    &lt;executions>
+        &lt;execution>
+            &lt;id>docker-resources&lt;/id>
+            &lt;phase>validate&lt;/phase>
+            &lt;goals>
+                &lt;goal>copy-resources&lt;/goal>
+            &lt;/goals>
+            &lt;configuration>
+                &lt;outputDirectory>target/&lt;/outputDirectory>
+                &lt;resources>
+                    &lt;resource>
+                        &lt;directory>src/main/docker/&lt;/directory>
+                        &lt;filtering>false&lt;/filtering>
+                        &lt;excludes>
+                            &lt;exclude>**/*.yml&lt;/exclude>
+                        &lt;/excludes>
+                    &lt;/resource>
+                &lt;/resources>
+            &lt;/configuration>
+        &lt;/execution>
+    &lt;/executions>
+&lt;/plugin>
+
 &lt;plugin>
     &lt;groupId>com.spotify&lt;/groupId>
     &lt;artifactId>dockerfile-maven-plugin&lt;/artifactId>
