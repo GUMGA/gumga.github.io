@@ -57,7 +57,7 @@
     &lt;artifactId>dockerfile-maven-plugin&lt;/artifactId>
     &lt;version>1.3.6&lt;/version>
     &lt;configuration>
-        &lt;repository>primeiroDocker&lt;/repository>
+        &lt;repository>primeiro-docker&lt;/repository>
         &lt;tag>latest&lt;/tag>
         &lt;contextDirectory>${project.build.directory}&lt;/contextDirectory>
     &lt;/configuration>
@@ -72,7 +72,7 @@ CMD java -jar /app.jar
 </code></pre>
                     <p><b>Terceiro passo:</b> mvn clean install no projeto na pasta pasta do projeto principal.</p>
                     <p><b>Quarto passo:</b> mvn clean package dockerfile:build na pasta do módulo boot.</p>
-                    <p><b>Quinto passo:</b> docker run -p 8080:8080 -it primeiroDocker</p>
+                    <p><b>Quinto passo:</b> docker run -p 8080:8080 -it primeiro-docker</p>
                 </div>
             </div>
         </div>
