@@ -32,7 +32,7 @@
                       <div class="col-sm-12 component-container form-group">
                         {{$ctrl.redirectTo}}
                         <i><img ng-src="{{repo.iconDesc}}" width="48" height="48" alt="teste"></i> <br>
-                        <i class="fa fa-github" ng-click="$ctrl.redirectTo(repo.html_url)" uib-tooltip="Github" aria-hidden="true"></i>
+                        <i class="fa fa-github" ng-click="$ctrl.redirectTo(repo.html_url, $event)" uib-tooltip="Github" aria-hidden="true"></i>
                          <!--ng-style="{color: $ctrl.getRamdomColor(repo)}"-->
                         <label>{{repo.name}}</label>  <br>
                         <p uib-tooltip="{{repo.description}}" tooltip-popup-delay="500">

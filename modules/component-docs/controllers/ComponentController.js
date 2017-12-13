@@ -131,8 +131,11 @@ class ComponentController {
       }
     }
 
-    this.redirectTo = (url) => {
+    this.redirectTo = (url, $event) => {
       location.href = url;
+      if ($event) {
+        $event.preventDefault()
+      }
     }
 
   }
