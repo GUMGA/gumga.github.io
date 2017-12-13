@@ -6,15 +6,17 @@
     alert('Giving up :( Cannot create an XMLHTTP instance')
     return false
   }
-  httpRequest.onreadystatechange = () => {};
+  httpRequest.onreadystatechange = () => loadContent
   httpRequest.open('GET', 'versions.json')
   httpRequest.send()
-
-  console.log('willian ja foi mais legal', location);
   
   function loadContent() {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
       if (httpRequest.status === 200) {
+        if(sessionStorage.getItem('gumga-loaded')){
+          location.href = 'https://gumga.github.io/#/app/component';
+        }
+        sessionStorage.setItem('gumga-loaded', true);
         versions = JSON.parse(httpRequest.responseText)
         location.href = versions[versions.length - 1]
       } else {

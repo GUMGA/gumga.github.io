@@ -8,6 +8,7 @@ import UiRouter from 'angular-ui-router'
 import AngularAria from 'angular-aria'
 import AngularAnimate from 'angular-animate'
 
+sessionStorage.removeItem('gumga-loaded');
 
 //Libs es5 - bower
 require("script-loader!./bower_components/jquery/dist/jquery.min.js")
