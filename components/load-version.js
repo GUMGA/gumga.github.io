@@ -6,10 +6,12 @@
     alert('Giving up :( Cannot create an XMLHTTP instance')
     return false
   }
-  httpRequest.onreadystatechange = loadContent
+  httpRequest.onreadystatechange = () => {};
   httpRequest.open('GET', 'versions.json')
   httpRequest.send()
 
+  console.log('willian ja foi mais legal', location);
+  
   function loadContent() {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
       if (httpRequest.status === 200) {
