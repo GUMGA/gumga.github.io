@@ -254,7 +254,7 @@ span[tabindex]:hover > span > div{
   padding-right: 45px;
 }
 
-.docs-item-container > i{
+.docs-item-container > div > img{
   font-size: 150px;
   height: 165px;
   color: #009688;
@@ -264,13 +264,38 @@ span[tabindex]:hover > span > div{
   cursor: pointer;
 }
 
-.docs-item-container > i:hover{
+.docs-item-container > div {
+  height: 180px;
+}
+
+.docs-item-container > div > img:hover{
   font-size: 160px;
-  /*-webkit-transform: rotateZ(360deg);
-  -moz-transform: rotateZ(360deg);
-  transform: rotateZ(360deg);*/
+  /*-webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  transform: rotate(360deg);*/
+  height: 180px;
+  width: 170px;;
   color: #1b9a59;
   opacity: .8;
+}
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 .docs-item-container.danger > i:hover {
@@ -311,4 +336,13 @@ span[tabindex]:hover > span > div{
     font-size: 12px !important;
     left: 7px;
     top: 6px;
+}
+
+.home-img {
+  width: 160px;
+}
+
+.monochrome {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%)
 }
