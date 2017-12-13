@@ -6,7 +6,7 @@
     alert('Giving up :( Cannot create an XMLHTTP instance')
     return false
   }
-  httpRequest.onreadystatechange = () => loadContent
+  httpRequest.onreadystatechange = loadContent
   httpRequest.open('GET', 'versions.json')
   httpRequest.send()
   
