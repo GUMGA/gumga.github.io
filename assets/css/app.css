@@ -254,7 +254,7 @@ span[tabindex]:hover > span > div{
   padding-right: 45px;
 }
 
-.docs-item-container > div > img{
+.docs-item-container > div > img, .docs-item-container > div > a > img{
   font-size: 150px;
   height: 165px;
   color: #009688;
@@ -268,7 +268,7 @@ span[tabindex]:hover > span > div{
   height: 180px;
 }
 
-.docs-item-container > div > img:hover{
+.docs-item-container > div > img:hover, .docs-item-container > div > a >img:hover{
   font-size: 160px;
   /*-webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
